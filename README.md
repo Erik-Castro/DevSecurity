@@ -12,10 +12,10 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 ---
 
-## 📚 Publicação Atual
+## 📚 Livros Publicados
 
-### **Security-Driven Development com C++17**
-> *Desenvolvimento Seguro orientado à Segurança — 17 capítulos | ~44.700 linhas | 100+ CVEs | 200+ exemplos*
+### 1. **Security-Driven Development com C++17**
+> *Desenvolvimento Seguro orientado à Segurança — 17 capítulos | ~48.500 linhas | 100+ CVEs | 200+ exemplos*
 
 **Conteúdo:**
 - **Fundamentos**: SDD, Secure SDLC, Threat Modeling (STRIDE/PASTA/DREAD), OWASP Top 10 + CWE Top 25 mapeados para C++
@@ -32,17 +32,58 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 ---
 
-## 🚀 Próximas Publicações (Em Escrita)
+### 2. **DevSecOps na Prática**
+> *Pipeline CI/CD Seguro, Ferramentas, Containers, Cloud, Kubernetes e Compliance — 18 capítulos | ~52.300 linhas | 60+ CVEs | Bash, Python, YAML, Docker, HCL, Go*
 
-| Livro | Foco | Previsão |
-|-------|------|----------|
-| **Secure C++ Concurrency & Parallelism** | Data races, lock-free, actor model, TSan, false sharing, side-channels | 2025 |
-| **Cryptography Engineering in C++** | Constant-time, side-channels, HSM, TLS 1.3 internals, PQC migration, key management | 2025 |
-| **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration, CI/CD | 2025 |
-| **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | 2025 |
-| **Security Code Review Handbook** | Checklists práticos, anti-patterns, como revisar PRs de segurança, automação | 2026 |
-| **LGPD/GDPR para Engenheiros** | Privacy by Design em código, consentimento, criptografia, DPIA, breach notification | 2026 |
-| **Secure Architecture Patterns** | Zero Trust, threat modeling at scale, capability-based security, language-agnostic | 2026 |
+**Conteúdo:**
+- **Pipeline Seguro**: GitHub Actions, GitLab CI, Jenkins hardening, OIDC, secret management, artifact signing
+- **Shift-Left**: IDE integration, pre-commit hooks, CodeQL, Semgrep, SAST/DAST/SCA integrados
+- **Container & Cloud**: Docker hardening, Kubernetes (Pod Security, RBAC, Network Policies, OPA/Gatekeeper, Falco), AWS/Azure/GCP security
+- **Supply Chain**: GitOps (ArgoCD/Flux), SLSA, Sigstore/Cosign, SBOM (SPDX/CycloneDX), xz-utils post-mortem
+- **Observabilidade**: ELK/Wazuh, Prometheus/Grafana, Falco, threat hunting, MTTD/MTTR
+- **Operação**: Incident response runbooks, rollback, chaos engineering, compliance as code (SOC 2, PCI DSS, LGPD/GDPR, CIS Benchmarks)
+
+**Casos reais**: SolarWinds, Codecov, 3CX, xz-utils, Travis CI, Log4Shell, Capital One, Equifax, Target, Colonial Pipeline, Uber, Tesla K8s, Docker Hub crypto-miners.
+
+📖 **Leia online**: [`devsecops/INDICE.md`](devsecops/INDICE.md) — índice completo com links para todos os capítulos.
+
+---
+
+### 3. **Engenharia e Análise de Malware em C++**
+> *Reverse Engineering, Análise Estática/Dinâmica, Debugging, Ransomware, Rootkits, Exploits — 18 capítulos | ~55.600 linhas | 100+ malwares documentados | C++17 + Assembly*
+
+**Conteúdo:**
+- **Fundamentos**: PE/ELF/Mach-O parsing, x86/x64 assembly, calling conventions, syscalls, compiler artifacts
+- **Ferramentas**: IDA Pro (IDAPython), Ghidra (scripts), Radare2/Cutter, GDB/GEF/PEDA, x64dbg, WinDbg
+- **Análise Estática**: Strings (XOR/RC4), imports/exports, packer detection (UPX/Themida/VMProtect), entropy, YARA rules, IOC extraction
+- **Análise Dinâmica**: API monitoring, C2 traffic analysis, sandbox automation (Cuckoo/CAPE), anti-sandbox evasion
+- **Debugging**: Breakpoints, memory dumping, anti-debug bypass, scripting (GDB Python, x64dbg)
+- **Malware por Categoria**:
+  - **Ransomware**: WannaCry, NotPetya, Conti, LockBit 3.0, BlackCat/ALPHV, key extraction
+  - **Rootkits/Bootkits**: User/kernel mode, DKOM, SSDT, UEFI (MoonBounce, BlackLotus)
+  - **Exploits/Shellcode**: EternalBlue, ROP chains, heap spraying, format strings, browser exploits
+  - **Network**: HTTP/DNS C2, DGA analysis (Emotet, TrickBot, Conficker), crypto analysis
+- **Automação**: Custom sandbox framework, batch analysis, MISP/STIX integration
+- **Detecção**: YARA rules (Emotet, TrickBot, Cobalt Strike, ransomware families), libyara C++ integration
+- **Ferramentas C++**: LIEF, entropy, compiler/packer detection, CFG, signature matching, complete analysis tool
+
+**Casos documentados**: Stuxnet, WannaCry, NotPetya, Emotet, TrickBot, Cobalt Strike, Mirai, SolarWinds SUNBURST, BlackCat/ALPHV, LockBit, Conti, REvil, Ryuk, Cl0p, Necurs, ZeroAccess, TDL4, MoonBounce, BlackLotus, EternalBlue, Log4Shell, ProxyLogon, PrintNightmare, BlueKeep, Conficker, GameOver Zeus.
+
+📖 **Leia online**: [`malware/INDICE.md`](malware/INDICE.md) — índice completo com links para todos os capítulos.
+
+---
+
+## 🚀 Próximas Publicações (Em Planejamento)
+
+| Livro | Foco | Status |
+|-------|------|--------|
+| **Secure C++ Concurrency & Parallelism** | Data races, lock-free, actor model, TSan, false sharing, side-channels | Planejado |
+| **Cryptography Engineering in C++** | Constant-time, side-channels, HSM, TLS 1.3 internals, PQC migration, key management | Planejado |
+| **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration, CI/CD | Planejado |
+| **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | Planejado |
+| **Security Code Review Handbook** | Checklists práticos, anti-patterns, como revisar PRs de segurança, automação | Planejado |
+| **LGPD/GDPR para Engenheiros** | Privacy by Design em código, consentimento, criptografia, DPIA, breach notification | Planejado |
+| **Secure Architecture Patterns** | Zero Trust, threat modeling at scale, capability-based security, language-agnostic | Planejado |
 
 ---
 
@@ -51,6 +92,8 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 - **Desenvolvedores C++** (intermediário a avançado) que querem código seguro por design
 - **Engenheiros de Segurança** que auditam/revisam código nativo
 - **Arquitetos & Tech Leads** que definem padrões e processos de segurança
+- **Analistas de Malware / Threat Researchers** que fazem engenharia reversa
+- **DevOps / Platform Engineers** que constroem pipelines seguros
 - **Estudantes avançados** de ciência da computação / engenharia de software
 
 **Pré-requisitos**: C++17 (templates, RAII, smart pointers, atomics), Linux/WSL2, CMake, compilador moderno (GCC 12+, Clang 16+, MSVC 2022+).
@@ -59,15 +102,16 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 ## 📖 Como Usar os Livros
 
-Cada livro é **autocontido**, mas a sequência recomendada:
+Cada livro é **autocontido**, mas a sequência recomendada por perfil:
 
 ```
-Iniciante:     Cap 1-5 → Cap 6-8 → Cap 9-12 → Cap 13-16
-Experiente:    Cap 1-2 → Capítulos por necessidade → Cap 17 (referências)
-Arquiteto:     Cap 1-3 → Cap 13-16 → Cap 17
+Desenvolvedor:  SDD (1-5) → SDD (6-12) → DevSecOps (1-4) → DevSecOps (5-9)
+Eng. Segurança: Malware (1-4) → Malware (5-10) → SDD (13-17) → DevSecOps (10-17)
+DevOps/Platform: DevSecOps (1-9) → DevSecOps (10-17) → Malware (14-15)
+Arquiteto:      SDD (1-3) → DevSecOps (1-3) → Malware (17) → Todos os Cap 17
 ```
 
-Todos os exemplos compilam. Use o `CMakeLists.txt` do [Prefácio](book/00-prefacio.md#45-cmakeliststxt-completo-com-flags-de-seguran%C3%A7a) como base para seus projetos.
+Todos os exemplos compilam. Use o `CMakeLists.txt` do [Prefácio SDD](book/00-prefacio.md#45-cmakeliststxt-completo-com-flags-de-seguran%C3%A7a) como base para seus projetos.
 
 ---
 
@@ -89,10 +133,21 @@ Este é um projeto de autoria individual, mas **feedback é bem-vindo**:
 
 ## 🔗 Links Úteis
 
+### Security-Driven Development
 - **Índice completo**: [`book/INDICE.md`](book/INDICE.md)
 - **Prefácio (comece aqui)**: [`book/00-prefacio.md`](book/00-prefacio.md)
 - **CMake Hardening Reference**: [`book/00-prefacio.md#45-cmakeliststxt-completo-com-flags-de-seguran%C3%A7a`](book/00-prefacio.md#45-cmakeliststxt-completo-com-flags-de-seguran%C3%A7a)
 - **CVEs por capítulo**: [`book/INDICE.md#casos-p%C3%BAblicos-documentados-cves-por-cap%C3%ADtulo`](book/INDICE.md#casos-p%C3%BAblicos-documentados-cves-por-cap%C3%ADtulo)
+
+### DevSecOps na Prática
+- **Índice completo**: [`devsecops/INDICE.md`](devsecops/INDICE.md)
+- **Prefácio**: [`devsecops/00-prefacio.md`](devsecops/00-prefacio.md)
+- **Lab setup**: [`devsecops/00-prefacio.md#4-ambiente-de-desenvolvimento`](devsecops/00-prefacio.md#4-ambiente-de-desenvolvimento)
+
+### Engenharia e Análise de Malware
+- **Índice completo**: [`malware/INDICE.md`](malware/INDICE.md)
+- **Prefácio**: [`malware/00-prefacio.md`](malware/00-prefacio.md)
+- **VM Setup**: [`malware/00-prefacio.md#4-ambiente-de-análise`](malware/00-prefacio.md#4-ambiente-de-análise)
 
 ---
 
