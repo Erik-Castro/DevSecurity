@@ -400,3 +400,496 @@ app.use((req, res, next) => {
 
 *[Capítulo anterior: 12 — JavaScript Seguro](12-javascript-seguro.md)*
 *[Próximo capítulo: 14 — Containers e Deployment](14-seguranca-container.md)*
+
+---
+
+## 13.10 Secure Session Configuration
+
+### 13.10.1 Express.js Session Security
+
+```javascript
+const session = require('express-session');
+const RedisStore = require('connect-redis').default;
+const { createClient } = require('redis');
+
+const redisClient = createClient({ url: 'redis://localhost:6379' });
+redisClient.connect();
+
+app.use(session({
+    store: new RedisStore({ client: redisClient }),
+    name: '__Host-sessionId', // Cookie prefix para indicar Secure + HostOnly
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: true,        // Apenas HTTPS
+        httpOnly: true,      // Sem acesso via JavaScript
+        sameSite: 'lax',     // CSRF protection
+        domain: '.exemplo.com',
+        path: '/',
+        maxAge: 3600000      // 1 hora
+    }
+}));
+
+// Regenerar ID de sessão após login
+app.post('/auth/login', async (req, res) => {
+    const user = await authenticate(req.body.email, req.body.password);
+    if (user) {
+        req.session.regenerate((err) => {
+            req.session.userId = user.id;
+            req.session.role = user.role;
+            res.json({ success: true });
+        });
+    }
+});
+
+// Destruir sessão no logout
+app.post('/auth/logout', (req, res) => {
+    req.session.destroy((err) => {
+        res.clearCookie('__Host-sessionId');
+        res.json({ success: true });
+    });
+});
+```
+
+### 13.10.2 Django Session Security
+
+```python
+# settings.py
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_AGE = 3600  # 1 hora
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_NAME = '__Host-sessionid'
+
+# CSRF
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+```
+
+### 13.10.3 Flask Session Security
+
+```python
+from flask import session
+from datetime import timedelta
+
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
+app.config['SESSION_KEY_PREFIX'] = 'session:'
+```
+
+---
+
+## 13.11 Security Headers Completo
+
+```javascript
+// Middleware de headers de segurança completo
+function securityHeaders(req, res, next) {
+    // HSTS — Force HTTPS
+    res.setHeader('Strict-Transport-Security', 
+        'max-age=31536000; includeSubDomains; preload');
+    
+    // CSP — Content Security Policy
+    res.setHeader('Content-Security-Policy',
+        "default-src 'self'; " +
+        "script-src 'self' 'nonce-{random}'; " +
+        "style-src 'self' 'unsafe-inline'; " +
+        "img-src 'self' data: https:; " +
+        "font-src 'self'; " +
+        "connect-src 'self'; " +
+        "frame-ancestors 'none'; " +
+        "base-uri 'self'; " +
+        "form-action 'self'; " +
+        "object-src 'none'"
+    );
+    
+    // Previne MIME sniffing
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    
+    // Previne clickjacking
+    res.setHeader('X-Frame-Options', 'DENY');
+    
+    // XSS Protection (deprecated, mas browsers antigos)
+    res.setHeader('X-XSS-Protection', '0');
+    
+    // Referrer Policy
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    // Permissions Policy
+    res.setHeader('Permissions-Policy',
+        'camera=(), microphone=(), geolocation=(), payment=()');
+    
+    // Cache control para páginas sensíveis
+    if (req.path.startsWith('/api/') || req.path.includes('dashboard')) {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+        res.setHeader('Surrogate-Control', 'no-store');
+    }
+    
+    next();
+}
+```
+
+---
+
+## 13.12 Path Traversal Prevention
+
+```javascript
+const path = require('path');
+
+// VULNERÁVEL — path traversal
+app.get('/files/:filename', (req, res) => {
+    const filePath = path.join('/uploads', req.params.filename);
+    // Atacante: GET /files/../../../etc/passwd
+    res.sendFile(filePath);
+});
+
+// SEGURO — validação de path
+app.get('/files/:filename', (req, res) => {
+    const filename = path.basename(req.params.filename); // Remove path components
+    const filePath = path.join('/uploads', filename);
+    
+    // Verificar que o resolved path está dentro do diretório permitido
+    const resolved = path.resolve(filePath);
+    const uploadsDir = path.resolve('/uploads');
+    
+    if (!resolved.startsWith(uploadsDir + path.sep) && resolved !== uploadsDir) {
+        return res.status(403).json({ error: 'Acesso negado' });
+    }
+    
+    res.sendFile(resolved);
+});
+
+// Middleware reutilizável
+function securePath(baseDir) {
+    return (req, res, next) => {
+        const userPath = req.params.path || req.query.file;
+        if (!userPath) return next();
+        
+        const resolved = path.resolve(path.join(baseDir, userPath));
+        const base = path.resolve(baseDir);
+        
+        if (!resolved.startsWith(base + path.sep) && resolved !== base) {
+            return res.status(403).json({ error: 'Path traversal detected' });
+        }
+        
+        req.securePath = resolved;
+        next();
+    };
+}
+```
+
+---
+
+## 13.13 Rate Limiting Avançado
+
+```javascript
+const rateLimit = require('express-rate-limit');
+const RedisStore = require('rate-limit-redis');
+const { createClient } = require('redis');
+
+const redisClient = createClient({ url: 'redis://localhost:6379' });
+
+// Rate limiter distribuído
+const apiLimiter = rateLimit({
+    store: new RedisStore({ sendCommand: (...args) => redisClient.sendCommand(args) }),
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 100, // máximo 100 requests por IP
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Muitas requisições. Tente novamente mais tarde.' },
+    keyGenerator: (req) => {
+        return req.headers['x-forwarded-for'] || req.ip;
+    }
+});
+
+// Login — mais restritivo
+const loginLimiter = rateLimit({
+    store: new RedisStore({ sendCommand: (...args) => redisClient.sendCommand(args) }),
+    windowMs: 15 * 60 * 1000,
+    max: 5, // máximo 5 tentativas de login
+    skipSuccessfulRequests: true,
+    message: { error: 'Muitas tentativas de login. Conta bloqueada temporariamente.' }
+});
+
+// API pública — mais permissivo
+const publicApiLimiter = rateLimit({
+    store: new RedisStore({ sendCommand: (...args) => redisClient.sendCommand(args) }),
+    windowMs: 60 * 1000, // 1 minuto
+    max: 60, // 60 requests por minuto
+    standardHeaders: true
+});
+
+app.use('/api/', apiLimiter);
+app.use('/auth/login', loginLimiter);
+app.use('/api/public/', publicApiLimiter);
+```
+
+---
+
+## 13.14 Secret Management em Server-Side
+
+```javascript
+// NUNCA use variáveis de ambiente hardcoded no código
+// NUNCA commite .env no git
+
+// .gitignore
+// .env
+// .env.local
+// .env.production
+
+// Carregar variáveis de ambiente de forma segura
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Validar que todas as variáveis necessárias existem
+const requiredEnvVars = [
+    'DATABASE_URL',
+    'SESSION_SECRET',
+    'JWT_SECRET',
+    'SMTP_PASSWORD'
+];
+
+for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar]) {
+        console.error(`Missing required environment variable: ${envVar}`);
+        process.exit(1);
+    }
+}
+
+// Em produção, usar secret management (Vault, AWS Secrets Manager, etc.)
+const vault = require('node-vault')({
+    apiVersion: 'v1',
+    endpoint: process.env.VAULT_ADDR,
+    token: process.env.VAULT_TOKEN
+});
+
+async function getSecret(path) {
+    const { data } = await vault.read(path);
+    return data.data;
+}
+
+// Uso
+const dbPassword = await getSecret('secret/data/database');
+```
+
+---
+
+## 13.15 Referências Adicionais
+
+10. Express Security Best Practices: https://expressjs.com/en/advanced/best-practice-security.html
+11. Django Security Checklist: https://docs.djangoproject.com/en/stable/howto/deployment/checklist/
+12. Flask Security: https://flask.palletsprojects.com/en/3.0.x/security/
+13. OWASP Session Management: https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
+14. OWASP HTTP Headers: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html
+15. Mozilla Observatory: https://observatory.mozilla.org/
+16. SecurityHeaders.com: https://securityheaders.com/
+17. OWASP Path Traversal: https://cheatsheetseries.owasp.org/cheatsheets/Path_Traversal_Cheat_Sheet.html
+18. Rate Limiting Best Practices: https://www.cloudflare.com/learning/bots/what-is-rate-limiting/
+19. HashiCorp Vault: https://www.vaultproject.io/
+20. OWASP Secret Management: https://cheatsheetseries.owasp.org/cheatsheets/Vault_Cheat_Sheet.html
+
+---
+
+## 13.16 Secure Cookie Configuration
+
+### 13.16.1 Comparação de Configurações
+
+| Attribute | Valor Recomendado | Propósito |
+|-----------|-------------------|-----------|
+| `Secure` | `true` | Apenas via HTTPS |
+| `HttpOnly` | `true` | Sem acesso via JavaScript |
+| `SameSite` | `Lax` ou `Strict` | Proteção contra CSRF |
+| `Path` | `/` ou rota específica | Escopo do cookie |
+| `Domain` | `.exemplo.com` | Domínio do cookie |
+| `Max-Age` | `3600` (1h) | Tempo de vida |
+| `Partitioned` | `true` (Chrome) | Particionamento de cookies |
+
+### 13.16.2 Cookie Prefixes
+
+```javascript
+// __Host- prefix força: Secure + Path=/ + SameSite=Lax
+// __Secure- prefix força: Secure
+
+// Configuração segura de cookie
+res.cookie('sessionId', value, {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 3600000,
+    // Chrome 117+: Cookie partitioning para third-party
+    // partitioned: true  // Para cookies de terceiros (CROSS-SITE)
+});
+
+// Cookie para CSRF token
+res.cookie('csrf-token', token, {
+    httpOnly: false, // Precisa ser acessível via JS (para header)
+    secure: true,
+    sameSite: 'strict',
+    path: '/',
+    maxAge: 3600000
+});
+```
+
+---
+
+## 13.17 Command Injection Prevention
+
+```javascript
+const { execFile } = require('child_process');
+
+// VULNERÁVEL — command injection
+app.get('/ping', (req, res) => {
+    const host = req.query.host;
+    // Atacante: /ping?host=127.0.0.1;cat /etc/passwd
+    exec(`ping -c 4 ${host}`, (err, stdout) => {
+        res.send(stdout);
+    });
+});
+
+// SEGURO — usar argumentos separados
+app.get('/ping', (req, res) => {
+    const host = req.query.host;
+    
+    // Validar input
+    if (!/^[\w\.\-]+$/.test(host)) {
+        return res.status(400).json({ error: 'Host inválido' });
+    }
+    
+    execFile('ping', ['-c', '4', host], (err, stdout) => {
+        if (err) return res.status(500).json({ error: 'Erro ao executar ping' });
+        res.send(stdout);
+    });
+});
+
+// Python equivalente
+// PERIGOSO:
+// os.system(f"ping -c 4 {host}")
+// SEGURO:
+// subprocess.run(["ping", "-c", "4", host], capture_output=True)
+```
+
+---
+
+## 13.18 LDAP Injection Prevention
+
+```javascript
+// VULNERÁVEL — LDAP injection
+const ldap = require('ldapjs');
+
+app.post('/auth/ldap', (req, res) => {
+    const { username, password } = req.body;
+    // Atacante: username = "*)(&(objectClass=*)"
+    const filter = `(uid=${username})`;
+    // O filtro se torna: (uid=*)(&(objectClass=*))
+    
+    client.search('dc=exemplo,dc=com', { filter }, (err, result) => {
+        // ...
+    });
+});
+
+// SEGURO — escape de caracteres LDAP
+function escapeLDAP(str) {
+    return str
+        .replace(/\\/g, '\\5c')
+        .replace(/\*/g, '\\2a')
+        .replace(/\(/g, '\\28')
+        .replace(/\)/g, '\\29')
+        .replace(/\0/g, '\\00');
+}
+
+app.post('/auth/ldap', (req, res) => {
+    const username = escapeLDAP(req.body.username);
+    const filter = `(uid=${username})`;
+    // ...
+});
+```
+
+---
+
+## 13.19 Information Disclosure Prevention
+
+```javascript
+// VULNERÁVEL — expõe versão do framework
+app.use((req, res, next) => {
+    res.setHeader('X-Powered-By', 'Express 4.18.2'); // NUNCA!
+    next();
+});
+
+// SEGURO — remover headers de identificação
+app.disable('x-powered-by');
+
+// VULNERÁVEL — error pages com detalhes
+app.use((err, req, res, next) => {
+    res.status(500).send(`
+        <h1>Erro 500</h1>
+        <pre>${err.stack}</pre>
+        <p>Node.js ${process.version}</p>
+        <p>Express ${require('express/package.json').version}</p>
+    `);
+});
+
+// SEGURO — página de erro genérica
+app.use((err, req, res, next) => {
+    logger.error({ error: err.message, stack: err.stack, url: req.url });
+    
+    if (process.env.NODE_ENV === 'production') {
+        res.status(500).send('Erro interno do servidor');
+    } else {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Custom error pages
+app.use((req, res) => {
+    res.status(404).send('Página não encontrada');
+});
+```
+
+---
+
+## 13.20 Server Hardening Checklist
+
+| Item | Check | Prioridade |
+|------|-------|-----------|
+| TLS 1.3 configurado | cipher suites seguros | Crítico |
+| HSTS habilitado | max-age >= 1 ano | Crítico |
+| CSP configurado | default-src 'self' | Crítico |
+| X-Content-Type-Options | nosniff | Alto |
+| X-Frame-Options | DENY | Alto |
+| Server tokens removidos | X-Powered-By removido | Alto |
+| CORS configurado | origin allowlist | Alto |
+| Rate limiting habilitado | por IP e endpoint | Alto |
+| Error pages genéricas | sem stack traces | Alto |
+| Logging sanitizado | sem PII/sensitive data | Alto |
+| Session cookies seguros | Secure+HttpOnly+SameSite | Crítico |
+| File upload validado | magic bytes + size limit | Alto |
+| SQL queries parameterized | sem string concatenation | Crítico |
+| Template injection prevenido | sem eval/render string | Crítico |
+| SSRF prevenido | IP validation | Alto |
+
+---
+
+## 13.21 Referências Finais
+
+21. OWASP Node.js Security: https://cheatsheetseries.owasp.org/cheatsheets/Node_js_Security_Cheat_Sheet.html
+22. Express.js Security: https://expressjs.com/en/advanced/best-practice-security.html
+23. Django Security: https://docs.djangoproject.com/en/stable/topics/security/
+24. Flask Security: https://flask.palletsprojects.com/en/3.0.x/security/
+25. OWASP Cheat Sheet Series: https://cheatsheetseries.owasp.org/
+26. Mozilla Web Security Guidelines: https://infosec.mozilla.org/guidelines/web_security
+27. Node.js Security Best Practices: https://nodejs.org/en/docs/guides/security/
+28. OWASP Command Injection: https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html
+29. OWASP LDAP Injection: https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html
+30. OWASP Server Side Request Forgery: https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html

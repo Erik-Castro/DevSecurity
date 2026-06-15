@@ -443,3 +443,382 @@ Use Burp Suite ou OWASP ZAP para testar XSS em uma aplicação de exemplo (DVWA 
 
 *[Capítulo anterior: 04 — SQL Injection](04-sql-injection.md)*
 *[Próximo capítulo: 06 — CSRF e Clickjacking](06-csrf-clickjacking.md)*
+
+---
+
+## 5.10 XSS em Single Page Applications (SPAs)
+
+### 5.10.1 React — Padrões Avançados de Segurança
+
+```jsx
+// Componente seguro para renderizar HTML do usuário
+import DOMPurify from 'dompurify';
+import { useMemo } from 'react';
+
+function SafeHTML({ html, allowedTags }) {
+    const cleanHTML = useMemo(() => {
+        return DOMPurify.sanitize(html, {
+            ALLOWED_TAGS: allowedTags || ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
+            ALLOWED_ATTR: ['href', 'title', 'target', 'rel'],
+            ALLOW_DATA_ATTR: false
+        });
+    }, [html, allowedTags]);
+    
+    return <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />;
+}
+
+// Hook para sanitização
+function useSanitizedHTML(dirtyHTML, config = {}) {
+    return useMemo(() => {
+        if (!dirtyHTML) return '';
+        return DOMPurify.sanitize(dirtyHTML, {
+            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li'],
+            ALLOW_DATA_ATTR: false,
+            ...config
+        });
+    }, [dirtyHTML]);
+}
+```
+
+### 5.10.2 Vue.js — Directive Customizada
+
+```vue
+<!-- v-safe-html.js — Diretiva customizada segura -->
+import DOMPurify from 'dompurify';
+
+export const safeHtml = {
+    mounted(el, binding) {
+        el.innerHTML = DOMPurify.sanitize(binding.value, {
+            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li'],
+            ALLOW_DATA_ATTR: false
+        });
+    },
+    updated(el, binding) {
+        el.innerHTML = DOMPurify.sanitize(binding.value, {
+            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li'],
+            ALLOW_DATA_ATTR: false
+        });
+    }
+};
+
+// Uso:
+// <div v-safe-html="userContent"></div>
+```
+
+### 5.10.3 Angular — Safe Pipe
+
+```typescript
+// safe.pipe.ts
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import DOMPurify from 'dompurify';
+
+@Pipe({ name: 'safeHtml' })
+export class SafeHtmlPipe implements PipeTransform {
+    constructor(private sanitizer: DomSanitizer) {}
+    
+    transform(value: string): SafeHtml {
+        const clean = DOMPurify.sanitize(value, {
+            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
+            ALLOW_DATA_ATTR: false
+        });
+        return this.sanitizer.bypassSecurityTrustHtml(clean);
+    }
+}
+
+// Uso no template:
+// <div [innerHTML]="userContent | safeHtml"></div>
+```
+
+---
+
+## 5.11 XSS em Markdown Rendering
+
+### 5.11.1 Ataques Via Markdown
+
+```markdown
+# Markdown com XSS embutido
+
+[Click aqui](javascript:alert(document.cookie))
+
+![Imagem](x onerror=alert(1))
+
+<script>alert('XSS via markdown')</script>
+
+[Link normal](data:text/html,<script>alert(1)</script>)
+```
+
+### 5.11.2 Renderizadores Seguros
+
+```javascript
+// marked.js com sanitização
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+
+// Configurar marked para nao aceitar HTML
+marked.setOptions({
+    sanitize: true,
+    headerIds: false,
+    mangle: false
+});
+
+function renderMarkdownSafe(markdown) {
+    const rawHTML = marked.parse(markdown);
+    return DOMPurify.sanitize(rawHTML, {
+        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'hr',
+                       'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'em', 'strong',
+                       'a', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td'],
+        ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'id', 'start', 'align', 'valign', 'colspan', 'rowspan', 'width', 'height'],
+        ALLOW_DATA_ATTR: false
+    });
+}
+```
+
+---
+
+## 5.12 XSS em Rich Text Editors
+
+### 5.12.1 TipTap / ProseMirror (Projetos 2024+)
+
+```javascript
+import { Editor } from '@tiptap/core';
+import StarterKit from '@tiptap/starter-kit';
+import DOMPurify from 'dompurify';
+
+const editor = new Editor({
+    element: document.getElementById('editor'),
+    extensions: [StarterKit],
+    content: '',
+    onUpdate: ({ editor }) => {
+        const html = editor.getHTML();
+        const clean = DOMPurify.sanitize(html, {
+            ALLOWED_TAGS: ['p', 'br', 'b', 'i', 'u', 'em', 'strong', 'a', 'ul', 'ol', 'li',
+                          'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre',
+                          'hr', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'img'],
+            ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'rel', 'width', 'height',
+                          'class', 'id', 'colspan', 'rowspan', 'align', 'valign', 'start', 'open'],
+            ALLOW_DATA_ATTR: false,
+            ALLOW_UNKNOWN_PROTOCOLS: false
+        });
+        
+        // Enviar clean para o servidor
+        fetch('/api/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: clean })
+        });
+    }
+});
+```
+
+### 5.12.2 CKEditor — Configuração Segura
+
+```javascript
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+ClassicEditor
+    .create(document.querySelector('#editor'), {
+        toolbar: {
+            items: [
+                'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+                '|', 'outdent', 'indent', '|', 'blockQuote', 'insertTable',
+                '|', 'undo', 'redo'
+            ]
+        },
+        // Restringir plugins perigosos
+        removePlugins: ['MediaEmbed', 'HtmlEmbed', 'Iframe'],
+        // Configurar allowedContent
+        allowedContent: 'p b i u em strong a[href|target|rel] ul ol li h1 h2 h3 h4 h5 h6 blockquote pre code table thead tbody tr th td img[src|alt|title|width|height] br hr',
+        // Configurar link para abrir em nova aba com rel=noopener
+        link: {
+            addTargetToExternalLinks: true,
+            defaultProtocol: 'https://'
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao inicializar editor:', error);
+    });
+```
+
+---
+
+## 5.13 XSS em Email Templates
+
+### 5.13.1 Template Injection em Email
+
+```javascript
+// VULNERÁVEL — email com template injection
+const sendWelcomeEmail = (user) => {
+    const template = `
+        <h1>Bem-vindo, ${user.name}!</h1>
+        <p>Sua conta foi criada com sucesso.</p>
+        <p>Para confirmar, clique em: <a href="${user.confirmationUrl}">Confirmar</a></p>
+    `;
+    // Se user.name contiver <script> ou <img onerror>, XSS no email
+    mailer.send({ to: user.email, html: template });
+};
+
+// SEGURO — sanitização e encoding
+const sanitizeEmailHTML = (dirty) => {
+    return DOMPurify.sanitize(dirty, {
+        ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'h1', 'h2', 'h3'],
+        ALLOWED_ATTR: ['href', 'title', 'target', 'rel']
+    });
+};
+
+const sendWelcomeEmail = (user) => {
+    const template = `
+        <h1>Bem-vindo, ${sanitizeEmailHTML(user.name)}!</h1>
+        <p>Sua conta foi criada com sucesso.</p>
+        <p>Para confirmar, clique em: <a href="${encodeURIComponent(user.confirmationUrl)}">Confirmar</a></p>
+    `;
+    mailer.send({ to: user.email, html: template });
+};
+```
+
+---
+
+## 5.14 Testes Automatizados de XSS
+
+### 5.14.1 Puppeteer — Teste Automatizado
+
+```javascript
+const puppeteer = require('puppeteer');
+
+async function testXSS(url, payload) {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    
+    // Intercept alert dialogs
+    let alertTriggered = false;
+    page.on('dialog', async dialog => {
+        alertTriggered = true;
+        await dialog.dismiss();
+    });
+    
+    // Navigate to URL with payload
+    await page.goto(`${url}?q=${encodeURIComponent(payload)}`, {
+        waitUntil: 'networkidle0'
+    });
+    
+    // Check if XSS was triggered
+    const result = {
+        payload,
+        triggered: alertTriggered,
+        url: page.url(),
+        html: await page.content()
+    };
+    
+    await browser.close();
+    return result;
+}
+
+// Testes de XSS
+const payloads = [
+    '<script>alert(1)</script>',
+    '<img src=x onerror=alert(1)>',
+    '<svg onload=alert(1)>',
+    '<body onload=alert(1)>',
+    '<iframe src="javascript:alert(1)">',
+    '"><script>alert(1)</script>',
+    "';alert(1)//",
+    '<math><mtext><table><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(1) src=1>">'
+];
+
+(async () => {
+    for (const payload of payloads) {
+        const result = await testXSS('http://localhost:3000/search', payload);
+        console.log(`${result.triggered ? 'VULNERÁVEL' : 'SEGURO'}: ${payload.substring(0, 50)}`);
+    }
+})();
+```
+
+### 5.14.2 Jest — Testes Unitários
+
+```javascript
+describe('XSS Prevention', () => {
+    test('escapeHtml prevents script injection', () => {
+        const input = '<script>alert("XSS")</script>';
+        const output = escapeHtml(input);
+        expect(output).not.toContain('<script>');
+        expect(output).toContain('&lt;script&gt;');
+    });
+    
+    test('escapeHtml prevents img onerror', () => {
+        const input = '<img src=x onerror=alert(1)>';
+        const output = escapeHtml(input);
+        expect(output).not.toContain('onerror');
+    });
+    
+    test('DOMPurify removes script tags', () => {
+        const input = '<b>safe</b><script>alert(1)</script>';
+        const output = DOMPurify.sanitize(input);
+        expect(output).toBe('<b>safe</b>');
+        expect(output).not.toContain('script');
+    });
+    
+    test('DOMPurify preserves allowed tags', () => {
+        const input = '<b>bold</b> and <i>italic</i>';
+        const output = DOMPurify.sanitize(input);
+        expect(output).toContain('<b>bold</b>');
+        expect(output).toContain('<i>italic</i>');
+    });
+    
+    test('DOMPurify removes event handlers', () => {
+        const input = '<div onmouseover="alert(1)">hover me</div>';
+        const output = DOMPurify.sanitize(input);
+        expect(output).not.toContain('onmouseover');
+    });
+    
+    test('XSS via URL fragment is blocked', () => {
+        const fragment = '#<script>alert(1)</script>';
+        const sanitized = escapeHtml(decodeURIComponent(fragment));
+        expect(sanitized).not.toContain('<script>');
+    });
+});
+```
+
+---
+
+## 5.15 Defesa em Profundidade
+
+### 5.15.1 Checklist de Prevenção XSS
+
+| Camada | Medida | Prioridade |
+|--------|--------|-----------|
+| Output encoding | HTML entity encoding | Crítico |
+| CSP | Content-Security-Policy header | Crítico |
+| Sanitization | DOMPurify / sanitize-html | Alto |
+| Framework | Auto-escaping habilitado | Alto |
+| Input validation | Allowlist de caracteres | Médio |
+| Trusted Types | Browser API para DOM security | Médio |
+| SRI | Subresource Integrity para CDN | Médio |
+| HTTPOnly cookies | Previne roubo via XSS | Alto |
+| SameSite cookies | Previne CSRF via XSS | Alto |
+| Security headers | X-Content-Type-Options, etc. | Médio |
+
+### 5.15.2 Arquitetura de Segurança Contra XSS
+
+```
+Input → Validation (allowlist) → Sanitization (DOMPurify) → 
+Encoding (context-specific) → CSP (browser enforcement) → 
+Trusted Types (DOM sink protection) → Output to user
+```
+
+Cada camada é uma defesa independente. Se uma falha, a próxima protege.
+
+---
+
+## 5.16 Referências Adicionais
+
+11. OWASP XSS Filter Evasion Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html
+12. PortSwigger XSS Labs: https://portswigger.net/web-security/cross-site-scripting/working-with-contexts
+13. MDN Web Security — XSS: https://developer.mozilla.org/en-US/docs/Web/Security
+14. CSP Level 3 Specification: https://www.w3.org/TR/CSP3/
+15. Trusted Types Spec: https://w3c.github.io/trusted-types/dist/spec/
+16. DOMPurify Source: https://github.com/cure53/DOMPurify
+17. sanitize-html: https://github.com/apostrophecms/sanitize-html
+18. Google XSS Game Solutions: https://github.com/nicjansma/xss-game-solutions
+19. OWASP ASVS v4.0 — Verification Requirements for XSS: https://asvs.owasp.org/
+20. CWE-79: Improper Neutralization of Input During Web Page Generation: https://cwe.mitre.org/data/definitions/79.html
+21. CWE-116: Improper Encoding or Escaping of Output: https://cwe.mitre.org/data/definitions/116.html
