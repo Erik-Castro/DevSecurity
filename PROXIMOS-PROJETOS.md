@@ -24,6 +24,12 @@
 - Foco: Reverse Engineering, Static/Dynamic Analysis, Debugging, Ransomware, Rootkits, Exploits, YARA, Automation
 - 100+ malwares documentados
 
+### Livro 4: Concorrência e Paralelismo Seguro em C++ (CONCLUÍDO)
+- **18 capítulos** | ~19.700 linhas | **C++17/20**
+- [Índice](concurrency/INDICE.md) | [Diretório](concurrency/)
+- Foco: Modelo de memória, Lock-Free, Deadlocks, Thread Pools, Paralelismo, Cache, Containers concorrentes, Futures/Coroutines, Testes, Debugging, Performance, SIMD/GPU, Boas Práticas
+- CVEs de concorrência documentados (CVE-2016-0728, CVE-2019-11135, CVE-2021-4034, Heartbleed)
+
 ---
 
 ## 📋 Backlog de Livros Planejados
@@ -32,7 +38,6 @@
 
 | # | Título | Foco | Linguagem | Prioridade |
 |---|--------|------|-----------|------------|
-| 4 | **Secure C++ Concurrency & Parallelism** | Data races, lock-free, actor model, TSan, false sharing, side-channels | C++17/20 | Alta |
 | 5 | **Cryptography Engineering in C++** | Constant-time, side-channels, HSM, TLS 1.3 internals, PQC migration, key management | C++17 | Alta |
 | 6 | **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration, CI/CD | C++17 | Alta |
 | 7 | **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | C++17 + Bash/YAML | Alta |
@@ -82,11 +87,11 @@
 
 ```
 Total planejado: 21 livros
-Concluídos: 3 (14%)
+Concluídos: 4 (19%)
 Em andamento: 0
-Planejados: 18
+Planejados: 17
 
-Linhas escritas: ~156.400
+Linhas escritas: ~176.100
 Linhas projetadas: ~1.000.000+
 ```
 
@@ -105,6 +110,9 @@ DevSecurity/
 │   ├── INDICE.md
 │   └── 00-17 chapters
 ├── malware/                     # Engenharia e Análise de Malware (C++17 + asm)
+│   ├── INDICE.md
+│   └── 00-17 chapters
+├── concurrency/                 # Concorrência e Paralelismo Seguro (C++17/20)
 │   ├── INDICE.md
 │   └── 00-17 chapters
 └── (futuros diretórios...)

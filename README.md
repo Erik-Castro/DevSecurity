@@ -73,11 +73,31 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 ---
 
+### 4. **Concorrência e Paralelismo Seguro em C++**
+> *Modelo de Memória, Lock-Free, Padrões, Debugging, Performance, GPU — 18 capítulos | ~19.700 linhas | CVEs de concorrência | C++17/20*
+
+**Conteúdo:**
+- **Fundamentos**: Modelo de memória C++ (memory_order, happens-before, data races), Threads e sincronização (std::thread, mutex, locks, C++20 primitives)
+- **Avançado**: Programação Lock-Free (CAS, ABA, hazard pointers, RCU), Deadlocks/Livelocks/Starvation (Coffman, detecção, prevenção)
+- **Paralelismo**: Thread pools, std::async, executors, std::execution (par_unseq), OpenMP
+- **Otimização**: False sharing, cache coherence (MESI), NUMA, containers concorrentes, lock-free queues/hash maps
+- **Async**: Futures, promises, continuations, when_all, coroutines C++20 (co_await, generators)
+- **Primitivas C++20**: latch, barrier, semaphore, stop_token
+- **Testes e Debugging**: ThreadSanitizer, model checking, stress testing, GDB, core dumps, replay debugging
+- **Performance**: Amdahl's law, profiling, NUMA tuning, scalable patterns (Actor, CSP, pipeline, fork-join)
+- **Heterogêneo**: SIMD (AVX), CUDA, SYCL, OpenCL
+- **Boas Práticas**: Checklist, anti-padrões, referências
+
+**CVEs documentados**: CVE-2016-0728 (keyring refcount), CVE-2017-18344 (timer race), CVE-2019-11135 (TSX Async Abort), CVE-2021-4034 (Polkit pkexec race), CVE-2014-0160 (Heartbleed).
+
+📖 **Leia online**: [`concurrency/INDICE.md`](concurrency/INDICE.md) — índice completo com links para todos os capítulos.
+
+---
+
 ## 🚀 Próximas Publicações (Em Planejamento)
 
 | Livro | Foco | Status |
 |-------|------|--------|
-| **Secure C++ Concurrency & Parallelism** | Data races, lock-free, actor model, TSan, false sharing, side-channels | Planejado |
 | **Cryptography Engineering in C++** | Constant-time, side-channels, HSM, TLS 1.3 internals, PQC migration, key management | Planejado |
 | **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration, CI/CD | Planejado |
 | **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | Planejado |
@@ -109,6 +129,7 @@ Desenvolvedor:  SDD (1-5) → SDD (6-12) → DevSecOps (1-4) → DevSecOps (5-9)
 Eng. Segurança: Malware (1-4) → Malware (5-10) → SDD (13-17) → DevSecOps (10-17)
 DevOps/Platform: DevSecOps (1-9) → DevSecOps (10-17) → Malware (14-15)
 Arquiteto:      SDD (1-3) → DevSecOps (1-3) → Malware (17) → Todos os Cap 17
+Concorrência:   SDD (1-3) → Concorrência (01-03) → Concorrência (04-10) → Concorrência (11-17)
 ```
 
 Todos os exemplos compilam. Use o `CMakeLists.txt` do [Prefácio SDD](book/00-prefacio.md#45-cmakeliststxt-completo-com-flags-de-seguran%C3%A7a) como base para seus projetos.
@@ -148,6 +169,11 @@ Este é um projeto de autoria individual, mas **feedback é bem-vindo**:
 - **Índice completo**: [`malware/INDICE.md`](malware/INDICE.md)
 - **Prefácio**: [`malware/00-prefacio.md`](malware/00-prefacio.md)
 - **VM Setup**: [`malware/00-prefacio.md#4-ambiente-de-análise`](malware/00-prefacio.md#4-ambiente-de-análise)
+
+### Concorrência e Paralelismo Seguro em C++
+- **Índice completo**: [`concurrency/INDICE.md`](concurrency/INDICE.md)
+- **Prefácio**: [`concurrency/00-prefacio.md`](concurrency/00-prefacio.md)
+- **CVEs documentados**: [`concurrency/INDICE.md#cvcs-documentados-no-livro`](concurrency/INDICE.md#cvcs-documentados-no-livro)
 
 ---
 
