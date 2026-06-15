@@ -30,6 +30,12 @@
 - Foco: Modelo de memória, Lock-Free, Deadlocks, Thread Pools, Paralelismo, Cache, Containers concorrentes, Futures/Coroutines, Testes, Debugging, Performance, SIMD/GPU, Boas Práticas
 - CVEs de concorrência documentados (CVE-2016-0728, CVE-2019-11135, CVE-2021-4034, Heartbleed)
 
+### Livro 5: Criptografia Engenheira em C++ (CONCLUÍDO)
+- **18 capítulos** | ~66.400 linhas | **C++17**
+- [Índice](cryptography/INDICE.md) | [Diretório](cryptography/)
+- Foco: Constant-Time, Side-Channels, HSM, TLS 1.3, PQC (ML-KEM/ML-DSA), Key Management, FHE, ZKP, Formal Verification, Testing, Compliance
+- 20+ CVEs documentados (Heartbleed, ROCA, Minerva, Spectre, Lucky13, etc.)
+
 ---
 
 ## 📋 Backlog de Livros Planejados
@@ -38,38 +44,40 @@
 
 | # | Título | Foco | Linguagem | Prioridade |
 |---|--------|------|-----------|------------|
-| 5 | **Cryptography Engineering in C++** | Constant-time, side-channels, HSM, TLS 1.3 internals, PQC migration, key management | C++17 | Alta |
 | 6 | **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration, CI/CD | C++17 | Alta |
 | 7 | **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | C++17 + Bash/YAML | Alta |
-| 8 | **Security Code Review Handbook** | Checklists práticos, anti-patterns, como revisar PRs de segurança, automação | C++17 | Média |
-| 9 | **LGPD/GDPR para Engenheiros** | Privacy by Design em código, consentimento, criptografia, DPIA, breach notification | Conceitual + código | Média |
-| 10 | **Secure Architecture Patterns** | Zero Trust, threat modeling at scale, capability-based security, language-agnostic | Conceitual | Média |
+| 8 | **Desenvolvimento Seguro na Web** | XSS, CSRF, SQL Injection, OWASP Top 10, secure APIs, auth, session management, input validation | JS/TS, Python, Go | Alta |
+| 9 | **CMake Seguro e Build Systems** | CMake hardening, reproducible builds, supply chain para builds, sanitizers, cross-compilation, CI/CD | CMake + C/C++ | Alta |
+| 10 | **WebAssembly Seguro** | Wasm sandboxing, WASI, component model, security model, browser vs server, memory safety | Rust, C++, Wat | Alta |
+| 11 | **Security Code Review Handbook** | Checklists práticos, anti-patterns, como revisar PRs de segurança, automação | C++17 | Média |
+| 12 | **LGPD/GDPR para Engenheiros** | Privacy by Design em código, consentimento, criptografia, DPIA, breach notification | Conceitual + código | Média |
+| 13 | **Secure Architecture Patterns** | Zero Trust, threat modeling at scale, capability-based security, language-agnostic | Conceitual | Média |
 
 ### Tier 2 — Nichos com pouca cobertura em PT-BR
 
 | # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
-| 11 | **Reverse Engineering e Análise de Malware Avançado** | VM-based obfuscation, deobfuscation, VMProtect/Themida analysis, custom VM | C++17 + Assembly |
-| 12 | **Criptografia Pós-Quântica em C++** | ML-KEM, ML-DSA, SLH-DSA, hybrid schemes, migration strategies, liboqs integration | C++17 |
-| 13 | **Firmware & Embedded Security** | Bootloader security, secure boot, TPM, ARM TrustZone, IoT device security | C + C++17 |
-| 14 | **Side-Channel Analysis & Mitigation** | Timing, cache, power, EM attacks, constant-time programming, leakage detection | C++17 + Assembly |
+| 14 | **Reverse Engineering e Análise de Malware Avançado** | VM-based obfuscation, deobfuscation, VMProtect/Themida analysis, custom VM | C++17 + Assembly |
+| 15 | **Criptografia Pós-Quântica em C++** | ML-KEM, ML-DSA, SLH-DSA, hybrid schemes, migration strategies, liboqs integration | C++17 |
+| 16 | **Firmware & Embedded Security** | Bootloader security, secure boot, TPM, ARM TrustZone, IoT device security | C + C++17 |
+| 17 | **Side-Channel Analysis & Mitigation** | Timing, cache, power, EM attacks, constant-time programming, leakage detection | C++17 + Assembly |
 
 ### Tier 3 — Ampliam o alcance do projeto
 
 | # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
-| 15 | **Binary Exploitation & Mitigation Bypass** | Advanced ROP/JOP, heap exploitation, CFG/ACG bypass, kernel exploitation | C++17 + Assembly |
-| 16 | **Threat Hunting & DFIR** | Log analysis, memory forensics (Volatility), network forensics, timeline analysis | Python + C++ |
-| 17 | **Security Testing Automation** | CI/CD security gates, mutation testing, contract testing, chaos engineering | Multi |
-| 18 | **Secure DevOps at Scale** | Monorepo security, multi-team pipelines, policy as code, compliance automation | Bash/YAML/HCL |
+| 18 | **Binary Exploitation & Mitigation Bypass** | Advanced ROP/JOP, heap exploitation, CFG/ACG bypass, kernel exploitation | C++17 + Assembly |
+| 19 | **Threat Hunting & DFIR** | Log analysis, memory forensics (Volatility), network forensics, timeline analysis | Python + C++ |
+| 20 | **Security Testing Automation** | CI/CD security gates, mutation testing, contract testing, chaos engineering | Multi |
+| 21 | **Secure DevOps at Scale** | Monorepo security, multi-team pipelines, policy as code, compliance automation | Bash/YAML/HCL |
 
 ### Tier 4 — Expansão de linguagem
 
 | # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
-| 19 | **Secure Coding in Rust** | Ownership/borrowing for security, unsafe patterns, FFI, crypto in Rust | Rust |
-| 20 | **Python para Segurança de Software** | Automação, análise de dados, tooling, malware analysis scripting | Python |
-| 21 | **Go for Security Engineering** | Concurrent security tools, networking, cloud security, CLI tools | Go |
+| 22 | **Secure Coding in Rust** | Ownership/borrowing for security, unsafe patterns, FFI, crypto in Rust | Rust |
+| 23 | **Python para Segurança de Software** | Automação, análise de dados, tooling, malware analysis scripting | Python |
+| 24 | **Go for Security Engineering** | Concurrent security tools, networking, cloud security, CLI tools | Go |
 
 ---
 
@@ -86,14 +94,24 @@
 ## Progresso Geral
 
 ```
-Total planejado: 21 livros
-Concluídos: 4 (19%)
+Total planejado: 24 livros
+Concluídos: 5 (21%)
 Em andamento: 0
-Planejados: 17
+Planejados: 19
 
-Linhas escritas: ~176.100
-Linhas projetadas: ~1.000.000+
+Linhas escritas: ~242.500
+Linhas projetadas: ~1.200.000+
 ```
+
+---
+
+## Próximos 3 Livros na Fila
+
+| # | Livro | Diretório | Foco Principal |
+|---|-------|-----------|----------------|
+| 6 | **Desenvolvimento Seguro na Web** | `web/` | OWASP Top 10, XSS/CSRF/SQLi, secure APIs, auth, session management, input validation |
+| 7 | **CMake Seguro e Build Systems** | `cmake-book/` | CMake hardening, reproducible builds, supply chain para builds, sanitizers, cross-compilation |
+| 8 | **WebAssembly Seguro** | `wasm/` | Wasm sandboxing, WASI, component model, memory safety, browser vs server security |
 
 ---
 
@@ -115,7 +133,16 @@ DevSecurity/
 ├── concurrency/                 # Concorrência e Paralelismo Seguro (C++17/20)
 │   ├── INDICE.md
 │   └── 00-17 chapters
-└── (futuros diretórios...)
+├── cryptography/                # Criptografia Engenheira em C++ (C++17)
+│   ├── INDICE.md
+│   └── 00-17 chapters
+├── web/                         # Desenvolvimento Seguro na Web (JS/TS/Python/Go)
+│   └── (próximo)
+├── cmake-book/                  # CMake Seguro e Build Systems
+│   └── (próximo)
+├── wasm/                        # WebAssembly Seguro (Rust/C++/Wat)
+│   └── (próximo)
+└── openspec/                    # SDD artifacts
 ```
 
 ---

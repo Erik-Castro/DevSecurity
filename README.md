@@ -15,10 +15,11 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 | Metrica | Valor |
 |---------|-------|
 | Livros publicados | 5 |
+| Livros na fila | 3 |
 | Total de capitulos | 89 |
 | Total de linhas | ~300.000+ |
 | CVEs documentados | 300+ |
-| Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly |
+| Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, Rust, JS/TS, CMake, WebAssembly |
 | Idioma | Portugues (PT-BR) para texto, Ingles para codigo |
 
 ---
@@ -132,11 +133,11 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 
 | Livro | Foco | Status |
 |-------|------|--------|
+| **Desenvolvimento Seguro na Web** | OWASP Top 10, XSS/CSRF/SQLi, secure APIs, auth, session management, input validation | Na fila |
+| **CMake Seguro e Build Systems** | CMake hardening, reproducible builds, supply chain para builds, sanitizers, cross-compilation | Na fila |
+| **WebAssembly Seguro** | Wasm sandboxing, WASI, component model, memory safety, browser vs server security | Na fila |
 | **Fuzzing & Property-Based Testing for C++** | libFuzzer/AFL++ avancado, corpus management, OSS-Fuzz integration, CI/CD | Planejado |
 | **Supply Chain Security & Reproducible Builds** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds, xz-utils post-mortem | Planejado |
-| **Security Code Review Handbook** | Checklists praticos, anti-padroes, como revisar PRs de seguranca, automacao | Planejado |
-| **LGPD/GDPR para Engenheiros** | Privacy by Design em codigo, consentimento, criptografia, DPIA, breach notification | Planejado |
-| **Secure Architecture Patterns** | Zero Trust, threat modeling at scale, capability-based security, language-agnostic | Planejado |
 
 ---
 
@@ -188,9 +189,13 @@ DevSecurity/
 ├── concurrency/                 # Livro 4: Concorrencia e Paralelismo Seguro (C++17/20)
 │   ├── INDICE.md                # 19.700+ linhas
 │   └── 00-17 capitulos
-└── cryptography/                # Livro 5: Criptografia Engenheira em C++ (C++17)
-    ├── INDICE.md                # 66.400+ linhas
-    └── 00-17 capitulos
+├── cryptography/                # Livro 5: Criptografia Engenheira em C++ (C++17)
+│   ├── INDICE.md                # 66.400+ linhas
+│   └── 00-17 capitulos
+├── web/                         # Livro 6 (fila): Desenvolvimento Seguro na Web
+├── cmake-book/                  # Livro 7 (fila): CMake Seguro e Build Systems
+├── wasm/                        # Livro 8 (fila): WebAssembly Seguro
+└── openspec/                    # SDD artifacts
 ```
 
 ---
