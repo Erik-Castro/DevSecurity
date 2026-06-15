@@ -1,0 +1,29 @@
+# SDD Config — DevSecurity
+project: DevSecurity
+type: book-series
+language: pt-BR (prose) / en (code)
+stack: Markdown, C++17/20, Bash, Python, YAML, Docker, HCL, Go, Assembly
+testing:
+  strict_tdd: false
+  runner: none
+  reason: "Pure Markdown book project — no code to test. Quality is validated by prose review and line-count gates."
+quality:
+  min_lines_per_chapter: 800
+  target_lines_per_chapter: "2800-3900"
+  books_completed: 4
+  books_planned: 21
+  current_book: 5
+context: |
+  Technical book series on software security in Brazilian Portuguese.
+  4 completed books: SDD (C++17), DevSecOps (multi-lang), Malware (C++17+asm), Concurrency (C++17/20).
+  Each chapter: Markdown, PT-BR prose, English code, documented CVEs/security cases.
+  Minimum 800 lines per chapter, target 2800-3900 lines.
+  Book 5 (Cryptography Engineering in C++) is next in the backlog.
+phases:
+  proposal: business/product questions, scope boundaries, non-goals
+  spec: delta requirements with scenarios
+  design: architecture approach, tech decisions
+  tasks: work breakdown with effort estimates
+  apply: implementation via work-unit commits
+  verify: spec compliance, quality gates
+  archive: sync delta specs, persist final state
