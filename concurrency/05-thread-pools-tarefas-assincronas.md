@@ -20,7 +20,6 @@
 #include <iostream>
 #include <vector>
 
-// Criar threads é custoso: ~10-50µs por thread (syscall + kernel allocation)
 void measure_thread_creation() {
     const int N = 100;
     
@@ -44,7 +43,6 @@ void measure_thread_creation() {
 
 int main() {
     measure_thread_creation();
-    // Output típico: Created 100 threads in 4500µs, Average: 45µs per thread
     return 0;
 }
 ```
@@ -71,7 +69,6 @@ public:
             return false;
         }
         
-        // Update peak
         int peak = peak_threads_.load(std::memory_order_relaxed);
         while (current > peak && !peak_threads_.compare_exchange_weak(
             peak, current, std::memory_order_relaxed)) {}
@@ -87,15 +84,6 @@ public:
     int peak() const { return peak_threads_.load(); }
 };
 ```
-
-### 1.3 Latência vs Throughput
-
-| Cenário | Threads Manuais | Thread Pool |
-|---------|-----------------|-------------|
-| 1000 tasks curtas | 1000 * 45µs = 45s overhead | 0s overhead (threads reutilizados) |
-| Controle de concorrência | Difícil | Número fixo de workers |
-| Load balancing | Manual | Automático (work queue) |
-| Shutdown | Complexo | Simples (stop flag + join) |
 
 ---
 
@@ -117,15 +105,15 @@ int main() {
     // launch::async — executa imediatamente em nova thread
     auto f1 = std::async(std::launch::async, expensive_computation, 5);
     
-    // launch::deferred — executa apenas quando .get() é chamado (na thread caller)
+    // launch::deferred — executa apenas quando .get() é chamado
     auto f2 = std::async(std::launch::deferred, expensive_computation, 10);
     
     // Sem policy — implementação decide (PERIGOSO: pode ser deferred!)
-    auto f3 = std::async(expensive_computation, 15); // Pode NÃO ser paralelo!
+    auto f3 = std::async(expensive_computation, 15);
     
-    std::cout << "Result 1: " << f1.get() << "\n";  // Já computou em background
-    std::cout << "Result 2: " << f2.get() << "\n";  // Computa AGORA (blocking)
-    std::cout << "Result 3: " << f3.get() << "\n";  // Pode ser sync ou async
+    std::cout << "Result 1: " << f1.get() << "\n";
+    std::cout << "Result 2: " << f2.get() << "\n";
+    std::cout << "Result 3: " << f3.get() << "\n";
     
     return 0;
 }
@@ -147,17 +135,10 @@ int main() {
     auto f = std::async(std::launch::async, might_throw, true);
     
     try {
-        int result = f.get();  // Re-throwa a exceção capturada na thread
+        int result = f.get();
         std::cout << "Result: " << result << "\n";
     } catch (const std::exception& e) {
         std::cout << "Caught in main: " << e.what() << "\n";
-    }
-    
-    // PERIGOSO: se future é destruído sem .get(), exceção é perdida silenciosamente
-    {
-        auto f2 = std::async(std::launch::async, might_throw, true);
-        // f2 destruído aqui — se exception não foi pega, comportamento indefinido
-        // Na prática: std::terminate() é chamado
     }
     
     return 0;
@@ -173,16 +154,13 @@ int main() {
 #include <iostream>
 
 int main() {
-    // shared_future pode ser copiado e consultado múltiplas vezes
     auto sf = std::async(std::launch::async, [] {
         return std::string("Data from computation");
-    }).share();  // Converte future para shared_future
+    }).share();
     
-    // Múltiplas threads podem consultar o mesmo resultado
     std::vector<std::thread> threads;
     for (int i = 0; i < 4; ++i) {
         threads.emplace_back([sf, i] {
-            // Cada thread pode chamar get() — retorna o mesmo valor
             std::cout << "Thread " << i << " got: " << sf.get() << "\n";
         });
     }
@@ -294,20 +272,18 @@ int main() {
 ```cpp
 #include <thread>
 #include <vector>
-#include <queue>
+#include <deque>
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
 #include <random>
 #include <functional>
 #include <iostream>
-#include <numeric>
 
 class WorkStealingPool {
     struct alignas(64) WorkerData {
         std::deque<std::function<void()>> local_queue;
         std::mutex mutex;
-        char padding[64 - sizeof(std::mutex) - sizeof(std::deque<std::function<void()>>)]; // prevent false sharing
     };
     
     std::vector<std::unique_ptr<WorkerData>> workers_;
@@ -316,7 +292,6 @@ class WorkStealingPool {
     std::atomic<int> active_tasks_{0};
     int num_workers_;
     
-    // Global overflow queue
     std::mutex global_mutex_;
     std::condition_variable global_cv_;
     std::deque<std::function<void()>> global_queue_;
@@ -366,26 +341,22 @@ private:
         while (!stop_.load(std::memory_order_acquire)) {
             std::function<void()> task;
             
-            // Try local queue first
             if (try_pop_local(id, task)) {
                 execute_task(task);
                 continue;
             }
             
-            // Try stealing from random victim
             int victim = get_random_worker();
             if (victim != id && try_steal(victim, task)) {
                 execute_task(task);
                 continue;
             }
             
-            // Try global queue
             if (try_pop_global(task)) {
                 execute_task(task);
                 continue;
             }
             
-            // Nothing to do
             std::unique_lock<std::mutex> lock(global_mutex_);
             global_cv_.wait_for(lock, std::chrono::microseconds(100),
                 [this] { return stop_.load() || !global_queue_.empty(); });
@@ -406,7 +377,7 @@ private:
         std::lock_guard<std::mutex> lock(workers_[victim_id]->mutex);
         auto& q = workers_[victim_id]->local_queue;
         if (!q.empty()) {
-            task = std::move(q.back());  // Steal from back (less contention)
+            task = std::move(q.back());
             q.pop_back();
             return true;
         }
@@ -434,31 +405,22 @@ private:
     }
 };
 
-// Benchmark comparativo
-void benchmark() {
-    const int NUM_TASKS = 100000;
-    
-    {
-        WorkStealingPool pool(4);
-        auto start = std::chrono::high_resolution_clock::now();
-        
-        for (int i = 0; i < NUM_TASKS; ++i) {
-            pool.submit([] {
-                volatile int x = 0;
-                for (int j = 0; j < 100; ++j) x += j;
-            });
-        }
-        
-        pool.wait_idle();
-        auto end = std::chrono::high_resolution_clock::now();
-        auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-        
-        std::cout << "Work-stealing pool: " << ms << "ms\n";
-    }
-}
-
 int main() {
-    benchmark();
+    WorkStealingPool pool(4);
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    for (int i = 0; i < 100000; ++i) {
+        pool.submit([] {
+            volatile int x = 0;
+            for (int j = 0; j < 100; ++j) x += j;
+        });
+    }
+    
+    pool.wait_idle();
+    auto end = std::chrono::high_resolution_clock::now();
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    
+    std::cout << "Work-stealing pool: " << ms << "ms\n";
     return 0;
 }
 ```
@@ -485,7 +447,7 @@ public:
     template<typename F>
     auto then(F&& func) -> Task<decltype(func(std::declval<T>()))> {
         using R = decltype(func(std::declval<T>()));
-        auto next = std::async(std::launch::async, [f = std::move(future_), 
+        auto next = std::async(std::launch::async, [f = std::move(future_),
                                                       func = std::forward<F>(func)]() mutable {
             return func(f.get());
         });
@@ -499,13 +461,12 @@ int main() {
     auto task = Task<int>(std::async(std::launch::async, [] {
         return 10;
     })).then([](int value) {
-        return value * 2;  // 20
+        return value * 2;
     }).then([](int value) {
-        return std::to_string(value) + " is the result";  // "20 is the result"
+        return std::to_string(value) + " is the result";
     });
     
-    std::cout << task.get() << "\n";  // "20 is the result"
-    
+    std::cout << task.get() << "\n";
     return 0;
 }
 ```
@@ -515,11 +476,8 @@ int main() {
 ```cpp
 #include <future>
 #include <vector>
-#include <numeric>
 #include <iostream>
-#include <functional>
 
-// Simplified when_all
 template<typename T>
 std::future<std::vector<T>> when_all(std::vector<std::future<T>>& futures) {
     return std::async(std::launch::async, [&futures] {
@@ -548,7 +506,7 @@ int main() {
     for (int r : results) {
         std::cout << r << " ";
     }
-    std::cout << "\n";  // 0 10 20 30 40
+    std::cout << "\n";
     
     return 0;
 }
@@ -572,33 +530,18 @@ public:
     bool is_cancelled() const { return cancelled_.load(std::memory_order_acquire); }
 };
 
-// Cooperative cancellation pattern
 int long_computation(CancellationToken& token) {
     for (int i = 0; i < 1000000; ++i) {
         if (token.is_cancelled()) {
             throw std::runtime_error("Operation cancelled");
         }
-        // Work here...
         volatile int x = i * i;
         (void)x;
     }
     return 42;
 }
 
-// Timeout wrapper
-template<typename F, typename R>
-std::pair<bool, R> with_timeout(F&& func, std::chrono::milliseconds timeout) {
-    auto future = std::async(std::launch::async, std::forward<F>(func));
-    auto status = future.wait_for(timeout);
-    
-    if (status == std::future_status::timeout) {
-        return {false, R{}};
-    }
-    return {true, future.get()};
-}
-
 int main() {
-    // Cancellation example
     CancellationToken token;
     
     auto future = std::async(std::launch::async, [&token] {
@@ -606,7 +549,7 @@ int main() {
     });
     
     std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    token.cancel();  // Signal cancellation
+    token.cancel();
     
     try {
         int result = future.get();
@@ -614,14 +557,6 @@ int main() {
     } catch (const std::runtime_error& e) {
         std::cout << "Cancelled: " << e.what() << "\n";
     }
-    
-    // Timeout example
-    auto [success, val] = with_timeout<int>([] {
-        std::this_thread::sleep_for(std::chrono::seconds(10));
-        return 42;
-    }, std::chrono::milliseconds(100));
-    
-    std::cout << "Timeout success: " << success << "\n";  // false
     
     return 0;
 }
@@ -635,7 +570,6 @@ int main() {
 #include <chrono>
 #include <iostream>
 #include <vector>
-#include <numeric>
 
 template<typename Pool>
 void benchmark_pool(Pool& pool, const std::string& name, int num_tasks) {
@@ -670,4 +604,3 @@ void benchmark_pool(Pool& pool, const std::string& name, int num_tasks) {
 - **Herlihy & Shavit** — The Art of Multiprocessor Programming
 - **Intel TBB** — Threading Building Blocks documentation
 - **Folly** — Facebook's C++ library (folly::CPUThreadPoolExecutor)
-- **ISO/IEC 14882:2020** — §32.6 (std::async), §32.10 (stop_token)

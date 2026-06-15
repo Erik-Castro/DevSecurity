@@ -4,12 +4,15 @@
 
 1. Utilizar std::latch para sincronização one-shot entre threads
 2. Implementar barreiras reutilizáveis com std::barrier
-3. Controlar concorrência com std::counting_semaphore
-4. Implementar cooperative cancellation com std::stop_token
+3. Controlar concorrência com std::counting_semaphore e std::binary_semaphore
+4. Implementar cooperative cancellation com std::stop_token e std::jthread
+5. Comparar primitivas C++20 com soluções prévias e identificar casos de uso ideais
 
 ---
 
-## 1. std::latch
+## 1. std::latch — Sincronização One-Shot
+
+### 1.1 Conceito e Uso Básico
 
 ```cpp
 #include <latch>
@@ -17,79 +20,224 @@
 #include <vector>
 #include <iostream>
 #include <chrono>
+#include <string>
 
-void latch_example() {
-    constexpr int NUM_THREADS = 4;
-    std::latch start_latch(1);   // Main signals threads to start
-    std::latch done_latch(NUM_THREADS);  // Threads signal main when done
+class ParallelInitializer {
+    std::vector<std::string> data_;
+    std::latch ready_latch_;
+    std::latch done_latch_;
+    
+public:
+    explicit ParallelInitializer(size_t num_threads)
+        : ready_latch_(1), done_latch_(num_threads) {}
+    
+    void initialize(size_t total_items) {
+        data_.resize(total_items);
+        
+        std::vector<std::thread> threads;
+        size_t chunk = total_items / 4;
+        
+        for (int i = 0; i < 4; ++i) {
+            size_t start = i * chunk;
+            size_t end = (i == 3) ? total_items : start + chunk;
+            
+            threads.emplace_back([this, start, end, i] {
+                ready_latch_.wait();
+                
+                for (size_t j = start; j < end; ++j) {
+                    data_[j] = "item_" + std::to_string(j);
+                }
+                
+                done_latch_.count_down();
+            });
+        }
+        
+        std::cout << "Initializing " << total_items << " items...\n";
+        ready_latch_.count_down();
+        
+        done_latch_.wait();
+        std::cout << "Initialization complete. First item: " << data_[0] << "\n";
+        
+        for (auto& t : threads) t.join();
+    }
+};
+
+int main() {
+    ParallelInitializer init(4);
+    init.initialize(1000);
+    return 0;
+}
+```
+
+### 1.2 Padrões de Uso
+
+```cpp
+#include <latch>
+#include <thread>
+#include <vector>
+#include <iostream>
+
+// Padrão 1: Barrier one-shot para fase de computação
+void computation_phase() {
+    constexpr int N = 8;
+    std::latch phase_complete(N);
+    std::vector<int> results(N, 0);
     
     std::vector<std::thread> threads;
-    
-    for (int i = 0; i < NUM_THREADS; ++i) {
-        threads.emplace_back([&start_latch, &done_latch, i] {
-            start_latch.wait();  // Wait for start signal
-            
-            std::cout << "Thread " << i << " started\n";
-            std::this_thread::sleep_for(std::chrono::milliseconds(100 * (i + 1)));
-            std::cout << "Thread " << i << " finished\n";
-            
-            done_latch.count_down();  // Signal completion
+    for (int i = 0; i < N; ++i) {
+        threads.emplace_back([&phase_complete, &results, i] {
+            results[i] = i * i;
+            phase_complete.count_down();
         });
     }
     
-    std::cout << "Main: signaling threads to start\n";
-    start_latch.count_down();  // Release all threads
+    phase_complete.wait();
     
-    done_latch.wait();  // Wait for all threads to finish
-    std::cout << "Main: all threads completed\n";
+    int total = 0;
+    for (int r : results) total += r;
+    std::cout << "Phase 1 total: " << total << "\n";
     
     for (auto& t : threads) t.join();
+}
+
+// Padrão 2: Multiphasas com latches diferentes
+void multi_phase() {
+    constexpr int N = 4;
+    std::latch phase1(N), phase2(N);
+    
+    std::vector<std::thread> threads;
+    for (int i = 0; i < N; ++i) {
+        threads.emplace_back([&phase1, &phase2, i] {
+            std::cout << "Thread " << i << " phase 1\n";
+            phase1.count_down();
+            phase1.wait();
+            
+            std::cout << "Thread " << i << " phase 2\n";
+            phase2.count_down();
+        });
+    }
+    
+    for (auto& t : threads) t.join();
+}
+
+int main() {
+    computation_phase();
+    multi_phase();
+    return 0;
 }
 ```
 
 ---
 
-## 2. std::barrier
+## 2. std::barrier — Sincronização Reutilizável
+
+### 2.1 Conceito e Uso
 
 ```cpp
 #include <barrier>
 #include <thread>
 #include <vector>
 #include <iostream>
-#include <string>
+#include <cmath>
 
-void barrier_example() {
+void iterative_solver() {
+    constexpr int NUM_THREADS = 4;
+    constexpr int MAX_ITERATIONS = 100;
+    constexpr double TOLERANCE = 1e-6;
+    
+    std::vector<double> data(1000, 1.0);
+    std::atomic<bool> converged{false};
+    std::atomic<int> iteration{0};
+    
+    auto on_completion = [&]() noexcept {
+        iteration.fetch_add(1, std::memory_order_relaxed);
+    };
+    
+    std::barrier sync_point(NUM_THREADS, on_completion);
+    
+    std::vector<std::thread> threads;
+    for (int t = 0; t < NUM_THREADS; ++t) {
+        threads.emplace_back([&] {
+            size_t chunk = data.size() / NUM_THREADS;
+            size_t start = t * chunk;
+            size_t end = (t == NUM_THREADS - 1) ? data.size() : start + chunk;
+            
+            while (!converged.load(std::memory_order_acquire)) {
+                for (size_t i = start; i < end; ++i) {
+                    data[i] = std::sin(data[i]) * 0.9 + 0.1;
+                }
+                
+                sync_point.arrive_and_wait();
+                
+                if (t == 0) {
+                    double max_diff = 0;
+                    for (size_t i = 1; i < data.size(); ++i) {
+                        max_diff = std::max(max_diff, std::abs(data[i] - data[i-1]));
+                    }
+                    if (max_diff < TOLERANCE || iteration.load() >= MAX_ITERATIONS) {
+                        converged.store(true, std::memory_order_release);
+                    }
+                }
+                
+                sync_point.arrive_and_wait();
+            }
+        });
+    }
+    
+    for (auto& t : threads) t.join();
+    std::cout << "Converged after " << iteration.load() << " iterations\n";
+}
+
+int main() {
+    iterative_solver();
+    return 0;
+}
+```
+
+### 2.2 flex_barrier
+
+```cpp
+#include <barrier>
+#include <thread>
+#include <vector>
+#include <iostream>
+
+void flex_barrier_example() {
     constexpr int NUM_THREADS = 4;
     std::atomic<int> phase{0};
     
-    auto completion = [&phase]() noexcept {
+    auto completion_fn = [&phase]() noexcept {
         phase.fetch_add(1, std::memory_order_release);
     };
     
-    std::barrier sync_point(NUM_THREADS, completion);
+    std::barrier sync(NUM_THREADS, completion_fn);
     
     std::vector<std::thread> threads;
-    
-    for (int i = 0; i < NUM_THREADS; ++i) {
-        threads.emplace_back([&sync_point, &phase, i] {
-            for (int round = 0; round < 3; ++round) {
-                std::cout << "Thread " << i << " round " << phase.load() << "\n";
-                
-                sync_point.arrive_and_wait();  // Wait for all threads
-                
-                // All threads proceed together
-                std::cout << "Thread " << i << " proceeding in round " << phase.load() << "\n";
+    for (int t = 0; t < NUM_THREADS; ++t) {
+        threads.emplace_back([&sync, &phase, t] {
+            for (int iter = 0; iter < 3; ++iter) {
+                std::cout << "Thread " << t << " iter " << phase.load() << "\n";
+                sync.arrive_and_wait();
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                sync.arrive_and_wait();
             }
         });
     }
     
     for (auto& t : threads) t.join();
 }
+
+int main() {
+    flex_barrier_example();
+    return 0;
+}
 ```
 
 ---
 
-## 3. std::counting_semaphore
+## 3. std::counting_semaphore e std::binary_semaphore
+
+### 3.1 Controle de Concorrência
 
 ```cpp
 #include <semaphore>
@@ -100,50 +248,53 @@ void barrier_example() {
 
 class ConnectionPool {
     std::counting_semaphore<> sem_;
-    std::vector<int> connections_;
+    std::vector<int> available_;
+    std::mutex mutex_;
     
 public:
-    explicit ConnectionPool(int max_connections) : sem_(max_connections) {
-        for (int i = 0; i < max_connections; ++i) {
-            connections_.push_back(i);
+    explicit ConnectionPool(int max_size) : sem_(max_size) {
+        for (int i = 0; i < max_size; ++i) {
+            available_.push_back(i);
         }
     }
     
     int acquire() {
-        sem_.acquire();  // Blocks if no connections available
-        int conn;
-        {
-            std::lock_guard<std::mutex> lock(mutex_);
-            conn = connections_.back();
-            connections_.pop_back();
-        }
+        sem_.acquire();
+        std::lock_guard<std::mutex> lock(mutex_);
+        int conn = available_.back();
+        available_.pop_back();
         return conn;
     }
     
     void release(int conn) {
         {
             std::lock_guard<std::mutex> lock(mutex_);
-            connections_.push_back(conn);
+            available_.push_back(conn);
         }
         sem_.release();
     }
     
-private:
-    std::mutex mutex_;
+    int available_count() const {
+        return sem_.available();
+    }
 };
+
+void client_task(ConnectionPool& pool, int id) {
+    int conn = pool.acquire();
+    std::cout << "Client " << id << " acquired connection " << conn << "\n";
+    
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    
+    pool.release(conn);
+    std::cout << "Client " << id << " released connection " << conn << "\n";
+}
 
 int main() {
     ConnectionPool pool(3);
     
     std::vector<std::thread> threads;
     for (int i = 0; i < 10; ++i) {
-        threads.emplace_back([&pool, i] {
-            int conn = pool.acquire();
-            std::cout << "Thread " << i << " got connection " << conn << "\n";
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-            pool.release(conn);
-            std::cout << "Thread " << i << " released connection " << conn << "\n";
-        });
+        threads.emplace_back(client_task, std::ref(pool), i);
     }
     
     for (auto& t : threads) t.join();
@@ -151,9 +302,47 @@ int main() {
 }
 ```
 
+### 3.2 binary_semaphore
+
+```cpp
+#include <semaphore>
+#include <thread>
+#include <iostream>
+
+std::binary_semaphore data_ready{0};
+std::binary_semaphore space_available{1};
+int shared_data = 0;
+
+void producer() {
+    for (int i = 0; i < 5; ++i) {
+        space_available.acquire();
+        shared_data = i * 10;
+        std::cout << "Produced: " << shared_data << "\n";
+        data_ready.release();
+    }
+}
+
+void consumer() {
+    for (int i = 0; i < 5; ++i) {
+        data_ready.acquire();
+        std::cout << "Consumed: " << shared_data << "\n";
+        space_available.release();
+    }
+}
+
+int main() {
+    std::thread t1(producer);
+    std::thread t2(consumer);
+    t1.join(); t2.join();
+    return 0;
+}
+```
+
 ---
 
-## 4. std::stop_token (C++20)
+## 4. std::stop_token e std::jthread
+
+### 4.1 Cooperative Cancellation
 
 ```cpp
 #include <thread>
@@ -161,61 +350,172 @@ int main() {
 #include <iostream>
 #include <chrono>
 
-void long_task(std::stop_token token) {
-    int i = 0;
+void long_running_task(std::stop_token token, int id) {
+    int iterations = 0;
+    
     while (!token.stop_requested()) {
-        std::cout << "Working... " << i++ << "\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        volatile int x = 0;
+        for (int i = 0; i < 1000; ++i) x += i;
+        
+        iterations++;
+        if (iterations % 100 == 0) {
+            std::cout << "Thread " << id << ": " << iterations << " iterations\n";
+        }
     }
-    std::cout << "Stop requested, cleaning up\n";
+    
+    std::cout << "Thread " << id << " stopped after " << iterations << " iterations\n";
 }
 
 int main() {
-    std::jthread worker(long_task);
+    std::jthread t1(long_running_task, 1);
+    std::jthread t2(long_running_task, 2);
     
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     
     std::cout << "Requesting stop...\n";
-    worker.request_stop();  // Signal the thread to stop
-    
-    worker.join();  // jthread automatically joins in destructor
-    std::cout << "Worker thread joined\n";
+    t1.request_stop();
+    t2.request_stop();
     
     return 0;
 }
 ```
 
-### 4.1 stop_callback
+### 4.2 stop_callback
 
 ```cpp
 #include <thread>
 #include <stop_token>
 #include <iostream>
-#include <functional>
+#include <vector>
 
-void worker_with_callback(std::stop_token token) {
-    std::stop_callback cb(token, [] {
-        std::cout << "Cleanup callback invoked\n";
+void worker_with_cleanup(std::stop_token token) {
+    std::vector<int> results;
+    
+    std::stop_callback cleanup(token, [&results] {
+        std::cout << "Cleanup: saving " << results.size() << " results\n";
     });
     
-    // Long running work...
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    for (int i = 0; i < 100; ++i) {
+        if (token.stop_requested()) break;
+        results.push_back(i * i);
+    }
+    
+    std::cout << "Worker finished with " << results.size() << " results\n";
 }
 
 int main() {
-    std::jthread worker(worker_with_callback);
+    std::jthread worker(worker_with_cleanup);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     worker.request_stop();
-    worker.join();
+    return 0;
+}
+```
+
+### 4.3 Stop Token com Múltiplas Threads
+
+```cpp
+#include <thread>
+#include <stop_token>
+#include <iostream>
+#include <vector>
+#include <chrono>
+
+void worker(std::stop_token token, int id) {
+    while (!token.stop_requested()) {
+        std::cout << "Worker " << id << " running\n";
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    std::cout << "Worker " << id << " stopped\n";
+}
+
+int main() {
+    std::stop_source source;
+    std::stop_token token = source.get_token();
+    
+    std::vector<std::jthread> threads;
+    for (int i = 0; i < 4; ++i) {
+        threads.emplace_back(worker, token, i);
+    }
+    
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+    source.request_stop();
+    
     return 0;
 }
 ```
 
 ---
 
-## 5. Referências
+## 5. Comparação com Soluções Prévias
+
+| Solução | C++ Versão | Reutilizável | Cancelável | Complexidade |
+|---------|-----------|--------------|------------|--------------|
+| `std::condition_variable` | C++11 | Sim | Manual | Média |
+| `std::atomic::wait/notify` | C++20 | Sim | Manual | Baixa |
+| `std::latch` | C++20 | Não | Não | Muito Baixa |
+| `std::barrier` | C++20 | Sim | Não | Média |
+| `std::counting_semaphore` | C++20 | Sim | Não | Baixa |
+| `std::jthread + stop_token` | C++20 | N/A | Sim | Baixa |
+| `std::future::wait_for` | C++11 | Sim | Parcial | Baixa |
+
+---
+
+## 6. Padrões de Sincronização Avançados
+
+### 6.1 Pipeline com Barreiras
+
+```cpp
+#include <barrier>
+#include <thread>
+#include <vector>
+#include <iostream>
+#include <functional>
+
+class Pipeline {
+    std::barrier sync_;
+    std::vector<std::function<void()>> stages_;
+    
+public:
+    explicit Pipeline(int num_stages) : sync_(num_stages) {
+        stages_.resize(num_stages);
+    }
+    
+    void set_stage(int idx, std::function<void()> fn) {
+        stages_[idx] = std::move(fn);
+    }
+    
+    void run() {
+        std::vector<std::thread> threads;
+        for (size_t i = 0; i < stages_.size(); ++i) {
+            threads.emplace_back([this, i] {
+                for (int iter = 0; iter < 5; ++iter) {
+                    stages_[i]();
+                    sync_.arrive_and_wait();
+                }
+            });
+        }
+        for (auto& t : threads) t.join();
+    }
+};
+
+int main() {
+    Pipeline pipeline(3);
+    
+    pipeline.set_stage(0, [] { std::cout << "Stage 1: read\n"; });
+    pipeline.set_stage(1, [] { std::cout << "Stage 2: process\n"; });
+    pipeline.set_stage(2, [] { std::cout << "Stage 3: write\n"; });
+    
+    pipeline.run();
+    return 0;
+}
+```
+
+---
+
+## 7. Referências
 
 - **C++20 Standard** — §32.14 (latch), §32.15 (barrier), §32.16 (semaphore)
 - **C++20 Standard** — §33.4.5 (jthread), §33.4.6 (stop_token)
-- **ISO/IEC 14882:2020** — Thread support library additions
 - **cppreference.com** — std::latch, std::barrier, std::counting_semaphore
+- **Anthony Williams** — C++ Concurrency in Action, 2nd Ed
+- **GOTW #92** — LRWF, Simple Concurrency in C++

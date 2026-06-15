@@ -2,95 +2,135 @@
 
 ## Objetivos de Aprendizado
 
-1. Utilizar intrinsics SIMD para processamento vetorial
-2. Entender os fundamentos de CUDA/HIP para GPU computing
-3. Implementar kernels básicos de GPU
-4. Gerenciar memória entre host e device
+1. Utilizar intrinsics SIMD para processamento vetorial em CPU
+2. Compreender os fundamentos de CUDA para GPU computing
+3. Implementar kernels básicos de GPU com gerenciamento de memória
+4. Otimizar transferências host-device e minimizar latência
+5. Utilizar profiling tools para GPU (Nsight, compute-sanitizer)
 
 ---
 
 ## 1. SIMD Fundamentals
 
-### 1.1 SSE/AVX Intrinsics
+### 1.1 Registradores Vetoriais
 
 ```cpp
 #include <immintrin.h>
-#include <vector>
-#include <chrono>
+#include <cstdint>
+#include <iostream>
+
+void demo_register_widths() {
+    // SSE: 128-bit = 4 floats
+    __m128 sse_vec = _mm_set_ps(1.0f, 2.0f, 3.0f, 4.0f);
+    std::cout << "SSE: " << sizeof(__m128) << " bytes\n";
+    
+    // AVX2: 256-bit = 8 floats
+    __m256 avx_vec = _mm256_set_ps(1.0f, 2.0f, 3.0f, 4.0f,
+                                    5.0f, 6.0f, 7.0f, 8.0f);
+    std::cout << "AVX2: " << sizeof(__m256) << " bytes\n";
+    
+    // AVX-512: 512-bit = 16 floats
+    __m512 avx512_vec = _mm512_set_ps(1.0f, 2.0f, 3.0f, 4.0f,
+                                       5.0f, 6.0f, 7.0f, 8.0f,
+                                       9.0f, 10.0f, 11.0f, 12.0f,
+                                       13.0f, 14.0f, 15.0f, 16.0f);
+    std::cout << "AVX-512: " << sizeof(__m512) << " bytes\n";
+}
+
+int main() {
+    demo_register_widths();
+    return 0;
+}
+```
+
+### 1.2 Operações Básicas
+
+```cpp
+#include <immintrin.h>
 #include <iostream>
 #include <cmath>
 
-// Versão escalar
-void add_scalar(const float* a, const float* b, float* c, size_t n) {
-    for (size_t i = 0; i < n; ++i) {
-        c[i] = a[i] + b[i];
-    }
-}
-
-// Versão SSE (128-bit, 4 floats)
-void add_sse(const float* a, const float* b, float* c, size_t n) {
+void vector_add_avx2(const float* a, const float* b, float* c, size_t n) {
     size_t i = 0;
-    for (; i + 4 <= n; i += 4) {
-        __m128 va = _mm_loadu_ps(a + i);
-        __m128 vb = _mm_loadu_ps(b + i);
-        __m128 vc = _mm_add_ps(va, vb);
-        _mm_storeu_ps(c + i, vc);
-    }
-    for (; i < n; ++i) {
-        c[i] = a[i] + b[i];
-    }
-}
-
-// Versão AVX2 (256-bit, 8 floats)
-void add_avx2(const float* a, const float* b, float* c, size_t n) {
-    size_t i = 0;
+    // Processa 8 floats por iteração
     for (; i + 8 <= n; i += 8) {
         __m256 va = _mm256_loadu_ps(a + i);
         __m256 vb = _mm256_loadu_ps(b + i);
         __m256 vc = _mm256_add_ps(va, vb);
         _mm256_storeu_ps(c + i, vc);
     }
+    // Remainder
     for (; i < n; ++i) {
         c[i] = a[i] + b[i];
     }
 }
 
-// Versão AVX-512 (512-bit, 16 floats)
-void add_avx512(const float* a, const float* b, float* c, size_t n) {
+void vector_mul_avx2(const float* a, const float* b, float* c, size_t n) {
     size_t i = 0;
-    for (; i + 16 <= n; i += 16) {
-        __m512 va = _mm512_loadu_ps(a + i);
-        __m512 vb = _mm512_loadu_ps(b + i);
-        __m512 vc = _mm512_add_ps(va, vb);
-        _mm512_storeu_ps(c + i, vc);
+    for (; i + 8 <= n; i += 8) {
+        __m256 va = _mm256_loadu_ps(a + i);
+        __m256 vb = _mm256_loadu_ps(b + i);
+        __m256 vc = _mm256_mul_ps(va, vb);
+        _mm256_storeu_ps(c + i, vc);
     }
     for (; i < n; ++i) {
-        c[i] = a[i] + b[i];
+        c[i] = a[i] * b[i];
     }
 }
 
-// Benchmark
-void benchmark() {
-    const size_t N = 10000000;
-    std::vector<float> a(N, 1.0f), b(N, 2.0f), c(N);
+// FMA: a * b + c em uma instrução
+void vector_fma_avx2(const float* a, const float* b, const float* c, float* d, size_t n) {
+    size_t i = 0;
+    for (; i + 8 <= n; i += 8) {
+        __m256 va = _mm256_loadu_ps(a + i);
+        __m256 vb = _mm256_loadu_ps(b + i);
+        __m256 vc = _mm256_loadu_ps(c + i);
+        __m256 vd = _mm256_fmadd_ps(va, vb, vc);  // a * b + c
+        _mm256_storeu_ps(d + i, vd);
+    }
+    for (; i < n; ++i) {
+        d[i] = a[i] * b[i] + c[i];
+    }
+}
+
+// Redução horizontal (soma de todos os elementos)
+float horizontal_sum_avx2(__m256 v) {
+    __m128 vlow = _mm256_castps256_ps128(v);
+    __m128 vhigh = _mm256_extractf128_ps(v, 1);
+    __m128 vsum = _mm_add_ps(vlow, vhigh);
+    __m128 vsum2 = _mm_add_ps(vsum, _mm_movehl_ps(vsum, vsum));
+    __m128 vsum3 = _mm_add_ss(vsum2, _mm_shuffle_ps(vsum2, vsum2, 1));
+    return _mm_cvtss_f32(vsum3);
+}
+
+float dot_product_avx2(const float* a, const float* b, size_t n) {
+    __m256 sum_vec = _mm256_setzero_ps();
+    size_t i = 0;
     
-    auto bench = [&](auto func, const char* name) {
-        auto start = std::chrono::high_resolution_clock::now();
-        func(a.data(), b.data(), c.data(), N);
-        auto end = std::chrono::high_resolution_clock::now();
-        auto us = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-        double bandwidth = (3.0 * N * sizeof(float)) / (us * 1e3);
-        std::cout << name << ": " << us << "µs, " << bandwidth << " GB/s\n";
-    };
+    for (; i + 8 <= n; i += 8) {
+        __m256 va = _mm256_loadu_ps(a + i);
+        __m256 vb = _mm256_loadu_ps(b + i);
+        sum_vec = _mm256_fmadd_ps(va, vb, sum_vec);
+    }
     
-    bench(add_scalar, "Scalar");
-    bench(add_sse, "SSE   ");
-    bench(add_avx2, "AVX2  ");
-    bench(add_avx512, "AVX512");
+    float sum = horizontal_sum_avx2(sum_vec);
+    for (; i < n; ++i) sum += a[i] * b[i];
+    return sum;
 }
 
 int main() {
-    benchmark();
+    const size_t N = 1000000;
+    std::vector<float> a(N, 1.0f), b(N, 2.0f), c(N, 0.0f), d(N, 0.0f);
+    
+    vector_add_avx2(a.data(), b.data(), c.data(), N);
+    vector_fma_avx2(a.data(), b.data(), c.data(), d.data(), N);
+    
+    float dot = dot_product_avx2(a.data(), b.data(), N);
+    
+    std::cout << "c[0] = " << c[0] << " (expected 3.0)\n";
+    std::cout << "d[0] = " << d[0] << " (expected 3.0)\n";
+    std::cout << "dot = " << dot << " (expected " << N << ")\n";
+    
     return 0;
 }
 ```
@@ -103,6 +143,7 @@ int main() {
 #include <vector>
 #include <cmath>
 #include <numeric>
+#include <iostream>
 
 // GOOD: vetoriza automaticamente
 void vectorizable(float* data, size_t n) {
@@ -123,7 +164,7 @@ float sum_array(const float* data, size_t n) {
 // BAD: não vetoriza (dependência loop-carried)
 void not_vectorizable(float* data, size_t n) {
     for (size_t i = 1; i < n; ++i) {
-        data[i] = data[i-1] + 1.0f;  // Dependência em data[i-1]
+        data[i] = data[i-1] + 1.0f;
     }
 }
 
@@ -138,7 +179,6 @@ void not_vectorizable(float* data, size_t n) {
 #include <cuda_runtime.h>
 #include <stdio.h>
 
-// Kernel básico
 __global__ void vector_add(const float* a, const float* b, float* c, int n) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx < n) {
@@ -146,43 +186,31 @@ __global__ void vector_add(const float* a, const float* b, float* c, int n) {
     }
 }
 
-// Exemplo de uso
 void cuda_example() {
     int n = 1000000;
     size_t bytes = n * sizeof(float);
     
-    // Host allocation
     float *h_a = new float[n];
     float *h_b = new float[n];
     float *h_c = new float[n];
     
-    for (int i = 0; i < n; ++i) {
-        h_a[i] = 1.0f;
-        h_b[i] = 2.0f;
-    }
+    for (int i = 0; i < n; ++i) { h_a[i] = 1.0f; h_b[i] = 2.0f; }
     
-    // Device allocation
     float *d_a, *d_b, *d_c;
     cudaMalloc(&d_a, bytes);
     cudaMalloc(&d_b, bytes);
     cudaMalloc(&d_c, bytes);
     
-    // Copy to device
     cudaMemcpy(d_a, h_a, bytes, cudaMemcpyHostToDevice);
     cudaMemcpy(d_b, h_b, bytes, cudaMemcpyHostToDevice);
     
-    // Launch kernel
     int block_size = 256;
     int grid_size = (n + block_size - 1) / block_size;
     vector_add<<<grid_size, block_size>>>(d_a, d_b, d_c, n);
     
-    // Copy result back
     cudaMemcpy(h_c, d_c, bytes, cudaMemcpyDeviceToHost);
-    
-    // Verify
     printf("c[0] = %f (expected 3.0)\n", h_c[0]);
     
-    // Cleanup
     delete[] h_a; delete[] h_b; delete[] h_c;
     cudaFree(d_a); cudaFree(d_b); cudaFree(d_c);
 }
@@ -195,50 +223,11 @@ int main() {
 
 ---
 
-## 4. Memory Management
+## 4. Shared Memory e Sincronização
 
 ```cuda
-#include <cuda_runtime.h>
-#include <stdio.h>
-
-void memory_patterns() {
-    int n = 1000000;
-    size_t bytes = n * sizeof(float);
-    
-    // Pattern 1: Regular allocation + memcpy
-    float *d1;
-    cudaMalloc(&d1, bytes);
-    // cudaMemcpy(d1, h1, bytes, cudaMemcpyHostToDevice);
-    
-    // Pattern 2: Unified Memory (C++)
-    float *d2;
-    cudaMallocManaged(&d2, bytes);
-    // Direct access from both CPU and GPU
-    d2[0] = 1.0f;  // Works!
-    
-    // Pattern 3: Pinned memory for async transfers
-    float *h_pinned;
-    cudaMallocHost(&h_pinned, bytes);  // Pinned (page-locked)
-    cudaMemcpyAsync(d1, h_pinned, bytes, cudaMemcpyHostToDevice);
-    
-    // Cleanup
-    cudaFree(d1);
-    cudaFree(d2);
-    cudaFreeHost(h_pinned);
-}
-```
-
----
-
-## 5. Shared Memory
-
-```cuda
-#include <cuda_runtime.h>
-
-// Reduction using shared memory
 __global__ void reduce_sum(const float* input, float* output, int n) {
     extern __shared__ float sdata[];
-    
     unsigned int tid = threadIdx.x;
     unsigned int i = blockIdx.x * blockDim.x * 2 + threadIdx.x;
     
@@ -249,15 +238,11 @@ __global__ void reduce_sum(const float* input, float* output, int n) {
     sdata[tid] = val;
     __syncthreads();
     
-    // Reduction in shared memory
     for (unsigned int s = blockDim.x / 2; s > 32; s >>= 1) {
-        if (tid < s) {
-            sdata[tid] += sdata[tid + s];
-        }
+        if (tid < s) sdata[tid] += sdata[tid + s];
         __syncthreads();
     }
     
-    // Warp-level reduction
     if (tid < 32) {
         volatile float* vdata = sdata;
         vdata[tid] += vdata[tid + 32];
@@ -268,18 +253,61 @@ __global__ void reduce_sum(const float* input, float* output, int n) {
         vdata[tid] += vdata[tid + 1];
     }
     
-    if (tid == 0) {
-        output[blockIdx.x] = sdata[0];
-    }
+    if (tid == 0) output[blockIdx.x] = sdata[0];
 }
 ```
 
 ---
 
-## 6. Referências
+## 5. Memory Management CUDA
 
-- **CUDA Programming Guide** — docs.nvidia.com/cuda/cuda-c-programming-guide/
-- **Intel Intrinsics Guide** — software.intel.com/sites/landingpage/IntrinsicsGuide/
+```cuda
+void memory_patterns() {
+    int n = 1000000;
+    size_t bytes = n * sizeof(float);
+    
+    // Pattern 1: Regular allocation
+    float *d1;
+    cudaMalloc(&d1, bytes);
+    
+    // Pattern 2: Unified Memory
+    float *d2;
+    cudaMallocManaged(&d2, bytes);
+    d2[0] = 1.0f;  // Direct access from CPU
+    
+    // Pattern 3: Pinned memory for async
+    float *h_pinned;
+    cudaMallocHost(&h_pinned, bytes);
+    cudaMemcpyAsync(d1, h_pinned, bytes, cudaMemcpyHostToDevice);
+    
+    cudaFree(d1);
+    cudaFree(d2);
+    cudaFreeHost(h_pinned);
+}
+```
+
+---
+
+## 6. Profiling GPU
+
+```bash
+# Compute Sanitizer: memcheck, racecheck
+compute-sanitizer --tool memcheck ./program
+compute-sanitizer --tool racecheck ./program
+
+# Nsight Compute: kernel analysis
+ncu --metrics achieved_occupancy,sm_throughput,mem_throughput ./program
+
+# Nsight Systems: timeline
+nsys profile --trace=cuda,nvtx -o timeline ./program
+```
+
+---
+
+## 7. Referências
+
+- **CUDA Programming Guide** — docs.nvidia.com
+- **Intel Intrinsics Guide** — software.intel.com
 - **CUDA by Example** — Sanders & Kandrot
-- **GPU Gems** — developer.nvidia.com/gpugems
+- **GPU Gems** — developer.nvidia.com
 - **Programming Massively Parallel Processors** — Hwu, Kirk, Hajj

@@ -21,7 +21,6 @@ Coroutines são funções que podem suspender sua execução e retomar posterior
 #include <iostream>
 #include <vector>
 
-// Generator simples
 struct Generator {
     struct promise_type {
         int current_value;
@@ -50,13 +49,10 @@ struct Generator {
         return !handle.done();
     }
     
-    int current_value() const {
-        return handle.promise().current_value;
-    }
+    int current_value() const { return handle.promise().current_value; }
     
     ~Generator() { if (handle) handle.destroy(); }
     
-    // Move semantics
     Generator(Generator&& other) noexcept : handle(other.handle) { other.handle = nullptr; }
     Generator& operator=(Generator&& other) noexcept {
         if (this != &other) {
@@ -98,7 +94,6 @@ int main() {
 #include <iostream>
 #include <string>
 
-// Awaitable básico
 struct AlwaysSuspend {
     bool await_ready() noexcept { return false; }
     void await_suspend(std::coroutine_handle<>) noexcept {}
@@ -176,32 +171,23 @@ struct AsyncGenerator {
     
     struct Iterator {
         std::coroutine_handle<promise_type> handle;
-        
         void operator++() { handle.resume(); }
         const T& operator*() const { return *handle.promise().current_value; }
         bool operator!=(const Iterator& other) const { return handle != other.handle; }
     };
     
-    Iterator begin() {
-        handle.resume();
-        return {handle};
-    }
-    
+    Iterator begin() { handle.resume(); return {handle}; }
     Iterator end() { return {nullptr}; }
     
     ~AsyncGenerator() { if (handle) handle.destroy(); }
 };
 
 AsyncGenerator<int> range(int start, int end) {
-    for (int i = start; i < end; ++i) {
-        co_yield i;
-    }
+    for (int i = start; i < end; ++i) co_yield i;
 }
 
 int main() {
-    for (auto n : range(0, 10)) {
-        std::cout << n << " ";
-    }
+    for (auto n : range(0, 10)) std::cout << n << " ";
     std::cout << "\n";
     return 0;
 }
@@ -234,15 +220,12 @@ public:
         struct FinalAwaiter {
             bool await_ready() noexcept { return false; }
             void await_suspend(std::coroutine_handle<promise_type> h) noexcept {
-                if (h.promise().continuation) {
-                    h.promise().continuation.resume();
-                }
+                if (h.promise().continuation) h.promise().continuation.resume();
             }
             void await_resume() noexcept {}
         };
         
         FinalAwaiter final_suspend() noexcept { return {}; }
-        
         void return_value(T value) { result = std::move(value); }
         void unhandled_exception() { exception = std::current_exception(); }
     };
@@ -251,12 +234,7 @@ public:
     
     Task(std::coroutine_handle<promise_type> h) : handle(h) {}
     ~Task() { if (handle) handle.destroy(); }
-    
     Task(Task&& other) noexcept : handle(other.handle) { other.handle = nullptr; }
-    Task& operator=(Task&& other) noexcept {
-        if (this != &other) { if (handle) handle.destroy(); handle = other.handle; other.handle = nullptr; }
-        return *this;
-    }
     
     bool await_ready() const noexcept { return !handle || handle.done(); }
     
@@ -277,9 +255,7 @@ public:
     }
 };
 
-Task<int> async_add(int a, int b) {
-    co_return a + b;
-}
+Task<int> async_add(int a, int b) { co_return a + b; }
 
 Task<int> async_compose() {
     int x = co_await async_add(10, 20);
@@ -313,18 +289,14 @@ struct CancelledException : std::runtime_error {
     using std::runtime_error::runtime_error;
 };
 
-// Macro para verificar cancelamento
 #define CHECK_CANCEL(token) \
     if ((token).is_cancelled()) throw CancelledException("Cancelled")
 
 Task<int> cancellable_task(CancellationToken& token) {
     for (int i = 0; i < 1000000; ++i) {
         CHECK_CANCEL(token);
-        // Trabalho computacional
         volatile int x = i * i;
         (void)x;
-        
-        // Yield periódico
         if (i % 1000 == 0) co_await std::suspend_always{};
     }
     co_return 42;
@@ -332,24 +304,15 @@ Task<int> cancellable_task(CancellationToken& token) {
 
 int main() {
     CancellationToken token;
-    
     auto task = cancellable_task(token);
-    
-    // Deixa rodar por um pouco
-    for (int i = 0; i < 100; ++i) {
-        if (task.await_ready()) break;
-        // ...
-    }
-    
+    for (int i = 0; i < 100; ++i) { if (task.await_ready()) break; }
     token.cancel();
-    
     try {
         int result = task.get();
         std::cout << "Result: " << result << "\n";
     } catch (const CancelledException& e) {
         std::cout << "Cancelled: " << e.what() << "\n";
     }
-    
     return 0;
 }
 ```
@@ -362,8 +325,6 @@ int main() {
 #include <coroutine>
 #include <optional>
 #include <iostream>
-#include <thread>
-#include <chrono>
 
 template<typename T>
 class AsyncGenerator {
@@ -377,12 +338,7 @@ class AsyncGenerator {
         
         std::suspend_always initial_suspend() { return {}; }
         std::suspend_always final_suspend() noexcept { return {}; }
-        
-        std::suspend_always yield_value(T value) {
-            current_value = std::move(value);
-            return {};
-        }
-        
+        std::suspend_always yield_value(T value) { current_value = std::move(value); return {}; }
         void return_void() {}
     };
     
@@ -402,17 +358,13 @@ public:
 };
 
 AsyncGenerator<int> async_range(int start, int end) {
-    for (int i = start; i < end; ++i) {
-        co_yield i;
-    }
+    for (int i = start; i < end; ++i) co_yield i;
 }
 
 int main() {
     auto gen = async_range(0, 5);
-    while (gen.next()) {
-        std::cout << gen.value() << " ";
-    }
-    std::cout << "\n";  // 0 1 2 3 4
+    while (gen.next()) std::cout << gen.value() << " ";
+    std::cout << "\n";
     return 0;
 }
 ```
@@ -425,4 +377,3 @@ int main() {
 - **Gor Nishanov** — C++ Coroutines proposal (wg21.link/p0057)
 - **cppcoro library** — github.com/lewissbaker/cppcoro
 - **C++20 Standard** — §9.5.4 (Coroutines)
-- **ISO/IEC 14882:2020** — §9.5.4 (Coroutine definitions)
