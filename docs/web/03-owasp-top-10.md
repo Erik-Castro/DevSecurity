@@ -3530,4 +3530,4 @@ trufflehog git file://. --only-verified
 
 ---
 
-**Próximo Capítulo**: [Capítulo 04 — Threat Modeling](04-sql-injection.md) - Aprenda a identificar, quantificar e priorizar ameaças antes que elas se tornem vulnerabilidades.
+**Próximo Capítulo**: [Capítulo 04 — SQL Injection](04-sql-injection.md) - Aprenda a identificar, quantificar e priorizar ameaças antes que elas se tornem vulnerabilidades.

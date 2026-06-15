@@ -17,7 +17,7 @@ title: "INDICE"
 | 01 | [Introducao ao CMake Moderno](01-introducao-cmake-moderno.md) | CMake 3.20+, targets, properties, generators |
 | 02 | [Target Model e Properties](02-target-model-properties.md) | Target-based build, interface libraries, compile features |
 | 03 | [Expressoes e Funcoes](03-expressoes-funcoes.md) | Generator expressions, custom functions, macros |
-| 04 | [Flags de Seguranca do Compilador](04-flags-seguranca-compilador.md) | -fstack-protector, ASLR, DEP, FORTIFY, PIE |
+| 04 | [Flags de Segurança do Compilador](04-flags-seguranca-compilador.md) | -fstack-protector, ASLR, DEP, FORTIFY, PIE |
 | 05 | [Sanitizers e Debug Builds](05-sanitizers-debug.md) | ASan, TSan, UBSan, MSan,配置, uso em CI/CD |
 | 06 | [Hardening de Binarios](06-hardening-binarios.md) | RELRO, NOW, stack canaries, strip, reproducible builds |
 | 07 | [Analise Estatica com CMake](07-analise-estatica.md) | clang-tidy, cppcheck, Infer, integration |

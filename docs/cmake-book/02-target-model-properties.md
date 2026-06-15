@@ -3311,4 +3311,4 @@ Crie um projeto completo que:
 
 **Fim do Capítulo 02: Target Model e Properties**
 
-No próximo capítulo, exploraremos [Gerenciamento de Dependências](03-expressoes-funcoes.md), incluindo find_package, FetchContent, e gerenciamento de pacotes externos.
+No próximo capítulo, exploraremos [Expressões e Funções do CMake](03-expressoes-funcoes.md), incluindo find_package, FetchContent, e gerenciamento de pacotes externos.
