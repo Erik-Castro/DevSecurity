@@ -858,7 +858,7 @@ cat /proc/sys/kernel/randomize_va_space
 
 # Windows
 # Habilitado por padrão desde Vista
-# Pode ser desabilitado via EMET ou注册表
+# Pode ser desabilitado via EMET ou registro
 
 # FreeBSD
 # sysctl security.randomize_vaspace=1
@@ -1001,6 +1001,56 @@ gcc -Wformat -Wformat-security -o myapp main.c 2>&1
 
 # Verificar com scan-build do Clang
 scan-build --status-bugs gcc -Wformat -Wformat-security -o myapp main.c
+```
+
+### 6.8 Mecanismo Interno
+
+Quando `-Wformat-security` está habilitado, o compilador:
+
+1. Verifica se a primeira argumento de `printf`, `fprintf`, `sprintf`, etc. é uma string literal (constante).
+2. Se não for, emite um warning: `warning: format not a string literal and no format arguments`.
+3. Com `-Werror`, esse warning se torna um erro e impede a compilação.
+
+O compilador também verifica se os tipos dos argumentos correspondem aos especificadores de formato. Por exemplo:
+
+```cpp
+int x = 42;
+printf("%s", x);  // warning: format '%s' expects argument of type 'char*', but argument 2 has type 'int'
+```
+
+### 6.9 Formatos Perigosos
+
+Alguns especificadores de formato são especialmente perigosos:
+
+| Especificador | Risco | Descrição |
+|---------------|-------|-----------|
+| `%n` | Crítico | Escreve o número de bytes impressos em um endereço |
+| `%x`, `%p` | Alto | Lê valores da stack (informação leak) |
+| `%s` | Médio | Lê de um endereço de memória (pode causar crash) |
+| `%d`, `%i` | Baixo | Lê um integer da stack |
+| `%f`, `%e` | Baixo | Lê um float da stack |
+| `%*d` | Alto | Permite especificar largura via argumento (possível abuso) |
+
+### 6.10 Proteção com -Wformat-truncation
+
+O GCC também oferece `-Wformat-truncation` que detecta quando uma chamada a `snprintf` pode truncar o resultado:
+
+```cmake
+target_compile_options(myapp PRIVATE
+    -Wformat-truncation=2
+)
+```
+
+Isso é especialmente útil para prevenir truncamento silencioso que pode levar a strings não null-terminated.
+
+### 6.11 Proteção com -Wformat-overflow
+
+Similar a `-Wformat-truncation`, mas para `sprintf` e funções relacionadas:
+
+```cmake
+target_compile_options(myapp PRIVATE
+    -Wformat-overflow=2
+)
 ```
 
 ---
@@ -2201,6 +2251,7 @@ readelf -h ./myapp | grep Type
 # Verificar NX
 readelf -l ./myapp | grep GNU_STACK
 # Deve retornar: GNU_STACK 0x000000 RWE 0x10
+# (RWE significa Read-Write-Execute, mas com NX habilitado sera RW_)
 ```
 
 ### 12.5 Validacao Automatica com Script
@@ -2270,7 +2321,54 @@ else
     echo "FAIL (no GNU_STACK)"
 fi
 
+# 7. Verificar simbolos de debug
+echo -n "Debug Symbols Stripped: "
+if readelf -S "$BINARY" | grep -q ".debug"; then
+    echo "WARN (debug symbols present)"
+else
+    echo "PASS"
+fi
+
+# 8. Verificar RPATH/RUNPATH
+echo -n "No RPATH/RUNPATH: "
+if readelf -d "$BINARY" | grep -qE "RPATH|RUNPATH"; then
+    echo "WARN (RPATH/RUNPATH present - potential security issue)"
+else
+    echo "PASS"
+fi
+
 echo "=== Verification Complete ==="
+```
+
+### 12.6 Integrando no CI/CD
+
+Para integrar a verificação de segurança no CI/CD:
+
+```yaml
+# .github/workflows/security-check.yml
+name: Security Check
+
+on: [push, pull_request]
+
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y cmake checksec
+      
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release -DTREAT_WARNINGS_AS_ERRORS=ON
+      
+      - name: Build
+        run: cmake --build build --config Release -j$(nproc)
+      
+      - name: Verify Security Flags
+        run: |
+          checksec --file=build/myapp
+          bash scripts/verify-security-flags.sh build/myapp
 ```
 
 ---
@@ -2315,6 +2413,43 @@ int main(int argc, char* argv[]) {
 4. Qual e o risco real de usar este binario sem protecoes em producao?
 5. Documente as diferencas em uma tabela comparativa.
 
+**Dicas:**
+- Use `checksec --file=./vulnerable` para verificacao rapida
+- Use `readelf -s ./vulnerable | grep __stack_chk_fail` para verificar canary
+- Use `readelf -h ./vulnerable | grep Type` para verificar PIE
+- Compile sem flags: `cmake -B build-nosec && cmake --build build-nosec`
+- Compile com flags: `cmake -B build-sec -DCMAKE_CXX_FLAGS="-Wall -Wextra -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE" && cmake --build build-sec`
+
+### Exercicio 2: Criar Modulo CMake de Seguranca
+
+**Objetivo:** Criar um modulo CMake reutilizavel que aplica todas as flags de seguranca de forma portavel.
+
+**Tarefa:** Implemente um modulo `SecurityFlags.cmake` que:
+- Detecta automaticamente o compilador (GCC, Clang, MSVC)
+- Aplica as flags apropriadas para cada compilador
+- Verifica suporte antes de aplicar cada flag
+- Oferece uma funcao `enable_security_flags(target)` para uso simples
+
+**Requisitos:**
+- Funciona com GCC 12+, Clang 16+, MSVC 2022+
+- Testa cada flag com `CheckCXXCompilerFlag` ou `CheckLinkerFlag`
+- Emite warning se uma flag critica nao for suportada
+- Suporta build types Debug, Release, RelWithDebInfo e MinSizeRel
+
+**Estrutura esperada:**
+```
+cmake/
+  SecurityFlags.cmake   # Funcao principal
+  CompilerDetection.cmake # Deteccao de compilador
+  LinkerFlags.cmake     # Flags do linker
+```
+
+**Teste o modulo:**
+1. Crie um projeto simples que usa `enable_security_flags(myapp)`
+2. Compile com GCC e verifique com `checksec`
+3. Compile com Clang e verifique com `checksec`
+4. Verifique que os dois produzem binarios com as mesmas protecoes
+
 ### Exercicio 2: Criar Modulo CMake de Seguranca
 
 **Objetivo:** Criar um modulo CMake reutilizavel que aplica todas as flags de seguranca de forma portavel.
@@ -2341,6 +2476,59 @@ int main(int argc, char* argv[]) {
 - Falhe o build se alguma protecao estiver ausente
 - Gere um relatorio de seguranca em formato Markdown
 
+**Estrutura do workflow:**
+
+```yaml
+name: Secure Build
+
+on: [push, pull_request]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ checksec
+      
+      - name: Configure CMake
+        run: |
+          cmake -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_FLAGS="-Wall -Wextra -Werror -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE" \
+            -DCMAKE_EXE_LINKER_FLAGS="-Wl,-z,relro,-z,now -pie"
+      
+      - name: Build
+        run: cmake --build build --config Release -j$(nproc)
+      
+      - name: Security Verification
+        run: |
+          echo "# Security Report" > security-report.md
+          echo "" >> security-report.md
+          echo "## Binary: build/myapp" >> security-report.md
+          echo "" >> security-report.md
+          echo '```' >> security-report.md
+          checksec --file=build/myapp >> security-report.md
+          echo '```' >> security-report.md
+          echo "" >> security-report.md
+          bash scripts/verify-security-flags.sh build/myapp >> security-report.md
+      
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: security-report.md
+```
+
+**Criterio de sucesso:** O workflow deve:
+1. Compilar sem erros
+2. Executar `checksec` e mostrar "Full RELRO", "Canary found", "NX enabled", "PIE enabled"
+3. Gerar um relatorio Markdown com os resultados
+4. Falhar se qualquer protecao estiver ausente
+
 ### Exercicio 4: Trade-offs de Desempenho
 
 **Objetivo:** Medir o impacto real das flags de seguranca no desempenho.
@@ -2350,6 +2538,64 @@ int main(int argc, char* argv[]) {
 2. Meça o tempo de execução com `hyperfine` ou `time`.
 3. Calcule a diferenca percentual.
 4. Documente os resultados em uma tabela comparativa.
+
+**Programa de benchmark sugerido:**
+
+```cpp
+#include <chrono>
+#include <cmath>
+#include <cstdint>
+#include <iostream>
+
+double compute_pi(int iterations) {
+    double sum = 0.0;
+    for (int i = 0; i < iterations; ++i) {
+        double x = (i + 0.5) / iterations;
+        sum += 4.0 / (1.0 + x * x);
+    }
+    return sum / iterations;
+}
+
+int main() {
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    double pi = compute_pi(100000000);
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    
+    std::cout << "Pi = " << pi << std::endl;
+    std::cout << "Time: " << duration.count() << " ms" << std::endl;
+    
+    return 0;
+}
+```
+
+**Comandos para compilar:**
+
+```bash
+# Sem flags de seguranca
+g++ -O2 -o benchmark-nosec benchmark.cpp
+# Com todas as flags
+g++ -O2 -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -o benchmark-sec benchmark.cpp
+# Com PIE + RELRO
+g++ -O2 -fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -o benchmark-pie benchmark.cpp \
+    -Wl,-z,relro,-z,now
+```
+
+**Medir com hyperfine:**
+
+```bash
+hyperfine --warmup 3 './benchmark-nosec' './benchmark-sec' './benchmark-pie'
+```
+
+**Tabela de resultados esperados:**
+
+| Configuracao | Tempo Medio | Overhead |
+|--------------|-------------|----------|
+| Sem flags | ~X ms | 0% |
+| Com flags | ~X*1.03 ms | ~3% |
+| Com PIE+RELRO | ~X*1.04 ms | ~4% |
 
 ### Exercicio 5: Formato String Vulneravel
 
@@ -2420,6 +2666,59 @@ Para cada CVE:
 - Use `CheckCXXCompilerFlag` para verificar suporte antes de cada flag
 - Inclua um target `verify-security` que rode `checksec` no binario
 
+**Solucao esboçada:**
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(CrossPlatformSecurity LANGUAGES CXX)
+
+include(CheckCXXCompilerFlag)
+include(CheckLinkerFlag)
+
+function(add_security_flags target)
+    if(MSVC)
+        # MSVC flags
+        target_compile_options(${target} PRIVATE /GS /sdl /W4)
+        target_link_options(${target} PRIVATE /DYNAMICBASE /NXCOMPAT)
+    elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        # GCC/Clang flags
+        check_cxx_compiler_flag("-fstack-protector-strong" HAS_SP)
+        if(HAS_SP)
+            target_compile_options(${target} PRIVATE -fstack-protector-strong)
+        endif()
+        
+        check_cxx_compiler_flag("-fPIE" HAS_PIE)
+        if(HAS_PIE)
+            set_target_properties(${target} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+        endif()
+        
+        check_linker_flag(CXX "-Wl,-z,relro,-z,now" HAS_RELRO)
+        if(HAS_RELRO)
+            target_link_options(${target} PRIVATE -Wl,-z,relro,-z,now)
+        endif()
+    endif()
+    
+    # Flags comuns
+    target_compile_options(${target} PRIVATE -Wall -Wextra)
+endfunction()
+
+add_executable(myapp main.cpp)
+add_security_flags(myapp)
+
+# Target para verificacao
+add_custom_target(verify-security
+    COMMAND checksec --file=$<TARGET_FILE:myapp>
+    DEPENDS myapp
+    COMMENT "Verifying security flags..."
+)
+```
+
+**Teste em multiplas plataformas:**
+1. Compile no Linux com GCC e verifique com `checksec`
+2. Compile no macOS com Clang e verifique com `checksec`
+3. Compile no Windows com MSVC e verifique com `dumpbin /headers`
+4. Documente as diferencas entre plataformas
+
 ---
 
 ## 14. Referencias
@@ -2483,6 +2782,22 @@ Neste capítulo, cobrimos todas as flags de segurança disponíveis para compila
 8. **Warnings** (`-Wall -Wextra -Werror`): Detecta bugs silenciosos no código.
 
 O custo total de habilitar todas essas proteções é inferior a 5% de overhead. Não há desculpa para não usá-las.
+
+### Chave para Lembrete
+
+Quando alguém perguntar "quais flags de segurança devo usar?", a resposta é simples:
+
+```
+-fstack-protector-strong -D_FORTIFY_SOURCE=2 -fPIE -Wall -Wextra -Werror
+```
+
+E no linker:
+
+```
+-Wl,-z,relro,-z,now -Wl,-z,noexecstack
+```
+
+Isso cobre 90% dos casos. Para os 10% restantes, consulte as seções específicas deste capítulo.
 
 ---
 
