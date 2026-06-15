@@ -9,21 +9,21 @@
 | # | Capítulo | Tema Principal |
 |---|----------|----------------|
 | 00 | [Prefácio](00-prefacio.md) | Motivação, público-alvo, convenções |
-| 01 | [Introdução à Engenharia Criptográfica](01-introducao-engenharia-cRIPTOGRAFICA.md) | Primitivas, bibliotecas, CVEs fundamentais |
+| 01 | [- Introducao a Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md) | Primitivas, bibliotecas, CVEs fundamentais |
 | 02 | [Fundamentos de Constant-Time](02-fundamentos-constant-time.md) | Timing attacks, cache-timing, C++17 techniques |
 | 03 | [Ataques de Canal Lateral](03-ataques-canal-lateral.md) | Power analysis, EM, cache attacks, Spectre/Meltdown |
 | 04 | [HSM e Tokens de Segurança](04-hsm-tokens-seguranca.md) | PKCS#11, cloud HSMs, key ceremonies |
-| 05 | [TLS 1.3: Internals e Implementação](05-tls-13-internals.md) | Handshake, key schedule, 0-RTT, OpenSSL 3.x |
+| 05 | [TLS 1.3 — Internals e Implementação](05-tls-13-internals.md) | Handshake, key schedule, 0-RTT, OpenSSL 3.x |
 | 06 | [Criptografia Pós-Quântica](06-criptografia-pos-quantica.md) | ML-KEM, ML-DSA, hybrid schemes, migration |
 | 07 | [Gestão de Chaves Avançada](07-gestao-chaves-avancada.md) | Lifecycle, wrapping, threshold, distributed |
 | 08 | [Protocolos Criptográficos Modernos](08-protocolos-criptograficos.md) | Signal, OPAQUE, Noise, WireGuard |
-| 09 | [Hardware Security: TPM e Enclaves](09-hardware-security-tpm.md) | TPM 2.0, SGX, TrustZone, attestation |
+| 09 | [Hardware Security — TPM e Enclaves](09-hardware-security-tpm.md) | TPM 2.0, SGX, TrustZone, attestation |
 | 10 | [Criptografia Homomórfica](10-criptografia-homomorfica.md) | FHE, BFV, CKKS, Microsoft SEAL |
 | 11 | [Zero-Knowledge Proofs em C++](11-zero-knowledge-proofs.md) | zk-SNARKs, zk-STARKs, libsnark |
 | 12 | [Verificação Formal](12-verificacao-formal.md) | Cryptol, SAW, ProVerif, model checking |
 | 13 | [Testes de Implementações](13-testes-implementacoes.md) | Differential testing, fuzzing, Cryptofuzz |
 | 14 | [Compliance e Normas](14-compliance-normas.md) | FIPS 140-3, LGPD, PCI DSS, ICP-Brasil |
-| 15 | [Estudo de Caso: TLS Server](15-estudo-caso-tls-server.md) | Implementação completa do zero |
+| 15 | [Estudo de Caso — TLS Server Seguro em C++](15-estudo-caso-tls-server.md) | Implementação completa do zero |
 | 16 | [Boas Práticas e Checklist](16-boas-praticas-checklist.md) | Anti-padrões, decisões de design, referência |
 | 17 | [Conclusão e Tendências](17-conclusao-tendencias.md) | Estado atual, pesquisa futura, recursos |
 

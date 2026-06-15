@@ -3410,4 +3410,4 @@ E implemente:
 
 **[Fim do Capitulo 02 -- Protocolo HTTP Seguro]**
 
-*[Proximo capitulo: 03 -- OWASP Top 10](03-owasp-top-10.md)*
+*[Capítulo 03 — OWASP Top 10: Guia Completo](03-owasp-top-10.md)*

@@ -36,7 +36,7 @@
 
 ---
 
-### [Cap 00 — Prefácio](00-prefacio.md)
+### [Prefácio — DevSecOps na Prática](00-prefacio.md)
 
 - **1. Por que DevSecOps na Prática**
   - 1.1 A crise de segurança em DevOps

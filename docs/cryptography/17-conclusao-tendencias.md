@@ -800,5 +800,5 @@ Bom código. Seguro.
 
 ---
 
-*[Capítulo anterior: 16 — Boas Práticas e Checklist](16-boas-praticas-checklist.md)*
+*[Capítulo 16: Boas Práticas e Checklist de Engenharia Criptográfica](16-boas-praticas-checklist.md)*
 *[Fim do livro — Obrigado por ler!]*

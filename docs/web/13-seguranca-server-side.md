@@ -403,8 +403,8 @@ app.use((req, res, next) => {
 
 ---
 
-*[Capítulo anterior: 12 — JavaScript Seguro](12-javascript-seguro.md)*
-*[Próximo capítulo: 14 — Containers e Deployment](14-seguranca-container.md)*
+*[Capitulo 12 -- JavaScript Seguro no Browser e Node.js](12-javascript-seguro.md)*
+*[Capitulo 14 — Seguranca de Containers e Deployment](14-seguranca-container.md)*
 
 ---
 

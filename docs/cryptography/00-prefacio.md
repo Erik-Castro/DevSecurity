@@ -846,7 +846,7 @@ As atualizações serão publicadas no repositório GitHub do projeto. Siga o re
 
 ## Comece Agora
 
-Se você é novo em engenharia criptográfica, comece pelo [Capítulo 01: Introdução à Engenharia Criptográfica](01-introducao-engenharia-cRIPTOGRAFICA.md).
+Se você é novo em engenharia criptográfica, comece pelo [Capitulo 01 -- Introducao a Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md).
 
 Se você já tem experiência e quer ir direto ao ponto, consulte o [Índice Completo](INDICE.md) para encontrar o capítulo mais relevante para seu trabalho atual.
 
@@ -855,4 +855,4 @@ Bom estudo. A criptografia é uma das áreas mais fascinantes da engenharia de s
 ---
 
 *[Capítulo anterior: N/A — Este é o primeiro capítulo]*
-*[Próximo capítulo: 01 — Introdução à Engenharia Criptográfica](01-introducao-engenharia-cRIPTOGRAFICA.md)*
+*[Capitulo 01 -- Introducao a Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md)*

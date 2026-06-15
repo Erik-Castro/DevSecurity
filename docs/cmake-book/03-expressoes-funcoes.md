@@ -2927,4 +2927,4 @@ endif()
 
 ---
 
-*[Capitulo anterior: 02 — Target Model e Properties](02-target-model-properties.md) | [Proximo capitulo: 04 — Flags de Seguranca do Compilador](04-flags-seguranca-compilador.md)*
+*[Capitulo anterior: 02 — Target Model e Properties](02-target-model-properties.md) | [Capítulo 4 — Flags de Segurança do Compilador](04-flags-seguranca-compilador.md)*

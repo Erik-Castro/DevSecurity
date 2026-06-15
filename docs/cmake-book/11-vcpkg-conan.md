@@ -3332,4 +3332,4 @@ jobs:
 
 ---
 
-*[Proximo capitulo: 12 — SBOM e Supply Chain](12-sbom-supply-chain.md)*
+*[Capitulo 12 — SBOM e Supply Chain Security](12-sbom-supply-chain.md)*

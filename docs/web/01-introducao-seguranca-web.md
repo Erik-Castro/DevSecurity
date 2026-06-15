@@ -4168,4 +4168,4 @@ for result in results:
 
 *[Voltar ao Prefácio](00-prefacio.md)*
 
-*[Próximo capítulo: 02 — Protocolo HTTP Seguro](02-protocolo-http-seguro.md)*
+*[Capitulo 02 -- Protocolo HTTP Seguro](02-protocolo-http-seguro.md)*

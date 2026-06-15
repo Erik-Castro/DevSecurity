@@ -4618,4 +4618,4 @@ No [Capítulo 09: Hardware Security — TPM e Enclaves](09-hardware-security-tpm
 ---
 
 *[Capítulo anterior: 07 — Gestão de Chaves Avançada](07-gestao-chaves-avancada.md)*
-*[Próximo capítulo: 09 — Hardware Security: TPM e Enclaves](09-hardware-security-tpm.md)*
+*[Capítulo 9: Hardware Security — TPM e Enclaves](09-hardware-security-tpm.md)*

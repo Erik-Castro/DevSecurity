@@ -3892,4 +3892,4 @@ func createArticleHandler(w http.ResponseWriter, r *http.Request) {
 
 ---
 
-*[Proximo capitulo: 09 -- Validacao de Entrada e Sanitizacao](09-criptografia-na-web.md)*
+*[Capítulo 09 — Criptografia na Web](09-criptografia-na-web.md)*

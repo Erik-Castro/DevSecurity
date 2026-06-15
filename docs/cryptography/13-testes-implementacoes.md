@@ -1359,5 +1359,5 @@ Crie um GitHub Actions workflow que execute todas as categorias de teste (KAT, d
 
 ---
 
-*[Capítulo anterior: 12 — Verificação Formal](12-verificacao-formal.md)*
-*[Próximo capítulo: 14 — Compliance e Normas](14-compliance-normas.md)*
+*[Capítulo 12 — Verificação Formal de Implementações Criptográficas](12-verificacao-formal.md)*
+*[Capítulo 14 — Compliance e Normas Criptográficas](14-compliance-normas.md)*

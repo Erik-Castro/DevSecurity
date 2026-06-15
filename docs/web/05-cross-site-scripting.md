@@ -448,8 +448,8 @@ Use Burp Suite ou OWASP ZAP para testar XSS em uma aplicação de exemplo (DVWA 
 
 ---
 
-*[Capítulo anterior: 04 — SQL Injection](04-sql-injection.md)*
-*[Próximo capítulo: 06 — CSRF e Clickjacking](06-csrf-clickjacking.md)*
+*[Capítulo 04 — SQL Injection e Segurança de Banco de Dados](04-sql-injection.md)*
+*[Capítulo 06 — CSRF, Clickjacking e Ataques Client-Side](06-csrf-clickjacking.md)*
 
 ---
 

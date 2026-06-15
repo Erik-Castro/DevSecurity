@@ -6522,7 +6522,7 @@ Implemente rotação de certificados sem downtime:
 
 ---
 
-**Próximo capítulo:** [Capítulo 16: Criptografia Homomórfica e Computação Segura](16-boas-praticas-checklist.md)
+**Próximo capítulo:** [Capítulo 16: Boas Práticas e Checklist de Engenharia Criptográfica](16-boas-praticas-checklist.md)
 
 ---
 

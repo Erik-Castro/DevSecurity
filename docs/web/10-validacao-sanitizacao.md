@@ -369,7 +369,7 @@ async function isSafeURL(url) {
 ---
 
 *[Capítulo anterior: 09 — Criptografia na Web](09-criptografia-na-web.md)*
-*[Próximo capítulo: 11 — Segurança de APIs](11-seguranca-api.md)*
+*[Capítulo 11: Segurança de APIs (REST, GraphQL, gRPC)](11-seguranca-api.md)*
 
 ---
 

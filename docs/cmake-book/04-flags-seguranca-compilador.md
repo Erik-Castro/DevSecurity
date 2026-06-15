@@ -2801,4 +2801,4 @@ Isso cobre 90% dos casos. Para os 10% restantes, consulte as seções específic
 
 ---
 
-*[Capítulo anterior: 03 — Expressões e Funções do CMake](03-expressoes-funcoes.md) | [Próximo capítulo: 05 — Sanitizers e Debug Builds](05-sanitizers-debug.md)*
+*[Capitulo 03 — Expressoes e Funcoes do CMake](03-expressoes-funcoes.md) | [Próximo capítulo: 05 — Sanitizers e Debug Builds](05-sanitizers-debug.md)*

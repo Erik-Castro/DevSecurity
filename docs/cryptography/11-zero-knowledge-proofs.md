@@ -1219,4 +1219,4 @@ Crie uma tabela comparativa experimental entre Groth16 e Bulletproofs para o mes
 ---
 
 *[Capítulo anterior: 10 — Criptografia Homomórfica](10-criptografia-homomorfica.md)*
-*[Próximo capítulo: 12 — Verificação Formal](12-verificacao-formal.md)*
+*[Capítulo 12 — Verificação Formal de Implementações Criptográficas](12-verificacao-formal.md)*

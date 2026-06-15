@@ -14,16 +14,16 @@
 | 03 | [OWASP Top 10](03-owasp-top-10.md) | Todas as 10 categorias com CVEs |
 | 04 | [SQL Injection](04-sql-injection.md) | Injection, NoSQL, parameterized queries |
 | 05 | [Cross-Site Scripting (XSS)](05-cross-site-scripting.md) | Reflected, Stored, DOM-based, CSP |
-| 06 | [CSRF e Clickjacking](06-csrf-clickjacking.md) | CSRF tokens, SameSite, frame protection |
-| 07 | [Autenticação e Sessões](07-autenticacao-sessoes.md) | Passwords, MFA, OAuth 2.0, JWT |
-| 08 | [Autorização e Controle de Acesso](08-autorizacao-controle-acesso.md) | RBAC, ABAC, IDOR, OPA |
+| 06 | [CSRF, Clickjacking e Ataques Client-Side](06-csrf-clickjacking.md) | CSRF tokens, SameSite, frame protection |
+| 07 | [Autenticação e Gerenciamento de Sessão](07-autenticacao-sessoes.md) | Passwords, MFA, OAuth 2.0, JWT |
+| 08 | [- Autorizacao e Controle de Acesso](08-autorizacao-controle-acesso.md) | RBAC, ABAC, IDOR, OPA |
 | 09 | [Criptografia na Web](09-criptografia-na-web.md) | TLS, Web Crypto, SubtleCrypto |
 | 10 | [Input Validation](10-validacao-sanitizacao.md) | Allowlists, schemas, sanitization |
 | 11 | [Segurança de APIs](11-seguranca-api.md) | REST, GraphQL, gRPC, rate limiting |
 | 12 | [JavaScript Seguro](12-javascript-seguro.md) | CSP, SRI, prototype pollution, Node.js |
 | 13 | [Segurança Server-Side](13-seguranca-server-side.md) | Django, Flask, Express, Go |
 | 14 | [Containers e Deployment](14-seguranca-container.md) | Docker, K8s, secrets, scanning |
-| 15 | [DevSecOps para Web](15-devsecops-web.md) | SAST/DAST/SCA, pipelines CI/CD |
+| 15 | [DevSecOps para Aplicações Web](15-devsecops-web.md) | SAST/DAST/SCA, pipelines CI/CD |
 | 16 | [Penetration Testing](16-pentesting-web.md) | Burp Suite, ZAP, methodology |
 | 17 | [Compliance e Boas Práticas](17-compliance-boas-praticas.md) | OWASP ASVS, PCI DSS, LGPD |
 
