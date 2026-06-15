@@ -1,0 +1,1 @@
+../../cryptography/17-conclusao-tendencias.md

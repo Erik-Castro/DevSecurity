@@ -1,0 +1,1 @@
+../../concurrency/07-false-sharing-e-otimizacao-cache.md

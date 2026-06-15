@@ -1,0 +1,1 @@
+../../devsecops/04-sast-analise-estatica.md

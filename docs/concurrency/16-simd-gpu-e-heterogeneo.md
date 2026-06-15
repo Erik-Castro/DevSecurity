@@ -1,0 +1,1 @@
+../../concurrency/16-simd-gpu-e-heterogeneo.md

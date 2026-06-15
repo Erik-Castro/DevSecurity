@@ -1,0 +1,1 @@
+../../devsecops/10-gestao-de-segredos.md

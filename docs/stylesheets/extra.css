@@ -1,0 +1,30 @@
+:root {
+  --md-primary-fg-color: #3f51b5;
+  --md-primary-fg-color--light: #7986cb;
+  --md-primary-fg-color--dark: #303f9f;
+}
+
+.md-typeset h1 { border-bottom: 2px solid var(--md-primary-fg-color); padding-bottom: 0.5rem; }
+.md-typeset h2 { border-bottom: 1px solid var(--md-default-fg-color--lightest); padding-bottom: 0.3rem; }
+
+.md-typeset .admonition { border-radius: 0.5rem; }
+.md-typeset .admonition.note { border-left: 4px solid var(--md-primary-fg-color); }
+.md-typeset .admonition.warning { border-left: 4px solid #ff9800; }
+.md-typeset .admonition.danger { border-left: 4px solid #f44336; }
+.md-typeset .admonition.success { border-left: 4px solid #4caf50; }
+
+.md-typeset code { background-color: rgba(0,0,0,0.05); padding: 0.1em 0.3em; border-radius: 0.3rem; }
+.md-typeset pre code { background-color: transparent; padding: 0; }
+
+.md-nav__item .md-nav__link--active { color: var(--md-primary-fg-color); font-weight: 600; }
+
+.md-footer { background-color: var(--md-primary-fg-color--dark); }
+
+@media screen and (max-width: 76.25em) {
+  .md-sidebar--primary { width: 280px; }
+}
+
+.md-typeset table { font-size: 0.85rem; }
+.md-typeset table th { background-color: var(--md-primary-fg-color--light); color: white; }
+
+.katex { font-size: 1.1em; }

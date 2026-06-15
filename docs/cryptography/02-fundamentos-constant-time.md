@@ -1,0 +1,1 @@
+../../cryptography/02-fundamentos-constant-time.md

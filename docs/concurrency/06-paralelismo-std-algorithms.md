@@ -1,0 +1,1 @@
+../../concurrency/06-paralelismo-std-algorithms.md
