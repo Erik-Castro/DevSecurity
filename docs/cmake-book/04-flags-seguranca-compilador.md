@@ -2801,4 +2801,4 @@ Isso cobre 90% dos casos. Para os 10% restantes, consulte as seções específic
 
 ---
 
-*[Capitulo anterior: 03 — Propriedades e Escopo no CMake](03-propriedades-escopo.md) | [Proximo capitulo: 05 — Sanitizers e Debug Seguro](05-sanitizers-debug-seguro.md)*
+*[Capitulo anterior: 03 — Propriedades e Escopo no CMake](03-expressoes-funcoes.md) | [Proximo capitulo: 05 — Sanitizers e Debug Seguro](05-sanitizers-debug.md)*

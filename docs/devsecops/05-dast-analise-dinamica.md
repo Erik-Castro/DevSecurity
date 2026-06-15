@@ -2987,4 +2987,4 @@ if __name__ == '__main__':
 ---
 
 *Capítulo anterior: [04 - SAST - Análise Estática](04-sast-analise-estatica.md)*
-*Próximo capítulo: [06 - IAST - Análise Interativa](06-iast-analise-interativa.md)*
+*Próximo capítulo: [06 - IAST - Análise Interativa](06-sca-composicao-software.md)*

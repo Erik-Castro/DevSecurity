@@ -3701,5 +3701,5 @@ No próximo capítulo, exploraremos como integrar todas essas técnicas em um pi
 
 ---
 
-*Próximo Capítulo: [15 - CI/CD com CMake](15-cicd-cmake.md)*
-*Capítulo Anterior: [13 - Gerenciamento de Dependências](13-dependency-management.md)*
+*Próximo Capítulo: [15 - CI/CD com CMake](15-install-packaging.md)*
+*Capítulo Anterior: [13 - Gerenciamento de Dependências](13-cross-compilation.md)*

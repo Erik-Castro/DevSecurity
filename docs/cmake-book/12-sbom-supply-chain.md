@@ -4066,7 +4066,7 @@ O SBOM e uma ferramenta essencial para visibilidade de dependencias, resposta ra
 
 ---
 
-**Proximo Capitulo**: [Capitulo 13 — Incident Response e Post-Mortem](13-incident-response.md)
+**Proximo Capitulo**: [Capitulo 13 — Incident Response e Post-Mortem](13-cross-compilation.md)
 
 ---
 

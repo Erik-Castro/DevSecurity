@@ -2240,4 +2240,4 @@ int main() {
 
 ---
 
-*Capítulo seguinte: [Capítulo 5 — Criptografia Aplicada em C++](05-criptografia-aplicada-em-cpp.md)*
+*Capítulo seguinte: [Capítulo 5 — Criptografia Aplicada em C++](05-tratamento-de-erros-e-excecoes.md)*
