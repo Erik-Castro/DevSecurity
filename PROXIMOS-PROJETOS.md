@@ -43,6 +43,10 @@ title: "Proximos Projetos"
 - **18 capitulos** | ~49.000 linhas | **YAML, Bash**
 - [Indice](docs/github-actions/INDICE.md)
 
+### Livro 9: WebAssembly Seguro (CONCLUIDO)
+- **18 capitulos** | ~76.300 linhas | **Rust, C++, WAT**
+- [Indice](docs/wasm/INDICE.md)
+
 ---
 
 ## Backlog de Livros Planejados
@@ -51,7 +55,6 @@ title: "Proximos Projetos"
 
 | # | Titulo | Foco | Linguagem | Prioridade |
 |---|--------|------|-----------|------------|
-| 9 | **WebAssembly Seguro** | Wasm sandboxing, WASI, memory safety | Rust, C++, Wat | Alta |
 | 10 | **Fuzzing & Property-Based Testing** | libFuzzer/AFL++, OSS-Fuzz, CI/CD | C++17 | Alta |
 | 11 | **Security Code Review Handbook** | Checklists, anti-patterns, automacao | C++17 | Media |
 | 12 | **LGPD/GDPR para Engenheiros** | Privacy by Design, DPIA, breach notification | Conceitual + codigo | Media |
@@ -87,11 +90,11 @@ title: "Proximos Projetos"
 
 ```
 Total planejado: 22 livros
-Concluidos: 8 (36%)
+Concluidos: 9 (41%)
 Em andamento: 0
-Planejados: 14
+Planejados: 13
 
-Linhas escritas: ~401.900
+Linhas escritas: ~478.200
 ```
 
 ---
@@ -111,7 +114,8 @@ DevSecurity/
 │   ├── cryptography/   # Livro 5: Criptografia
 │   ├── web/            # Livro 6: Web Security
 │   ├── cmake-book/     # Livro 7: CMake
-│   └── github-actions/ # Livro 8: GitHub Actions
+├── github-actions/ # Livro 8: GitHub Actions
+│   └── wasm/       # Livro 9: WebAssembly
 ├── epub/               # Versoes EPUB
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares

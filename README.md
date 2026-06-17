@@ -19,11 +19,11 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 
 | Metrica | Valor |
 |---------|-------|
-| Livros publicados | 8 |
-| Total de capitulos | 144 |
-| Total de linhas | ~400.000+ |
-| CVEs documentados | 380+ |
-| Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, JS/TS, CMake, GitHub Actions |
+| Livros publicados | 9 |
+| Total de capitulos | 162 |
+| Total de linhas | ~478.000+ |
+| CVEs documentados | 400+ |
+| Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, JS/TS, CMake, GitHub Actions, Rust, WAT |
 | Idioma | Portugues (PT-BR) para texto, Ingles para codigo |
 
 ---
@@ -94,6 +94,14 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 
 ---
 
+### 9. WebAssembly Seguro
+
+> *Wasm Architecture, WASI, Sandboxing, Plugins, Edge, Blockchain — 18 capitulos | ~76.300 linhas*
+
+[Leia online](docs/wasm/INDICE.md)
+
+---
+
 ## Para Quem Escrevo
 
 - **Desenvolvedores C++** que querem codigo seguro por design
@@ -135,6 +143,7 @@ DevSecurity/
 │   ├── web/            # Livro 6: Web Security (JS/TS/Python/Go)
 │   ├── cmake-book/     # Livro 7: CMake (CMake + C/C++)
 │   └── github-actions/ # Livro 8: GitHub Actions (YAML/Bash)
+│   └── wasm/           # Livro 9: WebAssembly (Rust/C++/WAT)
 ├── epub/               # Versoes EPUB dos livros
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares
