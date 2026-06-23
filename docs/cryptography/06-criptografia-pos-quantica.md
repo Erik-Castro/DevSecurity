@@ -3421,3 +3421,7 @@ ML-DSA-44: PK=1312 B, SK=2560 B, Sig=2420 B
 *Este capítulo faz parte do livro "Engenharia de Criptografia em C++", projeto DevSecurity.*
 
 *Última atualização: 2025*
+---
+
+*[Capítulo anterior: 05 — Tls 13 Internals](05-tls-13-internals.md)*
+*[Próximo capítulo: 07 — Gestao Chaves Avancada](07-gestao-chaves-avancada.md)*

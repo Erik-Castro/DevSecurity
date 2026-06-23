@@ -3883,3 +3883,7 @@ EOF
 **Fim do Capítulo 4**
 
 *Próximo capítulo: Capítulo 5 — Programação Livre de Locks (Lock-Free Programming)*
+---
+
+*[Capítulo anterior: 03 — Programacao Lock Free E Atomicos](03-programacao-lock-free-e-atomicos.md)*
+*[Próximo capítulo: 05 — Thread Pools Tarefas Assincronas](05-thread-pools-tarefas-assincronas.md)*

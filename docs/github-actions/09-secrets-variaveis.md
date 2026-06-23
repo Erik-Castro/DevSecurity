@@ -2809,3 +2809,7 @@ A implementacao correta de secret management e critica para a seguranca de qualq
 13. https://docs.github.com/en/code-security/secret-scanning
 14. https://docs.github.com/en/actions/security-guides/encrypted-secrets
 15. https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-secrets
+---
+
+*[Capítulo anterior: 08 — Artifacts Outputs](08-artifacts-outputs.md)*
+*[Próximo capítulo: 10 — Permissions](10-permissions.md)*

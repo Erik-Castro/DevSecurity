@@ -779,3 +779,7 @@ Este livro preenche essa lacuna. Com examples praticos, CVEs documentados, e tem
 *Bom estudo. A seguranca do build system e a fundacao da seguranca do software.*
 
 *[Proximo capitulo: 01 — Introducao ao CMake Moderno](01-introducao-cmake-moderno.md)*
+---
+
+
+*[Próximo capítulo: 01 — Introducao Cmake Moderno](01-introducao-cmake-moderno.md)*

@@ -4071,3 +4071,7 @@ O SBOM e uma ferramenta essencial para visibilidade de dependencias, resposta ra
 ---
 
 *Ultima atualizacao: Novembro 2024*
+---
+
+*[Capítulo anterior: 11 — Vcpkg Conan](11-vcpkg-conan.md)*
+*[Próximo capítulo: 13 — Cross Compilation](13-cross-compilation.md)*

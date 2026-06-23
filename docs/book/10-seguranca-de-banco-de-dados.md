@@ -2877,3 +2877,7 @@ void secureDatabaseExample() {
 13. LGPD — Lei Geral de Protecao de Dados (Lei No. 13.709/2018). https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
 14. MongoDB Security Best Practices. https://www.mongodb.com/docs/manual/security/
 15. Redis Security. https://redis.io/docs/management/security/
+---
+
+*[Capítulo anterior: 09 — Seguranca De Rede](09-seguranca-de-rede.md)*
+*[Próximo capítulo: 11 — Seguranca De Api](11-seguranca-de-api.md)*

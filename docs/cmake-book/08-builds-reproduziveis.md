@@ -2803,7 +2803,7 @@ add_custom_target(checksums
 - Fedora: Suporte crescente
 - NixOS: Reproduzivel por construcao
 - Qubes OS: Usa builds reproduziveis para compontes criticos
-
 ---
 
-*[Proximo capitulo: 09 — Finding Packages Seguro](09-finding-packages.md)*
+*[Capítulo anterior: 07 — Analise Estatica](07-analise-estatica.md)*
+*[Próximo capítulo: 09 — Finding Packages](09-finding-packages.md)*

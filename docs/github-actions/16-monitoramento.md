@@ -2852,3 +2852,7 @@ jobs:
 10. https://github.com/dawidd6/action-send-mail
 11. https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 12. https://github.com/actions/github-script
+---
+
+*[Capítulo anterior: 15 — Debugging](15-debugging.md)*
+*[Próximo capítulo: 17 — Boas Praticas](17-boas-praticas.md)*

@@ -7307,3 +7307,7 @@ Simule um ataque side-channel (timing attack) em software:
 **Fim do Capítulo 04**
 
 *Próximo capítulo: Capítulo 05 — TLS/SSL em C++ com OpenSSL*
+---
+
+*[Capítulo anterior: 03 — Ataques Canal Lateral](03-ataques-canal-lateral.md)*
+*[Próximo capítulo: 05 — Tls 13 Internals](05-tls-13-internals.md)*

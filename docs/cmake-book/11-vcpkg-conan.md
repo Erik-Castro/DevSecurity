@@ -3333,3 +3333,7 @@ jobs:
 ---
 
 *[Capitulo 12 — SBOM e Supply Chain Security](12-sbom-supply-chain.md)*
+---
+
+*[Capítulo anterior: 10 — Fetchcontent External](10-fetchcontent-external.md)*
+*[Próximo capítulo: 12 — Sbom Supply Chain](12-sbom-supply-chain.md)*

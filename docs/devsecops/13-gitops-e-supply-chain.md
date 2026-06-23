@@ -2405,3 +2405,7 @@ capitulo_resumo:
     - "SLSA Level 3+ para artefatos criticos"
     - "Zero-trust na cadeia de suprimentos: trate cada dependencia como potencialmente comprometida"
 ```
+---
+
+*[Capítulo anterior: 12 — Seguranca Kubernetes](12-seguranca-kubernetes.md)*
+*[Próximo capítulo: 14 — Monitoramento E Observabilidade](14-monitoramento-e-observabilidade.md)*

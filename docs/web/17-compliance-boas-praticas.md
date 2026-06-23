@@ -5656,3 +5656,7 @@ Este capitulo cobriu os principais frameworks de compliance e boas praticas para
 13. **Documentacao**: Templates para politicas e procedimentos de seguranca
 
 Lembre-se: compliance e um processo continuo, nao um destino. Implemente controles de seguranca, monitore continuamente, e melhore seus processos regularmente.
+---
+
+*[Capítulo anterior: 16 — Pentesting Web](16-pentesting-web.md)*
+

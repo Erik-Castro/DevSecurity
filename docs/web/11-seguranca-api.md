@@ -4678,3 +4678,7 @@ Implemente comunicacao mTLS entre microservicos:
 ---
 
 *[Capitulo 12 -- JavaScript Seguro no Browser e Node.js](12-javascript-seguro.md)*
+---
+
+*[Capítulo anterior: 10 — Validacao Sanitizacao](10-validacao-sanitizacao.md)*
+*[Próximo capítulo: 12 — Javascript Seguro](12-javascript-seguro.md)*

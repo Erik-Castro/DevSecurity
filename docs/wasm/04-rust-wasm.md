@@ -3265,7 +3265,7 @@ Este capítulo cobriu o ecossistema completo de Rust para WebAssembly:
 11. **Exemplo completo**: Biblioteca de processamento de imagens
 
 O Rust continua sendo uma das melhores escolhas para WebAssembly devido à sua segurança de memória, performance e ecossistema maduro. Combinado com ferramentas como wasm-pack e wasm-bindgen, o desenvolvimento de aplicações Wasm em Rust é eficiente e produtivo.
-
 ---
 
-*Próximo capítulo: Compilação C++ para WebAssembly*
+*[Capítulo anterior: 03 — Wasi System Interface](03-wasi-system-interface.md)*
+*[Próximo capítulo: 05 — Cpp Emscripten](05-cpp-emscripten.md)*

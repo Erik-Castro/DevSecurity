@@ -3563,3 +3563,7 @@ terraform-apply:
 
 *Capitulo 8 — Infrastructure as Code: Seguranca*
 *DevSecOps na Pratica — Edicao 2024*
+---
+
+*[Capítulo anterior: 07 — Seguranca De Containers](07-seguranca-de-containers.md)*
+*[Próximo capítulo: 09 — Seguranca Cicd](09-seguranca-cicd.md)*

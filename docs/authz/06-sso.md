@@ -2948,3 +2948,7 @@ Single Sign-On é uma arquitetura fundamental para segurança e experiência do 
 - **Continuous Access Evaluation**: Revogação em tempo real
 
 Com estes três capítulos (OAuth 2.0, OpenID Connect, e SSO), o Livro 10 oferece uma cobertura completa de autenticação, autorização e controle de acesso, desde fundamentos até implementação prática, com sempre o foco na perspectiva de segurança que o projeto DevSecurity demanda.
+---
+
+*[Capítulo anterior: 05 — Openid Connect](05-openid-connect.md)*
+*[Próximo capítulo: 07 — Magic Links](07-magic-links.md)*

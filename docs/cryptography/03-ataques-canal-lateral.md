@@ -5534,4 +5534,7 @@ Desenvolva um sistema de fingerprinting que identifica qual operacao criptografi
 ---
 
 *Fim do Capitulo 03 — Ataques de Canal Lateral Avancados*
+---
 
+*[Capítulo anterior: 02 — Fundamentos Constant Time](02-fundamentos-constant-time.md)*
+*[Próximo capítulo: 04 — Hsm Tokens Seguranca](04-hsm-tokens-seguranca.md)*

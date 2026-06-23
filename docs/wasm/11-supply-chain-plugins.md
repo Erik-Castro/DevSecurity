@@ -6925,3 +6925,7 @@ O ecossistema Wasm está evoluindo rapidamente, e a segurança de supply chain e
 - Participe da comunidade de segurança Wasm
 
 A segurança de supply chain de plugins Wasm é uma jornada contínua, não um destino. À medida que o ecossistema amadurece, novas ameaças e defesas surgirão. Manter-se informado, adaptável e comprometido com a segurança é essencial para construir ecossistemas de plugins seguros e confiáveis.
+---
+
+*[Capítulo anterior: 10 — Side Channels](10-side-channels.md)*
+*[Próximo capítulo: 12 — Fuzzing](12-fuzzing.md)*

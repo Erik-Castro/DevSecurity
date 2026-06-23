@@ -3208,3 +3208,7 @@ deploy-production:
 ---
 
 *Este capítulo estabelece as bases para o Secure Software Development Lifecycle. Nos capítulos seguintes, aprofundaremos cada fase com técnicas avançadas e implementações práticas em C++.*
+---
+
+*[Capítulo anterior: 01 — Introducao Ao Sdd](01-introducao-ao-sdd.md)*
+*[Próximo capítulo: 03 — Principios De Codificacao Segura](03-principios-de-codificacao-segura.md)*

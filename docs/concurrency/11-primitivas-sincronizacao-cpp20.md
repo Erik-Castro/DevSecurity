@@ -519,3 +519,7 @@ int main() {
 - **cppreference.com** — std::latch, std::barrier, std::counting_semaphore
 - **Anthony Williams** — C++ Concurrency in Action, 2nd Ed
 - **GOTW #92** — LRWF, Simple Concurrency in C++
+---
+
+*[Capítulo anterior: 10 — Coroutines Cpp20](10-coroutines-cpp20.md)*
+*[Próximo capítulo: 12 — Testando Codigo Concorrente](12-testando-codigo-concorrente.md)*

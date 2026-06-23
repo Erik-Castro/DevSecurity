@@ -891,3 +891,7 @@ struct CryptoBundle {
 
 *[Capítulo 15: Estudo de Caso — TLS Server Seguro em C++](15-estudo-caso-tls-server.md)*
 *[Capítulo 17: Conclusão e Tendências Futuras](17-conclusao-tendencias.md)*
+---
+
+*[Capítulo anterior: 15 — Estudo Caso Tls Server](15-estudo-caso-tls-server.md)*
+*[Próximo capítulo: 17 — Conclusao Tendencias](17-conclusao-tendencias.md)*

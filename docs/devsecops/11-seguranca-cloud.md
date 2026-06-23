@@ -3138,3 +3138,7 @@ jobs:
 - Casos documentados (Capital One, Twitch, Azure CosmosDB, AWS S3, GCP, Uber) demonstram padroes repetidos de falhas
 - IAM e a camada mais critica de seguranca em qualquer provedor cloud
 - CSPM, CWPP e WAF sao componentes essenciais de uma estrategia de seguranca em cloud
+---
+
+*[Capítulo anterior: 10 — Gestao De Segredos](10-gestao-de-segredos.md)*
+*[Próximo capítulo: 12 — Seguranca Kubernetes](12-seguranca-kubernetes.md)*

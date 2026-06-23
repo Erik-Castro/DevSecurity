@@ -4978,3 +4978,7 @@ e) Gere relatorio consolidado de verificacao
 ---
 
 *Este capitulo apresentou as principais ferramentas e tecnicas de verificacao formal aplicadas a implementacoes criptograficas. A verificacao formal nao substitui testes — ela complementa testes ao oferecer garantias matematicas sobre propriedades que testes nao podem verificar. A combinacao de model checking para protocolos, SAW para equivalencia de implementacoes, ProVerif para protocolos de seguranca, e CompCert para compilacao verificada fornece um framework abrangente para construir software criptografico de altissima confiabilidade.*
+---
+
+*[Capítulo anterior: 11 — Zero Knowledge Proofs](11-zero-knowledge-proofs.md)*
+*[Próximo capítulo: 13 — Testes Implementacoes](13-testes-implementacoes.md)*

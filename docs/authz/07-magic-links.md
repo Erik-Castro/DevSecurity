@@ -2980,3 +2980,7 @@ class DataConsentService:
 ---
 
 *No próximo capítulo: WebAuthn e FIDO2 — o padrão que transforma dispositivos físicos e biometria em autenticadores phishing-resistant.*
+---
+
+*[Capítulo anterior: 06 — Sso](06-sso.md)*
+*[Próximo capítulo: 08 — Webauthn Fido2](08-webauthn-fido2.md)*

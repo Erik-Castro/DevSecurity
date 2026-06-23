@@ -3036,3 +3036,7 @@ Neste capítulo, exploramos os fundamentos do WebAssembly:
 - **Comparação**: Wasm vs JavaScript, containers, e outras tecnologias
 
 No próximo capítulo, exploraremos o modelo de segurança do WebAssembly em detalhes.
+---
+
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Modelo Seguranca](02-modelo-seguranca.md)*

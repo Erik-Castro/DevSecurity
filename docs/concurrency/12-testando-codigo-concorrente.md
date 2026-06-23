@@ -535,3 +535,7 @@ jobs:
 - **CDSChecker** — github.com/ucecserc/CDSChecker
 - **Nidhugg** — github.com/nidhugg/nidhugg
 - **rr** — rr-project.org
+---
+
+*[Capítulo anterior: 11 — Primitivas Sincronizacao Cpp20](11-primitivas-sincronizacao-cpp20.md)*
+*[Próximo capítulo: 13 — Debugging Concorrencia](13-debugging-concorrencia.md)*

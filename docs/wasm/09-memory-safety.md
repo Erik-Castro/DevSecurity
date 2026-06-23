@@ -4065,3 +4065,7 @@ Segurança de memória em WebAssembly é um tópico complexo mas fundamental. O 
 O futuro da segurança de memória em Wasm inclui melhorias no modelo de memória, suporte a garbage collection, e ferramentas mais sofisticadas de detecção. À medida que o ecossistema amadurece, esperamos ver ainda mais proteções e melhores práticas emergirem.
 
 Segurança de memória não é apenas uma característica técnica - é uma responsabilidade fundamental de todos os desenvolvedores que criam software que roda em WebAssembly.
+---
+
+*[Capítulo anterior: 08 — Component Model](08-component-model.md)*
+*[Próximo capítulo: 10 — Side Channels](10-side-channels.md)*

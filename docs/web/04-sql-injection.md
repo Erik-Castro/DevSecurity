@@ -4669,3 +4669,7 @@ SELECT * FROM verificar_seguranca();
 *Fim do Capitulo 04*
 
 *Proximo capitulo: Capitulo 05 — Autenticacao e Controle de Acesso*
+---
+
+*[Capítulo anterior: 03 — Owasp Top 10](03-owasp-top-10.md)*
+*[Próximo capítulo: 05 — Cross Site Scripting](05-cross-site-scripting.md)*

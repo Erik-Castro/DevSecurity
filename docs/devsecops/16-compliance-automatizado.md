@@ -4087,3 +4087,7 @@ class RemediationTracker:
 ---
 
 *Compliance nao e opcional e nao e temporario. Automatize o que puder, audite o que nao puder automatizar, e nunca assuma que conformidade de ontem garante conformidade de amanha.*
+---
+
+*[Capítulo anterior: 15 — Resposta A Incidentes Em Producao](15-resposta-a-incidentes-em-producao.md)*
+*[Próximo capítulo: 17 — Cultura Devsecops E Metricas](17-cultura-devsecops-e-metricas.md)*

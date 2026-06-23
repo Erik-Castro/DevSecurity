@@ -802,3 +802,7 @@ Bom código. Seguro.
 
 *[Capítulo 16: Boas Práticas e Checklist de Engenharia Criptográfica](16-boas-praticas-checklist.md)*
 *[Fim do livro — Obrigado por ler!]*
+---
+
+*[Capítulo anterior: 16 — Boas Praticas Checklist](16-boas-praticas-checklist.md)*
+

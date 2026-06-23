@@ -73,7 +73,7 @@ WebAssembly e projetado para seguranca — mas seguranca nao e automatica. Este 
 - **Codigo**: Identificadores em ingles
 - **Exemplos**: Rust, C++, WebAssembly Text Format (WAT)
 - **Plataformas**: Browser, WASI, Docker, Kubernetes
-
 ---
 
-*[Proximo capitulo: 01 — Introducao ao WebAssembly](01-introducao-webassembly.md)*
+
+*[Próximo capítulo: 01 — Introducao Webassembly](01-introducao-webassembly.md)*

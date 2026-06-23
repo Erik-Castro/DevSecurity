@@ -4614,8 +4614,7 @@ Use ProVerif ou Tamarin para verificar um protocolo de key exchange simples:
 ### Próximo Capítulo
 
 No [Capítulo 09: Hardware Security — TPM e Enclaves](09-hardware-security-tpm.md), veremos como integrar hardware security modules com protocolos criptográficos para proteção de chaves em hardware.
-
 ---
 
-*[Capítulo anterior: 07 — Gestão de Chaves Avançada](07-gestao-chaves-avancada.md)*
-*[Capítulo 9: Hardware Security — TPM e Enclaves](09-hardware-security-tpm.md)*
+*[Capítulo anterior: 07 — Gestao Chaves Avancada](07-gestao-chaves-avancada.md)*
+*[Próximo capítulo: 09 — Hardware Security Tpm](09-hardware-security-tpm.md)*

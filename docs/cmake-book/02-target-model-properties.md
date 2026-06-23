@@ -3312,3 +3312,7 @@ Crie um projeto completo que:
 **Fim do Capítulo 02: Target Model e Properties**
 
 No próximo capítulo, exploraremos [Expressoes e Funcoes do CMake](03-expressoes-funcoes.md), incluindo find_package, FetchContent, e gerenciamento de pacotes externos.
+---
+
+*[Capítulo anterior: 01 — Introducao Cmake Moderno](01-introducao-cmake-moderno.md)*
+*[Próximo capítulo: 03 — Expressoes Funcoes](03-expressoes-funcoes.md)*

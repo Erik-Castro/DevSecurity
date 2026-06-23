@@ -3051,7 +3051,7 @@ Sem `cmake_minimum_required`, o CMake usa comportamentos historicos que podem se
 - **CWE-506**: Embedded Malicious Code
 - **CWE-829**: Inclusion of Functionality from Untrusted Control Sphere
 - **SLSA Framework**: https://slsa.dev/spec/v1.0/framework
-
 ---
 
-*[Proximo capitulo: 02 — Target Model e Properties](02-target-model-properties.md)*
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Target Model Properties](02-target-model-properties.md)*

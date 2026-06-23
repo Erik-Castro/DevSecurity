@@ -2935,3 +2935,7 @@ const IncidentResponsePlan = {
 18. Colonial Pipeline Incident (2021) — Falhas em MFA e VPN
 19. Uber MFA Fatigue Attack (2022) — Falhas em processos de autenticação
 20. SolarWinds Breach (2020) — Falhas em supply chain e compliance
+---
+
+*[Capítulo anterior: 16 — Padroes Seguros](16-padroes-seguros.md)*
+

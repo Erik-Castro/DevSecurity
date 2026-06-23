@@ -898,3 +898,7 @@ app.use((req, res) => {
 28. OWASP Command Injection: https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html
 29. OWASP LDAP Injection: https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html
 30. OWASP Server Side Request Forgery: https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html
+---
+
+*[Capítulo anterior: 12 — Javascript Seguro](12-javascript-seguro.md)*
+*[Próximo capítulo: 14 — Seguranca Container](14-seguranca-container.md)*

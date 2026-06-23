@@ -3027,3 +3027,7 @@ describe('CORS Configuration Tests', () => {
 34. PortSwigger. "Web Security Academy." PortSwigger, 2023.
 35. Google. "Google CTF (Capture The Flag)." Google, 2023.
 36. HackTheBox. "Online Platform for Penetration Testing." HackTheBox, 2023.
+---
+
+*[Capítulo anterior: 05 — Cross Site Scripting](05-cross-site-scripting.md)*
+*[Próximo capítulo: 07 — Autenticacao Sessoes](07-autenticacao-sessoes.md)*

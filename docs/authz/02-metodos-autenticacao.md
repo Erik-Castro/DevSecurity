@@ -2818,7 +2818,7 @@ Ao escolher um método de autenticação, considere:
 5. **Base de usuários**: Usuários idosos podem ter dificuldade com TOTP
 6. **Disponibilidade de rede**: Apps offline precisam de autenticação offline
 7. **Ameaças específicas**: Phishing é ameaça? State-sponsored attacks?
-
 ---
 
-*[Próximo capítulo: 03 — Segurança de Senhas](03-seguranca-senhas.md)*
+*[Capítulo anterior: 01 — Auth Vs Authz](01-auth-vs-authz.md)*
+*[Próximo capítulo: 03 — Seguranca Senhas](03-seguranca-senhas.md)*

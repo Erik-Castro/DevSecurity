@@ -2939,3 +2939,7 @@ Após implementar uma engine de política, monitore:
 ---
 
 *No próximo capítulo: Ataques a Identidade — credential stuffing, brute force, session hijacking, e como o caso Misantropi4 explodiu cada uma dessas vetores.*
+---
+
+*[Capítulo anterior: 12 — Mac Dac](12-mac-dac.md)*
+*[Próximo capítulo: 14 — Ataques Identidade](14-ataques-identidade.md)*

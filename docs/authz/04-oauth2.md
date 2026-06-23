@@ -2895,3 +2895,7 @@ OAuth 2.0 é o pilar da autorização moderna na web. Este capítulo cobriu:
 - **Auditoria**: Monitoramento e logging de eventos de segurança
 
 O próximo capítulo explora OpenID Connect, a camada de identidade construída sobre OAuth 2.0 que adiciona autenticação ao protocolo de autorização.
+---
+
+*[Capítulo anterior: 03 — Seguranca Senhas](03-seguranca-senhas.md)*
+*[Próximo capítulo: 05 — Openid Connect](05-openid-connect.md)*

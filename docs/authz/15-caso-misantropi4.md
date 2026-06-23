@@ -2798,3 +2798,7 @@ network:
 ---
 
 *Fim do Livro 10 — Autenticacao, Autorizacao e Controle de Acesso. No proximo livro: Padroes Seguros de Implementacao — autenticacao, anti-patterns, e boas praticas.*
+---
+
+*[Capítulo anterior: 14 — Ataques Identidade](14-ataques-identidade.md)*
+*[Próximo capítulo: 16 — Padroes Seguros](16-padroes-seguros.md)*

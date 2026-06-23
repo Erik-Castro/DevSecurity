@@ -851,8 +851,7 @@ Se você é novo em engenharia criptográfica, comece pelo [Capitulo 01 -- Intro
 Se você já tem experiência e quer ir direto ao ponto, consulte o [Índice Completo](INDICE.md) para encontrar o capítulo mais relevante para seu trabalho atual.
 
 Bom estudo. A criptografia é uma das áreas mais fascinantes da engenharia de software — e uma das mais exigentes. Cada linha de código que escrevemos pode ser a diferença entre um sistema seguro e um incidente de segurança.
-
 ---
 
-*[Capítulo anterior: N/A — Este é o primeiro capítulo]*
-*[Capitulo 01 -- Introducao a Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md)*
+
+*[Próximo capítulo: 01 — Introducao Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md)*

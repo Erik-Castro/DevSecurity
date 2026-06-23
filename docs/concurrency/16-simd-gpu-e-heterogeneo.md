@@ -311,3 +311,7 @@ nsys profile --trace=cuda,nvtx -o timeline ./program
 - **CUDA by Example** — Sanders & Kandrot
 - **GPU Gems** — developer.nvidia.com
 - **Programming Massively Parallel Processors** — Hwu, Kirk, Hajj
+---
+
+*[Capítulo anterior: 15 — Padroes Concorrencia](15-padroes-concorrencia.md)*
+*[Próximo capítulo: 17 — Boas Praticas E Guia Referencia](17-boas-praticas-e-guia-referencia.md)*

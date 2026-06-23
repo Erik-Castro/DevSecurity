@@ -3069,7 +3069,7 @@ Este capitulo cobriu os principais sanitizers disponiveis para projetos C/C++ co
 - **Valgrind**: Complementar para analise offline quando nao pode recompilar.
 
 A regra de ouro: **sempre tenha pelo menos um sanitizer habilitado durante desenvolvimento e testes**. O custo de encontrar um bug em producao e 100x maior que o custo de executar sanitizers em desenvolvimento.
-
 ---
 
-*[Proximo capitulo: 06 — Hardening de Binarios](06-hardening-binarios.md)*
+*[Capítulo anterior: 04 — Flags Seguranca Compilador](04-flags-seguranca-compilador.md)*
+*[Próximo capítulo: 06 — Hardening Binarios](06-hardening-binarios.md)*

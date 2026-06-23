@@ -4198,3 +4198,7 @@ class TLSAuditor {
 | CVE-2019-1547 | OpenSSL ECDSA nonce bias | Nonce reuse vulnerability |
 | CVE-2021-3449 | OpenSSL NULL dereference | Renegotiation DoS |
 | CVE-2023-0464 | OpenSSL X.509 Policy | Certificate policy bypass |
+---
+
+*[Capítulo anterior: 08 — Autorizacao Controle Acesso](08-autorizacao-controle-acesso.md)*
+*[Próximo capítulo: 10 — Validacao Sanitizacao](10-validacao-sanitizacao.md)*

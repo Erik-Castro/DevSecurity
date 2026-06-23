@@ -604,3 +604,7 @@ void benchmark_pool(Pool& pool, const std::string& name, int num_tasks) {
 - **Herlihy & Shavit** — The Art of Multiprocessor Programming
 - **Intel TBB** — Threading Building Blocks documentation
 - **Folly** — Facebook's C++ library (folly::CPUThreadPoolExecutor)
+---
+
+*[Capítulo anterior: 04 — Deadlocks E Livelocks](04-deadlocks-e-livelocks.md)*
+*[Próximo capítulo: 06 — Paralelismo Std Algorithms](06-paralelismo-std-algorithms.md)*

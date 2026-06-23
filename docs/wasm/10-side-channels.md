@@ -11199,3 +11199,7 @@ O futuro da segurança em Wasm é promissor, com melhorias contínuas em hardwar
 - Cross-Origin Isolation (COOP/COEP) é obrigatório para uso seguro de SharedArrayBuffer
 - Mitigações de Spectre (retpoline, STIBP, IBPB) têm overhead significativo (10-30%) que deve ser considerado
 - Testes de timing e análise de side-channels devem fazer parte do pipeline de CI/CD
+---
+
+*[Capítulo anterior: 09 — Memory Safety](09-memory-safety.md)*
+*[Próximo capítulo: 11 — Supply Chain Plugins](11-supply-chain-plugins.md)*

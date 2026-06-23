@@ -2499,3 +2499,7 @@ Este capítulo cobriu as camadas fundamentais de hardening e deploy seguro para 
 Os casos reais documentados (CVE-2019-5736, SolarWinds, Codecov, xz-utils, CVE-2024-3094, Docker socket exposure) demonstram que ataques na cadeia de suprimentos e na infraestrutura de deploy são reais e devastadores. A resposta não é apenas防御iva — é construir sistemas que possam ser verificados, auditados e recuperados.
 
 A segurança não é um recurso que se adiciona no final. Ela precisa estar presente desde o primeiro commit,贯穿 throughout o ciclo de vida do software, desde a compilação até a monitoramento em produção.
+---
+
+*[Capítulo anterior: 15 — Resposta A Incidentes](15-resposta-a-incidentes.md)*
+*[Próximo capítulo: 17 — Conclusao E Tendencias](17-conclusao-e-tendencias.md)*

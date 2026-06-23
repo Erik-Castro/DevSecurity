@@ -3933,3 +3933,7 @@ Com as boas práticas e checklists definidos, você está pronto para desenvolve
 5. Monitorar continuamente em produção
 
 O desenvolvimento seguro é uma jornada contínua, não um destino. Mantenha-se atualizado com as melhores práticas e sempre busque melhorar.
+---
+
+*[Capítulo anterior: 16 — Compliance](16-compliance.md)*
+

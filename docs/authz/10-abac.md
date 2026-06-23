@@ -3038,3 +3038,7 @@ class Misantropi4AuthZMetrics:
 - NIST. "Policy Machine" (2020)
 - Open Policy Agent. "Rego Policy Language" (2021)
 - AWS Cedar. "Cedar Policy Language" (2022)
+---
+
+*[Capítulo anterior: 09 — Rbac](09-rbac.md)*
+*[Próximo capítulo: 11 — Rebac](11-rebac.md)*

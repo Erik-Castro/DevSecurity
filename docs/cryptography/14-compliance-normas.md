@@ -4620,3 +4620,7 @@ Lembre-se: o melhor sistema de compliance é aquele projetado desde o início
 
 *Capítulo 14 — Compliance e Normas Criptográficas*
 *Projeto DevSecurity — Livro 5: Engenharia de Criptografia em C++*
+---
+
+*[Capítulo anterior: 13 — Testes Implementacoes](13-testes-implementacoes.md)*
+*[Próximo capítulo: 15 — Estudo Caso Tls Server](15-estudo-caso-tls-server.md)*

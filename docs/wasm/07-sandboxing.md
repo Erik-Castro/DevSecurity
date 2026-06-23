@@ -3121,3 +3121,7 @@ Pontos-chave para lembrar:
 O sandboxing eficaz não é apenas sobre implementar tecnologias, mas sobre entender os trade-offs entre segurança, performance e usabilidade. O objetivo final é criar ambientes onde código potencialmente inseguro pode ser executado com risco mínimo para o sistema host.
 
 No próximo capítulo, exploraremos o Component Model do WebAssembly, que estende as capacidades de isolamento com interfaces tipadas e composição segura de módulos.
+---
+
+*[Capítulo anterior: 06 — Runtimes](06-runtimes.md)*
+*[Próximo capítulo: 08 — Component Model](08-component-model.md)*

@@ -2798,3 +2798,7 @@ jobs:
 18. https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
 19. https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows
 20. https://docs.github.com/en/actions/hosting-your-own-runners
+---
+
+*[Capítulo anterior: 16 — Monitoramento](16-monitoramento.md)*
+

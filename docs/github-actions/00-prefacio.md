@@ -67,7 +67,7 @@ Este livro transforma GitHub Actions de "copiar e colar" em uma ferramenta profi
 - **Codigo**: Identificadores em ingles
 - **Exemplos**: GitHub Actions YAML, scripts Bash
 - **Plataforma**: GitHub.com e GitHub Enterprise
-
 ---
 
-*[Proximo capitulo: 01 — Introducao ao GitHub Actions](01-introducao-github-actions.md)*
+
+*[Próximo capítulo: 01 — Introducao Github Actions](01-introducao-github-actions.md)*

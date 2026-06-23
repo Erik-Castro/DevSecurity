@@ -326,3 +326,7 @@ int main() {
 - **Intel TBB** — oneapi-src/oneTBB
 - **OpenMP 5.2** — openmp.org
 - **McCaffrey** — Practical Parallel Programming with OpenMP
+---
+
+*[Capítulo anterior: 05 — Thread Pools Tarefas Assincronas](05-thread-pools-tarefas-assincronas.md)*
+*[Próximo capítulo: 07 — False Sharing E Otimizacao Cache](07-false-sharing-e-otimizacao-cache.md)*

@@ -2827,7 +2827,7 @@ Refatore um projeto existente para usar `GNUInstallDirs`:
 - [rpmbuild](https://man7.org/linux/man-pages/man8/rpmbuild.8.html)
 - [lintian](https://manpages.debian.org/bookworm/lintian/lintian.1.en.html)
 - [GnuPG](https://gnupg.org/)
-
 ---
 
-*[Capítulo anterior: 14 — Testing no CMake](14-testing-cmake.md)* | *[Próximo capítulo: 16 — CI/CD Seguro com CMake](16-cicd-seguro.md)*
+*[Capítulo anterior: 14 — Testing Cmake](14-testing-cmake.md)*
+*[Próximo capítulo: 16 — Cicd Seguro](16-cicd-seguro.md)*

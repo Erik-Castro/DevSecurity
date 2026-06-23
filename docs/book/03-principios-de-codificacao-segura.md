@@ -2176,3 +2176,7 @@ void deleteUser(const std::string& username) {
     }
 }
 ```
+---
+
+*[Capítulo anterior: 02 — Ciclo De Vida Seguro](02-ciclo-de-vida-seguro.md)*
+*[Próximo capítulo: 04 — Seguranca De Memoria Em Cpp](04-seguranca-de-memoria-em-cpp.md)*

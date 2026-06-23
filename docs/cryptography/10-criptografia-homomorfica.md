@@ -2994,3 +2994,7 @@ Este capítulo cobriu os fundamentos e práticas da criptografia homomórfica em
 - Acompanhar evolução da padronização (HomomorphicEncryption.org)
 
 A criptografia homomórfica representa o estado da arte em computação privativa. Embora ainda tenha limitações significativas de performance, sua adoção está crescendo em áreas como saúde, finanças e machine learning. C++17 fornece a base ideal para implementar sistemas FHE de alta performance.
+---
+
+*[Capítulo anterior: 09 — Hardware Security Tpm](09-hardware-security-tpm.md)*
+*[Próximo capítulo: 11 — Zero Knowledge Proofs](11-zero-knowledge-proofs.md)*

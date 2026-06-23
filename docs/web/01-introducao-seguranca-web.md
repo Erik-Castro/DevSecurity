@@ -4163,9 +4163,7 @@ for result in results:
 | X-Content-Type-Options | Verificação | Score impact | N/A |
 | X-Frame-Options | Verificação | Score impact | N/A |
 | TLS Config | N/A | N/A | Grade A+ objetivo |
-
 ---
 
-*[Voltar ao Prefácio](00-prefacio.md)*
-
-*[Capitulo 02 -- Protocolo HTTP Seguro](02-protocolo-http-seguro.md)*
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Protocolo Http Seguro](02-protocolo-http-seguro.md)*

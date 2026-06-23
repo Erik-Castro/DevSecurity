@@ -1215,8 +1215,7 @@ Crie uma tabela comparativa experimental entre Groth16 e Bulletproofs para o mes
 23. ZKP MOOC (2023). "Zero Knowledge Proofs." by Dan Boneh and others.
 24. Kozlov, A. (2022). "Understanding zk-SNARKs from the Ground Up." Medium.
 25. Ethereum Foundation (2023). "Zero Knowledge Proof Ecosystem." ethereum.org.
-
 ---
 
-*[Capítulo anterior: 10 — Criptografia Homomórfica](10-criptografia-homomorfica.md)*
-*[Capítulo 12 — Verificação Formal de Implementações Criptográficas](12-verificacao-formal.md)*
+*[Capítulo anterior: 10 — Criptografia Homomorfica](10-criptografia-homomorfica.md)*
+*[Próximo capítulo: 12 — Verificacao Formal](12-verificacao-formal.md)*

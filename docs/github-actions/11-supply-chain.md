@@ -2800,3 +2800,7 @@ jobs:
 9. https://cyclonedx.org/
 10. https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-dependencies-updated-automatically
 10. https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-dependencies-updated-automatically
+---
+
+*[Capítulo anterior: 10 — Permissions](10-permissions.md)*
+*[Próximo capítulo: 12 — Harden Runners](12-harden-runners.md)*

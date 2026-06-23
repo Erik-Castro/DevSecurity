@@ -4112,3 +4112,7 @@ Este capítulo cobriu os fundamentos e práticas avançadas de autenticação e 
 6. **Sessões**: Regenerar session ID após login; httpOnly + secure + sameSite cookies; invalidação imediata no logout
 7. **Brute force**: Rate limiting + account lockout + CAPTCHA + monitoring
 8. **CVEs**: CVE-2019-11510 (path traversal → auth bypass), CVE-2020-1472 (crypto flaw → AD compromise)
+---
+
+*[Capítulo anterior: 06 — Csrf Clickjacking](06-csrf-clickjacking.md)*
+*[Próximo capítulo: 08 — Autorizacao Controle Acesso](08-autorizacao-controle-acesso.md)*

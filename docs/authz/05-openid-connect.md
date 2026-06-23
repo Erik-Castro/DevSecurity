@@ -2984,3 +2984,7 @@ OpenID Connect é a camada de identidade que completa OAuth 2.0 para autenticaç
 - **Security Best Practices**: Checklist detalhado para Provider e Client
 
 O próximo capítulo explora Single Sign-On (SSO), o padrão que permite aos usuários autenticar uma vez e acessar múltiplas aplicações, com foco em SAML e OIDC.
+---
+
+*[Capítulo anterior: 04 — Oauth2](04-oauth2.md)*
+*[Próximo capítulo: 06 — Sso](06-sso.md)*

@@ -3401,3 +3401,7 @@ int main() {
 > Compliance é o início, não o fim. O verdadeiro desafio é construir software que
 > seja seguro POR DESIGN, não apenas conformista por acidente. Domine as normas,
 > mas nunca pare de questionar se elas são suficientes para o seu contexto.
+---
+
+*[Capítulo anterior: 13 — Testes De Seguranca E Pentest](13-testes-de-seguranca-e-pentest.md)*
+*[Próximo capítulo: 15 — Resposta A Incidentes](15-resposta-a-incidentes.md)*

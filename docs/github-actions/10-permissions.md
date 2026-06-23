@@ -2807,3 +2807,7 @@ jobs:
 8. https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
 9. https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
 10. https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-secrets
+---
+
+*[Capítulo anterior: 09 — Secrets Variaveis](09-secrets-variaveis.md)*
+*[Próximo capítulo: 11 — Supply Chain](11-supply-chain.md)*

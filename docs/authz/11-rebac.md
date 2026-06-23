@@ -2816,3 +2816,7 @@ class GraphMetrics:
 - AuthZed. "Authorization Patterns and Anti-Patterns" (2023)
 - Ory. "Zero Trust Architecture with Ory" (2022)
 - OpenZed. "OpenZiti Zero Trust Framework" (2023)
+---
+
+*[Capítulo anterior: 10 — Abac](10-abac.md)*
+*[Próximo capítulo: 12 — Mac Dac](12-mac-dac.md)*

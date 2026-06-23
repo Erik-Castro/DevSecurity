@@ -58,7 +58,7 @@ Este livro usa o caso Misantropi4 como fio condutor para ensinar autenticacao, a
 
 ### Parte IV: Seguranca e Implementacao (14-17)
 - Ataques a identidade, Caso Misantropi4, padroes seguros, compliance
-
 ---
 
-*[Proximo capitulo: 01 — Autenticacao vs Autorizacao](01-auth-vs-authz.md)*
+
+*[Próximo capítulo: 01 — Auth Vs Authz](01-auth-vs-authz.md)*

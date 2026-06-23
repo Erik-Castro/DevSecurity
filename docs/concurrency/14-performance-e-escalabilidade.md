@@ -609,3 +609,7 @@ int main() {
 - **perf** — perf.wiki.kernel.org
 - **numactl** — man numactl
 - **likwid** — github.com/RRZE-HPC/likwid
+---
+
+*[Capítulo anterior: 13 — Debugging Concorrencia](13-debugging-concorrencia.md)*
+*[Próximo capítulo: 15 — Padroes Concorrencia](15-padroes-concorrencia.md)*

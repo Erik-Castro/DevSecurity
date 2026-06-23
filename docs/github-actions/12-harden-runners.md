@@ -2814,3 +2814,7 @@ Agradecemos a todos os contribuidores que ajudaram a documentar essas praticas d
 | 1.3 | 2024-04-01 | Adicionado troubleshooting |
 | 1.4 | 2024-05-01 | Adicionado checklist |
 | 1.5 | 2024-06-01 | Adicionado glossario |
+---
+
+*[Capítulo anterior: 11 — Supply Chain](11-supply-chain.md)*
+*[Próximo capítulo: 13 — Reusable Workflows](13-reusable-workflows.md)*

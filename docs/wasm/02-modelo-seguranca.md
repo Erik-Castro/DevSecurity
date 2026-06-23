@@ -2797,4 +2797,7 @@ Essas lições são fundamentais para qualquer profissional que deseja usar WebA
 Entender o modelo de segurança do WebAssembly é o primeiro passo para construir aplicações seguras e confiáveis. Com esse conhecimento, você estará preparado para enfrentar os desafios de segurança em qualquer projeto que utilize essa tecnologia revolucionária. Lembre-se sempre de aplicar o princípio do menor privilégio e de validar todas as entradas antes de confiar em código de terceiros.
 
 Continue sua jornada de aprendizado explorando o Capítulo 3, onde aprofundaremos no WASI e veremos como as capabilities são implementadas na prática. Estudaremos exemplos reais de aplicações seguras e como configurar runtimes para máximo isolamento. Esse conhecimento será essencial para qualquer projeto de segurança em WebAssembly.
+---
 
+*[Capítulo anterior: 01 — Introducao Webassembly](01-introducao-webassembly.md)*
+*[Próximo capítulo: 03 — Wasi System Interface](03-wasi-system-interface.md)*

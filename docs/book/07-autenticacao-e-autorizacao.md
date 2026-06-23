@@ -3746,3 +3746,7 @@ void example_authentication_server() {
 | TLS | mTLS para zero trust | Certificados auto-assinados |
 
 > **Lembre-se:** Segurança não é um produto, é um processo. As melhores bibliotecas do mundo não protegem contra más decisões de arquitetura. Entenda os fundamentos antes de implementar as soluções.
+---
+
+*[Capítulo anterior: 06 — Validacao De Entrada E Sanitizacao](06-validacao-de-entrada-e-sanitizacao.md)*
+*[Próximo capítulo: 08 — Criptografia E Chaves](08-cRIPTografia-e-chaves.md)*

@@ -377,3 +377,7 @@ int main() {
 - **Gor Nishanov** — C++ Coroutines proposal (wg21.link/p0057)
 - **cppcoro library** — github.com/lewissbaker/cppcoro
 - **C++20 Standard** — §9.5.4 (Coroutines)
+---
+
+*[Capítulo anterior: 09 — Futures Promises Continuacoes](09-futures-promises-continuacoes.md)*
+*[Próximo capítulo: 11 — Primitivas Sincronizacao Cpp20](11-primitivas-sincronizacao-cpp20.md)*

@@ -3625,3 +3625,7 @@ No próximo capítulo, veremos como aplicar esses fundamentos em algoritmos crip
 ---
 
 *Fim do Capítulo 02*
+---
+
+*[Capítulo anterior: 01 — Introducao Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md)*
+*[Próximo capítulo: 03 — Ataques Canal Lateral](03-ataques-canal-lateral.md)*

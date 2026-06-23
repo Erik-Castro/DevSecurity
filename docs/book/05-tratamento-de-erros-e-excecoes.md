@@ -2698,3 +2698,7 @@ private:
 *Este capítulo demonstrou que o tratamento de erros é uma superfície de ataque real e significativa. Desde o Heartbleed até o Cloudbleed, vulnerabilidades de error handling causaram algumas das maiores violações de segurança da história. A chave para código seguro não é apenas implementar criptografia correta ou validação de entrada — é garantir que quando algo falha, o sistema falhe de forma segura: sem vazar informações, sem travar o serviço, e sem criar novas oportunidades de exploração.*
 
 *No próximo capítulo, exploraremos como testes de segurança automatizados podem detectar muitos desses padrões antes que cheguem à produção.*
+---
+
+*[Capítulo anterior: 04 — Seguranca De Memoria Em Cpp](04-seguranca-de-memoria-em-cpp.md)*
+*[Próximo capítulo: 06 — Validacao De Entrada E Sanitizacao](06-validacao-de-entrada-e-sanitizacao.md)*

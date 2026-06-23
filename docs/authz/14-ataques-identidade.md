@@ -2865,3 +2865,7 @@ class ZeroTrustAuthentication:
 ---
 
 *No próximo capítulo: Caso Misantropi4 — Análise completa do ataque ao IDAP, incluindo timeline, vetores de ataque, impacto, e lições aprendidas.*
+---
+
+*[Capítulo anterior: 13 — Policy Engines](13-policy-engines.md)*
+*[Próximo capítulo: 15 — Caso Misantropi4](15-caso-misantropi4.md)*

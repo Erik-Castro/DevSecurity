@@ -2209,3 +2209,7 @@ spec:
 - Inclui 5 casos documentados: Tesla K8s Breach (2018), Shopify Incident, RBAC Misconfiguration, Cryptominer via Exposed API, Container Escape (CVE-2020-8558, CVE-2022-0185)
 - Código em YAML (manifestos K8s), Bash (scripts de hardening/validação), e configuração de pipelines GitLab CI
 - Cobertura de ferramentas: Trivy, Falco, OPA Gatekeeper, Kyverno, Sealed Secrets, External Secrets Operator, HashiCorp Vault, Calico, Cilium, Cosign, kube-bench
+---
+
+*[Capítulo anterior: 11 — Seguranca Cloud](11-seguranca-cloud.md)*
+*[Próximo capítulo: 13 — Gitops E Supply Chain](13-gitops-e-supply-chain.md)*

@@ -2545,3 +2545,7 @@ Este runbook é um guia operacional completo para resposta a um incidente de seg
 22. OWASP. "Incident Response Verification Project." owasp.org, 2024.
 23. FIRST. "Forum of Incident Response and Security Teams." first.org.
 24. ENISA. "Good Practice Guide for Incident Management." European Union Agency for Cybersecurity, 2023.
+---
+
+*[Capítulo anterior: 14 — Compliance E Normas](14-compliance-e-normas.md)*
+*[Próximo capítulo: 16 — Hardening E Deploy Seguro](16-hardening-e-deploy-seguro.md)*

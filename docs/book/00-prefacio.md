@@ -1839,3 +1839,7 @@ O melhor momento para começar a pensar em segurança foi quando o projeto come�
 | STRIDE | Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege |
 | TSan | ThreadSanitizer |
 | UBSan | UndefinedBehaviorSanitizer |
+---
+
+
+*[Próximo capítulo: 01 — Introducao Ao Sdd](01-introducao-ao-sdd.md)*

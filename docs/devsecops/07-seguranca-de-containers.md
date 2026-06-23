@@ -2164,3 +2164,7 @@ Cosign. Mantenha o Docker daemon e o kernel atualizados — vulnerabilidades com
 CVE-2019-5736 mostram que o kernel compartilhado e o ponto critico de containers.
 Nunca exponha o Docker socket. Evite DIND em producao. A seguranca de containers
 nao e um objetivo unico, mas um processo continuo de verificacao e melhoria.
+---
+
+*[Capítulo anterior: 06 — Sca Composicao Software](06-sca-composicao-software.md)*
+*[Próximo capítulo: 08 — Iac Seguranca](08-iac-seguranca.md)*

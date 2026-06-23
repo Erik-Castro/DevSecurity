@@ -2898,3 +2898,7 @@ impl TenantIsolation {
 | **Trap** | Exceção fatal que encerra a execução |
 | **Instance** | Execução concreta de um módulo |
 | **Module** | Código WebAssembly compilado e validado |
+---
+
+*[Capítulo anterior: 02 — Modelo Seguranca](02-modelo-seguranca.md)*
+*[Próximo capítulo: 04 — Rust Wasm](04-rust-wasm.md)*

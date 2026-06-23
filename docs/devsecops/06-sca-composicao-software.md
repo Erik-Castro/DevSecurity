@@ -2434,7 +2434,7 @@ Neste capítulo, exploramos a Análise de Composição de Software (SCA) como pr
 9. **Pipelines completas** orquestram múltiplas ferramentas
 
 A chave para um programa SCA eficaz é combinar automação com processos claros de triagem e remediação. Nenhuma ferramenta sozinha resolve o problema - é necessário um ecossistema integrado de ferramentas, políticas e pessoas.
-
 ---
 
-*Próximo capítulo: Container Security - Protegendo aplicações containerizadas em produção*
+*[Capítulo anterior: 05 — Dast Analise Dinamica](05-dast-analise-dinamica.md)*
+*[Próximo capítulo: 07 — Seguranca De Containers](07-seguranca-de-containers.md)*

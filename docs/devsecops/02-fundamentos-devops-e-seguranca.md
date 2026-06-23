@@ -2566,3 +2566,7 @@ Playbooks do Ansible frequentemente contêm configurações inseguras que podem 
 ---
 
 **Próximo capítulo**: No Capítulo 3, vamos aprofundar em Segurança de Aplicações Web, explorando OWASP Top 10, autenticação e autorização, proteção contra ataques comuns, e como integrar testes de segurança de aplicações no pipeline de CI/CD.
+---
+
+*[Capítulo anterior: 01 — Introducao Ao Devsecops](01-introducao-ao-devsecops.md)*
+*[Próximo capítulo: 03 — Shift Left Security](03-shift-left-security.md)*

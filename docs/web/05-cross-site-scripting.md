@@ -831,3 +831,7 @@ Cada camada é uma defesa independente. Se uma falha, a próxima protege.
 19. OWASP ASVS v4.0 — Verification Requirements for XSS: https://asvs.owasp.org/
 20. CWE-79: Improper Neutralization of Input During Web Page Generation: https://cwe.mitre.org/data/definitions/79.html
 21. CWE-116: Improper Encoding or Escaping of Output: https://cwe.mitre.org/data/definitions/116.html
+---
+
+*[Capítulo anterior: 04 — Sql Injection](04-sql-injection.md)*
+*[Próximo capítulo: 06 — Csrf Clickjacking](06-csrf-clickjacking.md)*

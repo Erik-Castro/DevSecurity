@@ -2879,3 +2879,7 @@ int main() {
 ---
 
 > **Nota do Autor**: Criptografia é uma das áreas onde o erro humano é mais custoso. Um único bug — reutilizar um nonce, verificar um certificado incorretamente, ou usar um modo de operação inadequado — pode comprometer todo o sistema. Siga as práticas estabelecidas, use bibliotecas maduras revisadas pela comunidade, e NUNCA implemente criptografia própria. A segurança depende da coragem de reconhecer os próprios limites e usar soluções comprovadas.
+---
+
+*[Capítulo anterior: 07 — Autenticacao E Autorizacao](07-autenticacao-e-autorizacao.md)*
+*[Próximo capítulo: 09 — Seguranca De Rede](09-seguranca-de-rede.md)*

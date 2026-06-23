@@ -2813,3 +2813,7 @@ jobs:
 Este capitulo foi desenvolvido com base em melhores praticas da comunidade de GitHub Actions e padroes de reutilizacao de workflows.
 
 Agradecemos a todos os contribuidores que ajudaram a documentar essas praticas de reutilizacao de workflows.
+---
+
+*[Capítulo anterior: 12 — Harden Runners](12-harden-runners.md)*
+*[Próximo capítulo: 14 — Monorepos](14-monorepos.md)*

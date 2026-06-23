@@ -2918,7 +2918,7 @@ Crie um workflow full-stack com:
 Crie:
 1. Um workflow reutilizavel que aceite inputs (node-version, os) e secrets
 2. Um workflow principal que chame o reutilizavel
-
 ---
 
-*Proximo capitulo: [03 - Triggers e Eventos](03-triggers-eventos.md)*
+*[Capítulo anterior: 01 — Introducao Github Actions](01-introducao-github-actions.md)*
+*[Próximo capítulo: 03 — Triggers Eventos](03-triggers-eventos.md)*

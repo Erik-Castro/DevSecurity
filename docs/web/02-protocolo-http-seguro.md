@@ -3411,3 +3411,7 @@ E implemente:
 **[Fim do Capitulo 02 -- Protocolo HTTP Seguro]**
 
 *[Capítulo 03 — OWASP Top 10: Guia Completo](03-owasp-top-10.md)*
+---
+
+*[Capítulo anterior: 01 — Introducao Seguranca Web](01-introducao-seguranca-web.md)*
+*[Próximo capítulo: 03 — Owasp Top 10](03-owasp-top-10.md)*

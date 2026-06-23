@@ -3088,3 +3088,7 @@ No proximo capitulo, veremos como configurar testes em CMake (CTest, GoogleTest,
 ---
 
 *[Capitulo 12 — SBOM e Supply Chain Security](12-sbom-supply-chain.md) | [Proximo capitulo: 14 — Testing no CMake](14-testing-cmake.md)*
+---
+
+*[Capítulo anterior: 12 — Sbom Supply Chain](12-sbom-supply-chain.md)*
+*[Próximo capítulo: 14 — Testing Cmake](14-testing-cmake.md)*

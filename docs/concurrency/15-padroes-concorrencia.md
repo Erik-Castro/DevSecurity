@@ -2126,3 +2126,7 @@ private:
 - Use identificadores únicos para deduplicação
 - Valide determinismo de map e reduce
 - Implemente checkpointing periódico
+---
+
+*[Capítulo anterior: 14 — Performance E Escalabilidade](14-performance-e-escalabilidade.md)*
+*[Próximo capítulo: 16 — Simd Gpu E Heterogeneo](16-simd-gpu-e-heterogeneo.md)*

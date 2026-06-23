@@ -630,3 +630,7 @@ int main() {
 - **liburcu** — liburcu.org
 - **immer** — github.com/arximboldi/immer
 - **Herlihy & Shavit** — The Art of Multiprocessor Programming
+---
+
+*[Capítulo anterior: 07 — False Sharing E Otimizacao Cache](07-false-sharing-e-otimizacao-cache.md)*
+*[Próximo capítulo: 09 — Futures Promises Continuacoes](09-futures-promises-continuacoes.md)*

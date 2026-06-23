@@ -7198,3 +7198,7 @@ Neste capítulo, exploramos os internals do TLS 1.3 em profundidade:
 13. **Migration**: Estratégia para migrar de TLS 1.2 para 1.3
 
 TLS 1.3 representa o estado da arte em segurança de transport layer. Sua adoção é essencial para proteger comunicações na internet moderna.
+---
+
+*[Capítulo anterior: 04 — Hsm Tokens Seguranca](04-hsm-tokens-seguranca.md)*
+*[Próximo capítulo: 06 — Criptografia Pos Quantica](06-criptografia-pos-quantica.md)*

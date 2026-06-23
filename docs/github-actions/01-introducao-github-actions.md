@@ -2936,7 +2936,7 @@ jobs:
 | **Trigger** | Evento que inicia a execucao de um workflow |
 | **Variable** | Variavel de ambiente disponivel em workflows |
 | **Workflow** | Arquivo YAML que define um pipeline de CI/CD |
-
 ---
 
-*Proximo capitulo: [02 - Syntax e Estrutura de Workflows](02-syntax-workflows.md)*
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Syntax Workflows](02-syntax-workflows.md)*

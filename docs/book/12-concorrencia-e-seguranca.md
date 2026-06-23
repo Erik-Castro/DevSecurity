@@ -2874,3 +2874,7 @@ Concorrência e segurança são inseparáveis. Um único race condition pode com
 ---
 
 *Continuação: No próximo capítulo, exploraremos testes de segurança automatizados e fuzzing.*
+---
+
+*[Capítulo anterior: 11 — Seguranca De Api](11-seguranca-de-api.md)*
+*[Próximo capítulo: 13 — Testes De Seguranca E Pentest](13-testes-de-seguranca-e-pentest.md)*

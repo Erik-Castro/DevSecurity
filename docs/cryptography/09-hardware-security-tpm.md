@@ -3477,3 +3477,7 @@ A escolha da tecnologia adequada depende do caso de uso específico, considerand
 - Mitigações MDS/L1TF requerem abordagem em camadas: microcode + KPTI + L1D flush
 - Multi-protocol attestation com fallback é padrão em sistemas de produção
 - Trade-offs TPM vs SGX vs TrustZone são=context-dependent, não absolutos
+---
+
+*[Capítulo anterior: 08 — Protocolos Criptograficos](08-protocolos-criptograficos.md)*
+*[Próximo capítulo: 10 — Criptografia Homomorfica](10-criptografia-homomorfica.md)*

@@ -3147,3 +3147,7 @@ Futures, Promises e Continuations formam a base da programação assíncrona mod
 
 *Documento gerado para fins educacionais - C++17/20 Futures, Promises e Continuations*
 *Última atualização: 2024*
+---
+
+*[Capítulo anterior: 08 — Containers Concorrentes](08-containers-concorrentes.md)*
+*[Próximo capítulo: 10 — Coroutines Cpp20](10-coroutines-cpp20.md)*

@@ -3101,3 +3101,7 @@ jobs:
 13. https://docs.github.com/en/actions/learn-github-actions/expressions
 14. https://github.com/actions/runner/blob/main/docs/hosted-details.md
 15. https://docs.github.com/en/actions/using-workflows/monitoring-and-troubleshooting-workflows
+---
+
+*[Capítulo anterior: 13 — Reusable Workflows](13-reusable-workflows.md)*
+*[Próximo capítulo: 15 — Debugging](15-debugging.md)*

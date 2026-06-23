@@ -2935,3 +2935,7 @@ class LGPDCompliance:
 ---
 
 *No próximo capítulo: RBAC (Role-Based Access Control) — controlando quem pode fazer o quê no sistema.*
+---
+
+*[Capítulo anterior: 07 — Magic Links](07-magic-links.md)*
+*[Próximo capítulo: 09 — Rbac](09-rbac.md)*

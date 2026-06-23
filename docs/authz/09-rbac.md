@@ -3004,3 +3004,7 @@ class LGPDCompliance:
 ---
 
 *No próximo capítulo: ABAC (Attribute-Based Access Control) — controle de acesso baseado em atributos para cenários onde RBAC não é granular o suficiente.*
+---
+
+*[Capítulo anterior: 08 — Webauthn Fido2](08-webauthn-fido2.md)*
+*[Próximo capítulo: 10 — Abac](10-abac.md)*

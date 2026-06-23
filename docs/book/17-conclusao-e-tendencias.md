@@ -1965,3 +1965,7 @@ O desenvolvedor C++ que dominar segurança não será apenas um profissional mel
 *Este capítulo encerra a primeira edição do livro "Desenvolvimento Orientado por Segurança: Práticas e Padrões em C++17". A segurança de software é uma jornada sem destino — mas com os princípios, ferramentas e mentalidade apresentados ao longo deste livro, o desenvolvedor está equipado para enfrentá-la com competência e responsabilidade.*
 
 *Agradecemos ao leitor pela dedicação em aprofundar seus conhecimentos em segurança. O mundo precisa de mais desenvolvedores que escrevem código pensando no adversário. Esperamos ter contribuído para essa missão.*
+---
+
+*[Capítulo anterior: 16 — Hardening E Deploy Seguro](16-hardening-e-deploy-seguro.md)*
+

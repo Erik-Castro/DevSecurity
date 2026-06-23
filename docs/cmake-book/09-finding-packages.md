@@ -2869,3 +2869,7 @@ No proximo capitulo, vamos explorar:
 ---
 
 *Fim do Capitulo 9 — Finding Packages Seguro*
+---
+
+*[Capítulo anterior: 08 — Builds Reproduziveis](08-builds-reproduziveis.md)*
+*[Próximo capítulo: 10 — Fetchcontent External](10-fetchcontent-external.md)*

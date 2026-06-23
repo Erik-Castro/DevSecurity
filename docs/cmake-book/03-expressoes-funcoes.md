@@ -2924,7 +2924,7 @@ endif()
 | clang-tidy | Analise estatica |
 | cppcheck | Analise estatica |
 | CMake Utils | Modulos utilitarios |
-
 ---
 
-*[Capitulo anterior: 02 — Target Model e Properties](02-target-model-properties.md) | [Capítulo 4 — Flags de Segurança do Compilador](04-flags-seguranca-compilador.md)*
+*[Capítulo anterior: 02 — Target Model Properties](02-target-model-properties.md)*
+*[Próximo capítulo: 04 — Flags Seguranca Compilador](04-flags-seguranca-compilador.md)*

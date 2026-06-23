@@ -4852,3 +4852,7 @@ A implementação de compliance em WebAssembly requer uma abordagem holística q
 ## Próximos Passos
 
 No próximo capítulo, exploraremos boas práticas e checklists detalhados para desenvolvimento seguro de aplicações WebAssembly, incluindo anti-patterns, árvores de decisão e templates de projeto.
+---
+
+*[Capítulo anterior: 15 — Blockchain](15-blockchain.md)*
+*[Próximo capítulo: 17 — Boas Praticas](17-boas-praticas.md)*

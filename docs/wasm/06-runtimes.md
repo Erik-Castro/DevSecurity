@@ -3197,3 +3197,7 @@ A incorporação de WebAssembly permite criar sistemas de plugins seguros e port
 ---
 
 *Fim do Capítulo 6: Runtimes de WebAssembly*
+---
+
+*[Capítulo anterior: 05 — Cpp Emscripten](05-cpp-emscripten.md)*
+*[Próximo capítulo: 07 — Sandboxing](07-sandboxing.md)*

@@ -2808,7 +2808,7 @@ A segurança de senhas é a camada mais fundamental de proteção de identidade.
 - **Caso Misantropi4**: Demonstra como a ausência de todas essas práticas resultou em um ataque devastador.
 
 A segurança de senhas não é apenas uma questão técnica — é uma questão de confiança. Quando um usuário cria uma conta no seu sistema, ele confia que você protegerá suas credenciais. Essa confiança deve ser tratada com o máximo respeito e responsabilidade.
-
 ---
 
-*[Próximo capítulo: 04 — OAuth 2.0](04-oauth2.md)*
+*[Capítulo anterior: 02 — Metodos Autenticacao](02-metodos-autenticacao.md)*
+*[Próximo capítulo: 04 — Oauth2](04-oauth2.md)*

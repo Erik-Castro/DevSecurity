@@ -2362,3 +2362,7 @@ No proximo capitulo, vamos explorar o **DAST (Dynamic Application Security Testi
 
 *Capitulo 4 — SAST: Analise Estatica de Seguranca*
 *DevSecOps na Pratica*
+---
+
+*[Capítulo anterior: 03 — Shift Left Security](03-shift-left-security.md)*
+*[Próximo capítulo: 05 — Dast Analise Dinamica](05-dast-analise-dinamica.md)*

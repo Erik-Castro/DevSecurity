@@ -2532,3 +2532,7 @@ A gestao eficaz de segredos e um pilar fundamental do DevSecOps. Neste capitulo,
 9. **Pipeline Completo**: O fluxo Generate, Store, Distribute, Rotate, Audit com implementacao real em Vault e Kubernetes.
 
 A gestao de segredos nao e opcional — e um requisito de seguranca basico que deve ser implementado desde o primeiro dia de desenvolvimento.
+---
+
+*[Capítulo anterior: 09 — Seguranca Cicd](09-seguranca-cicd.md)*
+*[Próximo capítulo: 11 — Seguranca Cloud](11-seguranca-cloud.md)*

@@ -6528,3 +6528,7 @@ Implemente rotação de certificados sem downtime:
 
 *Este capítulo faz parte do Livro 5: Engenharia de Criptografia em C++ do projeto DevSecurity.*
 *Última atualização: 2024*
+---
+
+*[Capítulo anterior: 14 — Compliance Normas](14-compliance-normas.md)*
+*[Próximo capítulo: 16 — Boas Praticas Checklist](16-boas-praticas-checklist.md)*

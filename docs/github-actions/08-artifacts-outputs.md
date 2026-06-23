@@ -2804,3 +2804,7 @@ Agradecemos a todos que contribuiram para a criacao deste material. O conhecimen
 ## 8.39 Contato e Suporte
 
 Para duvidas ou sugestoes, abra uma issue no repositorio ou entre em contato com a equipe de DevSecurity.
+---
+
+*[Capítulo anterior: 07 — Caching Performance](07-caching-performance.md)*
+*[Próximo capítulo: 09 — Secrets Variaveis](09-secrets-variaveis.md)*

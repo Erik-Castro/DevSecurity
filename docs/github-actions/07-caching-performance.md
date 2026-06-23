@@ -2861,3 +2861,7 @@ jobs:
 | Dependabot Docs | docs.github.com/code-security/dependabot | Documentacao Dependabot |
 | CodeQL Docs | docs.github.com/code-security/codeql | Documentacao CodeQL |
 | Trivy Docs | trivy.dev | Documentacao Trivy |
+---
+
+*[Capítulo anterior: 06 — Matrix Builds](06-matrix-builds.md)*
+*[Próximo capítulo: 08 — Artifacts Outputs](08-artifacts-outputs.md)*

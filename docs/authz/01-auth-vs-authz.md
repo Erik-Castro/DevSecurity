@@ -2951,7 +2951,7 @@ class ComplianceChecker:
 8. ISO 27001:2022 - Information Security Management
 9. LGPD (Lei Geral de Protecao de Dados)
 10. PCI DSS v4.0 - Payment Card Industry Data Security Standard
-
 ---
 
-*[Próximo capítulo: 02 — Métodos de Autenticação](02-metodos-autenticacao.md)*
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Metodos Autenticacao](02-metodos-autenticacao.md)*

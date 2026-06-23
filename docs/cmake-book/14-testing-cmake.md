@@ -3698,8 +3698,7 @@ Neste capítulo, exploramos o ecossistema completo de testing no CMake:
 O testing abrangente é fundamental para projetos de segurança. Uma suite de testes bem configurada não apenas detecta bugs, mas também serve como documentação viva do comportamento esperado do sistema, facilitando a manutenção e evolução do código.
 
 No próximo capítulo, exploraremos como integrar todas essas técnicas em um pipeline de CI/CD completo, automatizando desde a build até a implantação.
-
 ---
 
-*Próximo Capítulo: [Install e Packaging](15-install-packaging.md)*
-*Capítulo Anterior: [Cross-Compilation](13-cross-compilation.md)*
+*[Capítulo anterior: 13 — Cross Compilation](13-cross-compilation.md)*
+*[Próximo capítulo: 15 — Install Packaging](15-install-packaging.md)*

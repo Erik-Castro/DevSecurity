@@ -3434,3 +3434,7 @@ e) Implemente monitoramento de violacoes CORS.
 ---
 
 **Proximo Capitulo**: [Capítulo 13: Segurança Server-Side](13-seguranca-server-side.md) - Protegendo aplicacoes server-side com Django, Flask, Express e Go.
+---
+
+*[Capítulo anterior: 11 — Seguranca Api](11-seguranca-api.md)*
+*[Próximo capítulo: 13 — Seguranca Server Side](13-seguranca-server-side.md)*

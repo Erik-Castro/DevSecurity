@@ -3387,3 +3387,7 @@ Este capitulo cobriu os principais aspectos de seguranca em containers e deploym
 **Monitoring**: Implementar logging centralizado, audit trails, e alertas de seguranca.
 
 A seguranca de containers nao e um checkpoint, e um processo continuo. Atualize regularmente dependencias, escaneie imagens frequentemente, e revise configuracoes periodicamente.
+---
+
+*[Capítulo anterior: 13 — Seguranca Server Side](13-seguranca-server-side.md)*
+*[Próximo capítulo: 15 — Devsecops Web](15-devsecops-web.md)*

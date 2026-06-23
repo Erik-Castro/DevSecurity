@@ -2820,3 +2820,7 @@ randombytes_buf(nonce.data(), nonce.size());
 ---
 
 > **Nota**: Este capitulo e parte do Livro 5 (Engenharia Criptografica em C++) do projeto DevSecurity. Para exercicios praticos e solucoes, consulte o repositorio do projeto.
+---
+
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Fundamentos Constant Time](02-fundamentos-constant-time.md)*

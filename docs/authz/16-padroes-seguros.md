@@ -2955,3 +2955,7 @@ class RefreshTokenValidator:
 16. Colonial Pipeline Incident (2021) — VPN credential compromise
 17. Okta/Lapsus$ Incident (2022) — Social engineering e session hijacking
 18. Uber MFA Fatigue Attack (2022) — Bypass de MFA via spam de notificações
+---
+
+*[Capítulo anterior: 15 — Caso Misantropi4](15-caso-misantropi4.md)*
+*[Próximo capítulo: 17 — Compliance](17-compliance.md)*

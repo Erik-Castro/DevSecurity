@@ -3346,3 +3346,7 @@ incidentes.
 14. ISO/IEC 27001:2022. "Information Security Management Systems — Requirements."
 
 15. AWS. (2024). "AWS Security Best Practices." Amazon Web Services Documentation.
+---
+
+*[Capítulo anterior: 13 — Gitops E Supply Chain](13-gitops-e-supply-chain.md)*
+*[Próximo capítulo: 15 — Resposta A Incidentes Em Producao](15-resposta-a-incidentes-em-producao.md)*

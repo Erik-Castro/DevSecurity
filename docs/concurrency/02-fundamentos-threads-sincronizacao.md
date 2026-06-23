@@ -1256,3 +1256,7 @@ int main() {
 - **Becker, B.** — The C++ Standard Library: A Tutorial and Reference, 2nd Edition
 - **cppreference.com** — std::thread, std::mutex, std::condition_variable
 - **ISO/IEC 14882:2020** — §32.4.4 (std::scoped_lock), §32.10 (latch/barrier/semaphore)
+---
+
+*[Capítulo anterior: 01 — Modelo Memoria Cpp](01-modelo-memoria-cpp.md)*
+*[Próximo capítulo: 03 — Programacao Lock Free E Atomicos](03-programacao-lock-free-e-atomicos.md)*

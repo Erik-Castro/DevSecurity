@@ -3531,3 +3531,7 @@ trufflehog git file://. --only-verified
 ---
 
 **Próximo Capítulo**: [Capítulo 04 — SQL Injection](04-sql-injection.md) - Aprenda a identificar, quantificar e priorizar ameaças antes que elas se tornem vulnerabilidades.
+---
+
+*[Capítulo anterior: 02 — Protocolo Http Seguro](02-protocolo-http-seguro.md)*
+*[Próximo capítulo: 04 — Sql Injection](04-sql-injection.md)*

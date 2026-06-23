@@ -2849,3 +2849,7 @@ jobs:
 8. https://cmake.org/cmake/help/latest/guide/tutorial/
 9. https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows
 10. https://docs.github.com/en/actions/learn-github-actions/expressions
+---
+
+*[Capítulo anterior: 03 — Triggers Eventos](03-triggers-eventos.md)*
+*[Próximo capítulo: 05 — Deploy Releases](05-deploy-releases.md)*

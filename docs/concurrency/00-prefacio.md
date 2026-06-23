@@ -188,3 +188,7 @@ find_package(Threads REQUIRED)
 | perf | Profiling Linux |
 
 > **Dica final**: Concorrência segura é uma habilidade que se desenvolve com prática deliberada. Não basta ler — escreva código concorrente, teste com sanitizers, e analise seus erros. Cada capítulo inclui exercícios práticos projetados para isso.
+---
+
+
+*[Próximo capítulo: 01 — Modelo Memoria Cpp](01-modelo-memoria-cpp.md)*

@@ -2983,8 +2983,7 @@ if __name__ == '__main__':
 - **CWE (Common Weakness Enumeration)**: Lista padronizada de fraquezas de segurança.
 - **SSRF (Server-Side Request Forgery)**: Vulnerabilidade que permite ao atacante fazer requisições do servidor.
 - **IDOR (Insecure Direct Object Reference)**: Vulnerabilidade de acesso não autorizado a objetos.
-
 ---
 
-*Capítulo anterior: [SAST: Análise Estática de Segurança](04-sast-analise-estatica.md)*
-*Próximo capítulo: [SCA: Análise de Composição de Software](06-sca-composicao-software.md)*
+*[Capítulo anterior: 04 — Sast Analise Estatica](04-sast-analise-estatica.md)*
+*[Próximo capítulo: 06 — Sca Composicao Software](06-sca-composicao-software.md)*

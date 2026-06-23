@@ -2835,3 +2835,7 @@ int main() {
 ---
 
 > *Este capítulo estabelece as bases conceituais e metodológicas do Security-Driven Development. Nos capítulos seguintes, aprofundaremos cada aspecto com exemplos práticos, exercícios e estudos de caso adicionais em C++.*
+---
+
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Ciclo De Vida Seguro](02-ciclo-de-vida-seguro.md)*

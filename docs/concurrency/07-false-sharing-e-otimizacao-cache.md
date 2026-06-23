@@ -394,3 +394,7 @@ int main() {
 - **C++ Performance TR** —wg21.link/p0883
 - **perf wiki** — perf.wiki.kernel.org
 - **numactl/numad** — Linux NUMA tools
+---
+
+*[Capítulo anterior: 06 — Paralelismo Std Algorithms](06-paralelismo-std-algorithms.md)*
+*[Próximo capítulo: 08 — Containers Concorrentes](08-containers-concorrentes.md)*

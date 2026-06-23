@@ -249,3 +249,7 @@ int main() {
 - **C++ Standard** — ISO/IEC 14882:2020
 - **cppreference.com** — std::atomic, memory_order
 - **Williams, A.** — C++ Concurrency in Action, 2nd Ed
+---
+
+*[Capítulo anterior: 00 — Prefacio](00-prefacio.md)*
+*[Próximo capítulo: 02 — Fundamentos Threads Sincronizacao](02-fundamentos-threads-sincronizacao.md)*

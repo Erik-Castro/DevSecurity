@@ -4074,3 +4074,7 @@ Os pontos-chave abordados incluem:
 O edge computing com WASM oferece benefícios significativos em termos de latência, segurança e escalabilidade. No entanto, requer consideração cuidadosa de trade-offs como consistência, complexidade operacional e custos.
 
 No próximo capítulo, exploraremos como o WebAssembly está sendo utilizado em blockchain e smart contracts.
+---
+
+*[Capítulo anterior: 13 — Plugins Seguros](13-plugins-seguros.md)*
+*[Próximo capítulo: 15 — Blockchain](15-blockchain.md)*

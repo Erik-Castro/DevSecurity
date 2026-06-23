@@ -5103,3 +5103,7 @@ O WebAssembly oferece vantagens significativas sobre a EVM tradicional, incluind
 4. Ethereum eWASM - https://github.com/ewasm
 5. WebAssembly Specification - https://webassembly.org/spec/
 6. Wasmtime Documentation - https://docs.wasmtime.dev/
+---
+
+*[Capítulo anterior: 14 — Edge Computing](14-edge-computing.md)*
+*[Próximo capítulo: 16 — Compliance](16-compliance.md)*

@@ -3622,4 +3622,7 @@ EOF
 ---
 
 *Fim do Capítulo 3 — Programação Lock-Free e Atômicos Avançados*
+---
 
+*[Capítulo anterior: 02 — Fundamentos Threads Sincronizacao](02-fundamentos-threads-sincronizacao.md)*
+*[Próximo capítulo: 04 — Deadlocks E Livelocks](04-deadlocks-e-livelocks.md)*

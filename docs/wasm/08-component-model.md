@@ -2990,3 +2990,7 @@ O Component Model representa uma evolução fundamental do WebAssembly, transfor
 O Component Model está no início de sua adoção, mas já está sendo utilizado em produção em vários cenários, incluindo edge computing, serverless e plugins. À medida que o ecossistema amadurece, esperamos ver uma adoção ainda maior e novos casos de uso inovadores.
 
 No próximo capítulo, exploraremos a segurança de memória em WebAssembly, incluindo técnicas de detecção e prevenção de bugs de memória.
+---
+
+*[Capítulo anterior: 07 — Sandboxing](07-sandboxing.md)*
+*[Próximo capítulo: 09 — Memory Safety](09-memory-safety.md)*

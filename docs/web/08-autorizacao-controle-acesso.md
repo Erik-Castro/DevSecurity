@@ -3893,3 +3893,7 @@ func createArticleHandler(w http.ResponseWriter, r *http.Request) {
 ---
 
 *[Capítulo 09 — Criptografia na Web](09-criptografia-na-web.md)*
+---
+
+*[Capítulo anterior: 07 — Autenticacao Sessoes](07-autenticacao-sessoes.md)*
+*[Próximo capítulo: 09 — Criptografia Na Web](09-criptografia-na-web.md)*

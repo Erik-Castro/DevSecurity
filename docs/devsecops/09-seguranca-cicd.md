@@ -2588,3 +2588,7 @@ python3 pipeline-security-checker.py .github/workflows/
 - NIST SP 800-204 - Security Strategies for Microservices: https://csrc.nist.gov/publications/detail/sp/800-204/final
 - CNCF Software Supply Chain Security: https://www.cncf.io/
 - SLSA Threats and Mitigations: https://slsa.dev/threats
+---
+
+*[Capítulo anterior: 08 — Iac Seguranca](08-iac-seguranca.md)*
+*[Próximo capítulo: 10 — Gestao De Segredos](10-gestao-de-segredos.md)*

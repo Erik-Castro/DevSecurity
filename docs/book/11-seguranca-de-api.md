@@ -3041,3 +3041,7 @@ private:
 - *gRPC Security and Authentication Guide*: Guia oficial de autenticação e segurança do gRPC.
 - *CWE-918: Server-Side Request Forgery (SSRF)*: Classificação de vulnerabilidades SSRF em APIs.
 - *CWE-306: Missing Authentication for Critical Function*: Padrão de ausência de autenticação em funções críticas de API.
+---
+
+*[Capítulo anterior: 10 — Seguranca De Banco De Dados](10-seguranca-de-banco-de-dados.md)*
+*[Próximo capítulo: 12 — Concorrencia E Seguranca](12-concorrencia-e-seguranca.md)*

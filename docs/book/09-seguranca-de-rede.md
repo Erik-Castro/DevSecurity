@@ -2365,3 +2365,7 @@ int main(int argc, char* argv[]) {
 - "Bulletproof SSL and TLS" — Ivan Ristic (Feisty Duck)
 - OWASP Testing Guide — Testing for Transport Layer Security
 - MITRE ATT&CK Framework — Network-based attack techniques
+---
+
+*[Capítulo anterior: 08 — Criptografia E Chaves](08-cRIPTografia-e-chaves.md)*
+*[Próximo capítulo: 10 — Seguranca De Banco De Dados](10-seguranca-de-banco-de-dados.md)*

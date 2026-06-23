@@ -472,3 +472,7 @@ if __name__ == "__main__":
 - **Valgrind** — valgrind.org
 - **Google Sanitizers** — github.com/google/sanitizers
 - **Brendan Gregg** — Systems Performance (Pearson)
+---
+
+*[Capítulo anterior: 12 — Testando Codigo Concorrente](12-testando-codigo-concorrente.md)*
+*[Próximo capítulo: 14 — Performance E Escalabilidade](14-performance-e-escalabilidade.md)*

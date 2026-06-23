@@ -3674,3 +3674,7 @@ Os pontos-chave abordados incluem:
 O WebAssembly oferece uma base sólida para sistemas de plugins seguros, mas a segurança não é automática. É necessário implementar múltiplas camadas de proteção, desde sandboxing até verificação de assinatura, para criar um ecossistema de plugins confiável.
 
 No próximo capítulo, exploraremos como o WebAssembly está sendo utilizado em edge computing para executar código próximo aos usuários finais.
+---
+
+*[Capítulo anterior: 12 — Fuzzing](12-fuzzing.md)*
+*[Próximo capítulo: 14 — Edge Computing](14-edge-computing.md)*

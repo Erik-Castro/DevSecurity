@@ -2802,3 +2802,7 @@ class ComplianceReporter:
 - Common Criteria. "Protection Profile for Operating Systems" (2012)
 - CERT. "Introduction to the Priority Usage Limit Concept" (2005)
 - NIST. "Unified Log Framework for MAC Systems" (2021)
+---
+
+*[Capítulo anterior: 11 — Rebac](11-rebac.md)*
+*[Próximo capítulo: 13 — Policy Engines](13-policy-engines.md)*

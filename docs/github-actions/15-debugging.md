@@ -2895,3 +2895,7 @@ jobs:
 10. https://docs.github.com/en/actions/hosting-your-own-runners
 11. https://github.com/nektos/act/blob/master/docs/README.md
 12. https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+---
+
+*[Capítulo anterior: 14 — Monorepos](14-monorepos.md)*
+*[Próximo capítulo: 16 — Monitoramento](16-monitoramento.md)*

@@ -4164,3 +4164,7 @@ Implemente um sistema de destruicao segura de chaves para armazenamento NVM (NVM
 ---
 
 Fim do Capítulo 07 — Gestão de Chaves Avançada
+---
+
+*[Capítulo anterior: 06 — Criptografia Pos Quantica](06-criptografia-pos-quantica.md)*
+*[Próximo capítulo: 08 — Protocolos Criptograficos](08-protocolos-criptograficos.md)*

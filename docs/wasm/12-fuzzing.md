@@ -7594,3 +7594,7 @@ O futuro do fuzzing de Wasm inclui técnicas mais sofisticadas como fuzzing base
 Construir uma cultura de fuzzing na sua organização requer comprometimento, mas os benefícios em termos de segurança e confiabilidade são substanciais. Comece com targets críticos, automatize o processo, e expanda gradualmente para cobrir mais superfícies de ataque.
 
 Segurança não é um destino, mas uma jornada contínua. Fuzzing é uma das ferramentas mais poderosas nessa jornada.
+---
+
+*[Capítulo anterior: 11 — Supply Chain Plugins](11-supply-chain-plugins.md)*
+*[Próximo capítulo: 13 — Plugins Seguros](13-plugins-seguros.md)*

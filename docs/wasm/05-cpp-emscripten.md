@@ -3502,7 +3502,7 @@ Este capítulo cobriu o ecossistema completo de C++ para WebAssembly:
 11. **Exemplo completo**: Processador de sinais
 
 O Emscripten continua sendo a ferramenta mais madura para compilar C++ para WebAssembly, com suporte completo a OpenGL, áudio, threading e muitas outras funcionalidades. Para projetos que exigem高性能 e acesso a APIs de baixo nível, o C++ com Emscripten é uma escolha sólida.
-
 ---
 
-*Próximo capítulo: Runtimes de WebAssembly*
+*[Capítulo anterior: 04 — Rust Wasm](04-rust-wasm.md)*
+*[Próximo capítulo: 06 — Runtimes](06-runtimes.md)*

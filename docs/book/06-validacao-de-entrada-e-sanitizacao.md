@@ -3059,3 +3059,7 @@ void run_all_tests() {
 > *"Validação de entrada não é opcional — é a fundação da segurança do software."*
 
 Este capítulo estabeleceu os fundamentos para construir sistemas seguros em C++17. No próximo capítulo, exploraremos autenticação e autorização, construindo sobre os conceitos de validação aprendidos aqui.
+---
+
+*[Capítulo anterior: 05 — Tratamento De Erros E Excecoes](05-tratamento-de-erros-e-excecoes.md)*
+*[Próximo capítulo: 07 — Autenticacao E Autorizacao](07-autenticacao-e-autorizacao.md)*

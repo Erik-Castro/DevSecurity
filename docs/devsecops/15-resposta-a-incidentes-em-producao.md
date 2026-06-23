@@ -4671,3 +4671,7 @@ A resposta a incidentes não é apenas uma questão técnica - é um processo or
 ---
 
 *Fim do Capítulo 15*
+---
+
+*[Capítulo anterior: 14 — Monitoramento E Observabilidade](14-monitoramento-e-observabilidade.md)*
+*[Próximo capítulo: 16 — Compliance Automatizado](16-compliance-automatizado.md)*

@@ -400,3 +400,7 @@ g++ -std=c++20 -pthread -O3 -DNDEBUG -march=native
 - **ISO/IEC 14882:2020** — Thread support library
 - **Herlihy & Shavit** — The Art of Multiprocessor Programming
 - **Williams, A.** — C++ Concurrency in Action, 2nd Ed
+---
+
+*[Capítulo anterior: 16 — Simd Gpu E Heterogeneo](16-simd-gpu-e-heterogeneo.md)*
+
