@@ -154,4 +154,4 @@ Ao contribuir, você concorda que suas contribuições serão licenciadas sob **
 
 ## Perguntas?
 
-Abra uma **Issue** com a标签 `question` ou `discussion`.
+Abra uma **Issue** com a tag `question` ou `discussion`.

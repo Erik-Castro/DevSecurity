@@ -9,7 +9,7 @@
 | # | Capítulo | Tema Principal |
 |---|----------|----------------|
 | 00 | [Prefácio](00-prefacio.md) | Motivação, público-alvo, convenções |
-| 01 | [- Introducao a Engenharia Criptografica](01-introducao-engenharia-cRIPTOGRAFICA.md) | Primitivas, bibliotecas, CVEs fundamentais |
+| 01 | [Introdução à Engenharia Criptográfica](01-introducao-engenharia-cRIPTOGRAFICA.md) | Primitivas, bibliotecas, CVEs fundamentais |
 | 02 | [Fundamentos de Constant-Time](02-fundamentos-constant-time.md) | Timing attacks, cache-timing, C++17 techniques |
 | 03 | [Ataques de Canal Lateral](03-ataques-canal-lateral.md) | Power analysis, EM, cache attacks, Spectre/Meltdown |
 | 04 | [HSM e Tokens de Segurança](04-hsm-tokens-seguranca.md) | PKCS#11, cloud HSMs, key ceremonies |

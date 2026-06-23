@@ -16,11 +16,10 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 | Métrica | Valor |
 |---------|-------|
-| Livros publicados | 5 |
-| Livros na fila | 3 |
-| Total de capítulos | 89+ |
-| Total de linhas | ~300.000+ |
-| CVEs documentados | 300+ |
+| Livros publicados | 10 |
+| Total de capítulos | 180 |
+| Total de linhas | ~527.000+ |
+| CVEs documentados | 420+ |
 | Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, Rust, JS/TS, CMake, WebAssembly |
 | Idioma | Português (PT-BR) para texto, Inglês para código |
 
@@ -29,7 +28,7 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 ## Livros Publicados
 
 ### 1. [Security-Driven Development com C++17](book/00-prefacio.md)
-> *Desenvolvimento Seguro orientado a Segurança — 17 capítulos | ~48.500 linhas | 100+ CVEs | 200+ exemplos*
+> *Desenvolvimento Seguro orientado à Segurança — 17 capítulos | ~48.500 linhas | 100+ CVEs | 200+ exemplos*
 
 **Conteúdo:**
 - **Fundamentos**: SDD, Secure SDLC, Threat Modeling (STRIDE/PASTA/DREAD), OWASP Top 10 + CWE Top 25 mapeados para C++
@@ -91,15 +90,28 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 ---
 
-## Próximas Publicações (Em Planejamento)
+### 6. [Desenvolvimento Seguro na Web](web/00-prefacio.md)
+> *OWASP Top 10, XSS, SQL Injection, Auth, API Security — 18 capítulos | ~57.800 linhas | 20+ CVEs*
 
-| Livro | Foco | Status |
-|-------|------|--------|
-| **Desenvolvimento Seguro na Web** | OWASP Top 10, XSS/CSRF/SQLi, secure APIs, auth, session management | **Em andamento** → [Começar a ler](web/00-prefacio.md) |
-| **CMake Seguro e Build Systems** | CMake hardening, reproducible builds, supply chain para builds | Na fila |
-| **WebAssembly Seguro** | Wasm sandboxing, WASI, component model, memory safety | Na fila |
-| **Fuzzing & Property-Based Testing** | libFuzzer/AFL++ avançado, corpus management, OSS-Fuzz integration | Planejado |
-| **Supply Chain Security** | SBOM (SPDX/CycloneDX), SLSA, Sigstore, in-toto, reproducible builds | Planejado |
+---
+
+### 7. [CMake Seguro e Build Systems](cmake-book/00-prefacio.md)
+> *Build Systems, Hardening, Supply Chain, Reproducibility — 18 capítulos | ~52.500 linhas*
+
+---
+
+### 8. [GitHub Actions Pipelines Seguros](github-actions/00-prefacio.md)
+> *Triggers, Secrets, OIDC, Reusable Workflows, Supply Chain — 18 capítulos | ~49.000 linhas*
+
+---
+
+### 9. [WebAssembly Seguro](wasm/00-prefacio.md)
+> *Wasm Architecture, WASI, Sandboxing, Plugins, Edge, Blockchain — 18 capítulos | ~76.300 linhas*
+
+---
+
+### 10. [Autenticação, Autorização e Controle de Acesso](authz/00-prefacio.md)
+> *OAuth, OIDC, SSO, RBAC, ABAC, WebAuthn, Caso Misantropi4 — 18 capítulos | ~49.500 linhas*
 
 ---
 

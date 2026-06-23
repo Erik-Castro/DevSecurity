@@ -16,7 +16,7 @@
 | 05 | [Cross-Site Scripting (XSS)](05-cross-site-scripting.md) | Reflected, Stored, DOM-based, CSP |
 | 06 | [CSRF, Clickjacking e Ataques Client-Side](06-csrf-clickjacking.md) | CSRF tokens, SameSite, frame protection |
 | 07 | [Autenticação e Gerenciamento de Sessão](07-autenticacao-sessoes.md) | Passwords, MFA, OAuth 2.0, JWT |
-| 08 | [- Autorizacao e Controle de Acesso](08-autorizacao-controle-acesso.md) | RBAC, ABAC, IDOR, OPA |
+| 08 | [Autorização e Controle de Acesso](08-autorizacao-controle-acesso.md) | RBAC, ABAC, IDOR, OPA |
 | 09 | [Criptografia na Web](09-criptografia-na-web.md) | TLS, Web Crypto, SubtleCrypto |
 | 10 | [Input Validation](10-validacao-sanitizacao.md) | Allowlists, schemas, sanitization |
 | 11 | [Segurança de APIs](11-seguranca-api.md) | REST, GraphQL, gRPC, rate limiting |

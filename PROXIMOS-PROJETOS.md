@@ -1,55 +1,55 @@
 ---
 layout: default
-title: "Proximos Projetos"
+title: "Próximos Projetos"
 ---
 
-# Proximos Projetos — Livros Open-Source DevSecurity
+# Próximos Projetos — Livros Open-Source DevSecurity
 
-> Diretrizes do projeto: livros tecnicos gratuitos em Markdown, linguagem PT-BR para texto, codigo em ingles, minimo 800 linhas por capitulo, 17+ capitulos, com casos publicos documentados (CVEs).
+> Diretrizes do projeto: livros técnicos gratuitos em Markdown, linguagem PT-BR para texto, código em inglês, mínimo 800 linhas por capítulo, 17+ capítulos, com casos públicos documentados (CVEs).
 
 ---
 
-## Livros Concluidos
+## Livros Concluídos
 
-### Livro 1: Security-Driven Development (CONCLUIDO)
-- **17 capitulos** | ~48.500 linhas | **C++17**
-- [Indice](docs/book/INDICE.md)
+### Livro 1: Security-Driven Development (CONCLUÍDO)
+- **17 capítulos** | ~48.500 linhas | **C++17**
+- [Índice](docs/book/INDICE.md)
 
-### Livro 2: DevSecOps na Pratica (CONCLUIDO)
-- **18 capitulos** | ~52.300 linhas | **Bash, Python, YAML, Docker, HCL, Go**
-- [Indice](docs/devsecops/INDICE.md)
+### Livro 2: DevSecOps na Prática (CONCLUÍDO)
+- **18 capítulos** | ~52.300 linhas | **Bash, Python, YAML, Docker, HCL, Go**
+- [Índice](docs/devsecops/INDICE.md)
 
-### Livro 3: Engenharia e Analise de Malware em C++ (CONCLUIDO)
-- **18 capitulos** | ~55.600 linhas | **C++17 + Assembly**
-- [Indice](docs/malware/INDICE.md)
+### Livro 3: Engenharia e Análise de Malware em C++ (CONCLUÍDO)
+- **18 capítulos** | ~55.600 linhas | **C++17 + Assembly**
+- [Índice](docs/malware/INDICE.md)
 
-### Livro 4: Concorrencia e Paralelismo Seguro em C++ (CONCLUIDO)
-- **18 capitulos** | ~19.700 linhas | **C++17/20**
-- [Indice](docs/concurrency/INDICE.md)
+### Livro 4: Concorrência e Paralelismo Seguro em C++ (CONCLUÍDO)
+- **18 capítulos** | ~19.700 linhas | **C++17/20**
+- [Índice](docs/concurrency/INDICE.md)
 
-### Livro 5: Criptografia Engenheira em C++ (CONCLUIDO)
-- **18 capitulos** | ~66.400 linhas | **C++17**
-- [Indice](docs/cryptography/INDICE.md)
+### Livro 5: Criptografia Engenheira em C++ (CONCLUÍDO)
+- **18 capítulos** | ~66.400 linhas | **C++17**
+- [Índice](docs/cryptography/INDICE.md)
 
-### Livro 6: Desenvolvimento Seguro na Web (CONCLUIDO)
-- **18 capitulos** | ~57.800 linhas | **JS/TS, Python, Go**
-- [Indice](docs/web/INDICE.md)
+### Livro 6: Desenvolvimento Seguro na Web (CONCLUÍDO)
+- **18 capítulos** | ~57.800 linhas | **JS/TS, Python, Go**
+- [Índice](docs/web/INDICE.md)
 
-### Livro 7: CMake Seguro e Build Systems (CONCLUIDO)
-- **18 capitulos** | ~52.500 linhas | **CMake 3.20+, C++17/20**
-- [Indice](docs/cmake-book/INDICE.md)
+### Livro 7: CMake Seguro e Build Systems (CONCLUÍDO)
+- **18 capítulos** | ~52.500 linhas | **CMake 3.20+, C++17/20**
+- [Índice](docs/cmake-book/INDICE.md)
 
-### Livro 8: GitHub Actions Pipelines Seguros (CONCLUIDO)
-- **18 capitulos** | ~49.000 linhas | **YAML, Bash**
-- [Indice](docs/github-actions/INDICE.md)
+### Livro 8: GitHub Actions Pipelines Seguros (CONCLUÍDO)
+- **18 capítulos** | ~49.000 linhas | **YAML, Bash**
+- [Índice](docs/github-actions/INDICE.md)
 
-### Livro 9: WebAssembly Seguro (CONCLUIDO)
-- **18 capitulos** | ~76.300 linhas | **Rust, C++, WAT**
-- [Indice](docs/wasm/INDICE.md)
+### Livro 9: WebAssembly Seguro (CONCLUÍDO)
+- **18 capítulos** | ~76.300 linhas | **Rust, C++, WAT**
+- [Índice](docs/wasm/INDICE.md)
 
-### Livro 10: Autenticacao, Autorizacao e Controle de Acesso (CONCLUIDO)
-- **18 capitulos** | ~49.500 linhas | **Python, JavaScript, Go**
-- [Indice](docs/authz/INDICE.md)
+### Livro 10: Autenticação, Autorização e Controle de Acesso (CONCLUÍDO)
+- **18 capítulos** | ~49.500 linhas | **Python, JavaScript, Go**
+- [Índice](docs/authz/INDICE.md)
 
 ---
 
@@ -57,16 +57,16 @@ title: "Proximos Projetos"
 
 ### Tier 1 — Alta demanda
 
-| # | Titulo | Foco | Linguagem | Prioridade |
+| # | Título | Foco | Linguagem | Prioridade |
 |---|--------|------|-----------|------------|
 | 10 | **Fuzzing & Property-Based Testing** | libFuzzer/AFL++, OSS-Fuzz, CI/CD | C++17 | Alta |
-| 11 | **Security Code Review Handbook** | Checklists, anti-patterns, automacao | C++17 | Media |
-| 12 | **LGPD/GDPR para Engenheiros** | Privacy by Design, DPIA, breach notification | Conceitual + codigo | Media |
-| 13 | **Secure Architecture Patterns** | Zero Trust, threat modeling, capability-based | Conceitual | Media |
+| 11 | **Security Code Review Handbook** | Checklists, anti-patterns, automação | C++17 | Média |
+| 12 | **LGPD/GDPR para Engenheiros** | Privacy by Design, DPIA, breach notification | Conceitual + código | Média |
+| 13 | **Secure Architecture Patterns** | Zero Trust, threat modeling, capability-based | Conceitual | Média |
 
 ### Tier 2 — Nichos
 
-| # | Titulo | Foco | Linguagem |
+| # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
 | 14 | **Firmware & Embedded Security** | Bootloader, secure boot, TPM, IoT | C + C++17 |
 | 15 | **Side-Channel Analysis & Mitigation** | Timing, cache, power, EM attacks | C++17 + Assembly |
@@ -75,17 +75,17 @@ title: "Proximos Projetos"
 
 ### Tier 3 — Alcance
 
-| # | Titulo | Foco | Linguagem |
+| # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
 | 18 | **Security Testing Automation** | CI/CD gates, mutation testing | Multi |
 | 19 | **Secure DevOps at Scale** | Monorepo security, compliance automation | Bash/YAML/HCL |
 
 ### Tier 4 — Linguagens
 
-| # | Titulo | Foco | Linguagem |
+| # | Título | Foco | Linguagem |
 |---|--------|------|-----------|
 | 20 | **Secure Coding in Rust** | Ownership, unsafe, FFI, crypto | Rust |
-| 21 | **Python para Seguranca** | Automacao, tooling, analysis | Python |
+| 21 | **Python para Segurança** | Automação, tooling, analysis | Python |
 | 22 | **Go for Security Engineering** | Concurrency, networking, cloud | Go |
 
 ---
@@ -94,7 +94,7 @@ title: "Proximos Projetos"
 
 ```
 Total planejado: 22 livros
-Concluidos: 10 (45%)
+Concluídos: 10 (45%)
 Em andamento: 0
 Planejados: 12
 
@@ -103,7 +103,7 @@ Linhas escritas: ~527.700
 
 ---
 
-## Estrutura do Repositorio
+## Estrutura do Repositório
 
 ```
 DevSecurity/
@@ -114,14 +114,14 @@ DevSecurity/
 │   ├── book/           # Livro 1: SDD
 │   ├── devsecops/      # Livro 2: DevSecOps
 │   ├── malware/        # Livro 3: Malware
-│   ├── concurrency/    # Livro 4: Concorrencia
+│   ├── concurrency/    # Livro 4: Concorrência
 │   ├── cryptography/   # Livro 5: Criptografia
 │   ├── web/            # Livro 6: Web Security
 │   ├── cmake-book/     # Livro 7: CMake
-├── github-actions/ # Livro 8: GitHub Actions
-├── wasm/           # Livro 9: WebAssembly
-│   └── authz/       # Livro 10: Auth/AuthZ
-├── epub/               # Versoes EPUB
+│   ├── github-actions/ # Livro 8: GitHub Actions
+│   ├── wasm/           # Livro 9: WebAssembly
+│   └── authz/          # Livro 10: Auth/AuthZ
+├── epub/               # Versões EPUB
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares
 ```
