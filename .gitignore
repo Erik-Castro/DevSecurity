@@ -1,0 +1,197 @@
+# === Seguranca: Arquivos Sensiveis ===
+# Secrets, tokens, chaves privadas, credenciais
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+.env.staging
+*secret*
+*token*
+*password*
+*credential*
+*.p12
+*.pfx
+
+# Certificados
+*.crt
+*.cer
+*.csr
+*.p7b
+*.p7c
+*.der
+
+# Chaves GPG
+*.gpg
+*.pgp
+*.asc
+
+# GitHub tokens (se acidentalmente salvos)
+ghp_*
+github_token*
+.github_token
+
+# === Build artifacts ===
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+dist/
+build/
+out/
+target/
+.cache/
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.exe
+*.class
+*.jar
+*.war
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+.venv/
+venv/
+env/
+ENV/
+
+# === Rust ===
+Cargo.lock
+target/
+
+# === Go ===
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# === Java ===
+*.class
+*.jar
+*.war
+.gradle/
+build/
+
+# === IDE e Editores ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.vs/
+*.code-workspace
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# === Logs ===
+*.log
+logs/
+logs_extracted/
+logs_*.zip
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# === Temporarios ===
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*~
+.cache/
+*.cache
+*.pyc
+
+# === Arquivos de debug ===
+core
+core.*
+vgcore.*
+*.dSYM/
+*.supp
+massif.out.*
+
+# === Docker (se nao intencional) ===
+.dockerignore
+Dockerfile.dockerignore
+
+# === Coverage e Reports ===
+coverage/
+.nyc_output/
+htmlcov/
+*.lcov
+lcov.info
+cover/
+
+# === SDD artifacts (interno, ja commitados) ===
+# openspec/  # mantido no repo
+
+# === Build configs temporarios ===
+cmake-build-*/
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+
+# === Build configs que podem conter secrets ===
+cmake-build-*/
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+
+# === Editor configs ===
+.editorconfig
+.eslintrc.js
+.prettierrc
+tsconfig.json
+
+# === GitHub Pages ===
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+Gemfile.lock
+vendor/bundle/
+
+# === EPUB temporarios ===
+_epub_build/
