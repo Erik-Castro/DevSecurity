@@ -47,6 +47,10 @@ title: "Proximos Projetos"
 - **18 capitulos** | ~76.300 linhas | **Rust, C++, WAT**
 - [Indice](docs/wasm/INDICE.md)
 
+### Livro 10: Autenticacao, Autorizacao e Controle de Acesso (CONCLUIDO)
+- **18 capitulos** | ~49.500 linhas | **Python, JavaScript, Go**
+- [Indice](docs/authz/INDICE.md)
+
 ---
 
 ## Backlog de Livros Planejados
@@ -90,11 +94,11 @@ title: "Proximos Projetos"
 
 ```
 Total planejado: 22 livros
-Concluidos: 9 (41%)
+Concluidos: 10 (45%)
 Em andamento: 0
-Planejados: 13
+Planejados: 12
 
-Linhas escritas: ~478.200
+Linhas escritas: ~527.700
 ```
 
 ---
@@ -115,7 +119,8 @@ DevSecurity/
 │   ├── web/            # Livro 6: Web Security
 │   ├── cmake-book/     # Livro 7: CMake
 ├── github-actions/ # Livro 8: GitHub Actions
-│   └── wasm/       # Livro 9: WebAssembly
+├── wasm/           # Livro 9: WebAssembly
+│   └── authz/       # Livro 10: Auth/AuthZ
 ├── epub/               # Versoes EPUB
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares

@@ -19,10 +19,10 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 
 | Metrica | Valor |
 |---------|-------|
-| Livros publicados | 9 |
-| Total de capitulos | 162 |
-| Total de linhas | ~478.000+ |
-| CVEs documentados | 400+ |
+| Livros publicados | 10 |
+| Total de capitulos | 180 |
+| Total de linhas | ~527.000+ |
+| CVEs documentados | 420+ |
 | Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, JS/TS, CMake, GitHub Actions, Rust, WAT |
 | Idioma | Portugues (PT-BR) para texto, Ingles para codigo |
 
@@ -99,6 +99,23 @@ O objetivo e preencher a lacuna entre teoria de seguranca e pratica de desenvolv
 > *Wasm Architecture, WASI, Sandboxing, Plugins, Edge, Blockchain — 18 capitulos | ~76.300 linhas*
 
 [Leia online](docs/wasm/INDICE.md)
+
+---
+
+### 10. Autenticacao, Autorizacao e Controle de Acesso
+
+> *OAuth, OIDC, SSO, RBAC, ABAC, WebAuthn, Caso Misantropi4 — 18 capitulos | ~49.500 linhas*
+
+**Conteudo:**
+- **Autenticacao Moderna**: OAuth 2.0, OpenID Connect, SSO, Magic Links, WebAuthn/FIDO2
+- **Controle de Acesso**: RBAC, ABAC, ReBAC, MAC/DAC, Policy Engines (OPA, Cedar)
+- **Seguranca**: Credential stuffing, brute force, session hijacking, MFA fatigue
+- **Caso Real**: Analise completa do ataque Misantropi4 ao sistema IDAP brasileiro (junho 2026)
+- **Compliance**: OWASP ASVS, NIST SP 800-63, LGPD, GDPR, PCI DSS
+
+**CVEs e incidentes**: Misantropi4/IDAP, Log4Shell, SolarWinds, Colonial Pipeline, LastPass, Uber/Lapsus$, Okta.
+
+[Leia online](docs/authz/INDICE.md)
 
 ---
 
