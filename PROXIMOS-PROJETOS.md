@@ -51,6 +51,10 @@ title: "Próximos Projetos"
 - **18 capítulos** | ~49.500 linhas | **Python, JavaScript, Go**
 - [Índice](docs/authz/INDICE.md)
 
+### Livro 11: IA do Zero: ML em C++, Fortran e Rust (CONCLUÍDO)
+- **18 capítulos** | ~52.000 linhas | **C++17, Rust, Fortran**
+- [Índice](docs/ai-from-scratch/INDICE.md)
+
 ---
 
 ## Backlog de Livros Planejados
@@ -94,11 +98,11 @@ title: "Próximos Projetos"
 
 ```
 Total planejado: 22 livros
-Concluídos: 10 (45%)
+Concluidos: 11 (50%)
 Em andamento: 0
-Planejados: 12
+Planejados: 11
 
-Linhas escritas: ~527.700
+Linhas escritas: ~579.700
 ```
 
 ---
@@ -120,7 +124,8 @@ DevSecurity/
 │   ├── cmake-book/     # Livro 7: CMake
 │   ├── github-actions/ # Livro 8: GitHub Actions
 │   ├── wasm/           # Livro 9: WebAssembly
-│   └── authz/          # Livro 10: Auth/AuthZ
+│   └── authz/       # Livro 10: Auth/AuthZ
+│   └── ai-from-scratch/ # Livro 11: IA do Zero (C++/Rust/Fortran)
 ├── epub/               # Versões EPUB
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares

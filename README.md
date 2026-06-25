@@ -19,9 +19,9 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 | Métrica | Valor |
 |---------|-------|
-| Livros publicados | 10 |
-| Total de capítulos | 180 |
-| Total de linhas | ~527.000+ |
+| Livros publicados | 11 |
+| Total de capitulos | 198 |
+| Total de linhas | ~579.000+ |
 | CVEs documentados | 420+ |
 | Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, JS/TS, CMake, GitHub Actions, Rust, WAT |
 | Idioma | Português (PT-BR) para texto, Inglês para código |
@@ -116,6 +116,14 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 **CVEs e incidentes**: Misantropi4/IDAP, Log4Shell, SolarWinds, Colonial Pipeline, LastPass, Uber/Lapsus$, Okta.
 
 [Leia online](docs/authz/INDICE.md)
+
+---
+
+### 11. IA do Zero: ML em C++, Fortran e Rust
+
+> *Perceptron, MLP, CNN, RNN, GRU, LSTM, Transformer, GANs — do zero — 18 capitulos | ~52.000 linhas*
+
+[Leia online](docs/ai-from-scratch/INDICE.md)
 
 ---
 
