@@ -55,6 +55,10 @@ title: "Próximos Projetos"
 - **18 capítulos** | ~52.000 linhas | **C++17, Rust, Fortran**
 - [Índice](docs/ai-from-scratch/INDICE.md)
 
+### Livro 12: SQL Avancado e Seguranca (CONCLUIDO)
+- **18 capitulos** | ~50.000 linhas | **PostgreSQL, MySQL, SQLite**
+- [Indice](docs/sql-advanced/INDICE.md)
+
 ---
 
 ## Backlog de Livros Planejados
@@ -98,11 +102,11 @@ title: "Próximos Projetos"
 
 ```
 Total planejado: 22 livros
-Concluidos: 11 (50%)
+Concluidos: 12 (55%)
 Em andamento: 0
-Planejados: 11
+Planejados: 10
 
-Linhas escritas: ~579.700
+Linhas escritas: ~629.700
 ```
 
 ---
@@ -126,6 +130,7 @@ DevSecurity/
 │   ├── wasm/           # Livro 9: WebAssembly
 │   └── authz/       # Livro 10: Auth/AuthZ
 │   └── ai-from-scratch/ # Livro 11: IA do Zero (C++/Rust/Fortran)
+│   └── sql-advanced/  # Livro 12: SQL Avancado
 ├── epub/               # Versões EPUB
 ├── openspec/           # SDD artifacts
 └── scripts/            # Scripts auxiliares

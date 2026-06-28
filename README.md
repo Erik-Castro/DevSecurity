@@ -19,10 +19,10 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 
 | Métrica | Valor |
 |---------|-------|
-| Livros publicados | 11 |
-| Total de capitulos | 198 |
-| Total de linhas | ~579.000+ |
-| CVEs documentados | 420+ |
+| Livros publicados | 12 |
+| Total de capitulos | 216 |
+| Total de linhas | ~629.000+ |
+| CVEs documentados | 450+ |
 | Linguagens | C++17/20, Python, Bash, YAML, Go, Assembly, JS/TS, CMake, GitHub Actions, Rust, WAT |
 | Idioma | Português (PT-BR) para texto, Inglês para código |
 
@@ -124,6 +124,14 @@ O objetivo é preencher a lacuna entre teoria de segurança e prática de desenv
 > *Perceptron, MLP, CNN, RNN, GRU, LSTM, Transformer, GANs — do zero — 18 capitulos | ~52.000 linhas*
 
 [Leia online](docs/ai-from-scratch/INDICE.md)
+
+---
+
+### 12. SQL Avancado e Seguranca
+
+> *SQL Injection, Blind Injection, NoSQL, Transactions, Indices, Hardening, Casos Reais — 18 capitulos | ~50.000 linhas*
+
+[Leia online](docs/sql-advanced/INDICE.md)
 
 ---
 
